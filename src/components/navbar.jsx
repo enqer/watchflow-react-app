@@ -10,7 +10,8 @@ const Navbar = () => {
               <Link to="/"><img src={logo}></img></Link>
           </li>
           <li>
-            <p>Search</p>
+              {/*Form??*/}
+                <input type="text"/>
           </li>
           <li>
             <Link to="/movies">Movies</Link>
