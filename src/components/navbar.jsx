@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import {Link} from "react-router-dom";
 import logo from '../img/logo.png'
 import { IoMdHome } from "react-icons/io";
@@ -6,12 +6,21 @@ import { IoSearch } from "react-icons/io5";
 import { PiTelevisionBold } from "react-icons/pi";
 import { BiNews } from "react-icons/bi";
 import { FaRankingStar } from "react-icons/fa6";
+import { FaUserCircle } from "react-icons/fa";
 import '../fonts/Roboto-Bold.ttf';
 
 const Navbar = () => {
+    const [fix, setFix]= useState(false)
 
+    const setFixed = () => {
+        if (window.scrollY >= 100) {
+            setFix(true)
+        } else
+            setFix(false)
+    }
+    window.addEventListener("scroll", setFixed)
   return (
-      <div style={styles.container}>
+      <div style={{...styles.container,...styles.navbarStyle}}>
         <ul style={styles.menu}>
             <li>
                 <Link to="/">
@@ -53,8 +62,10 @@ const Navbar = () => {
 
         </ul>
           <div style={styles.settings}>
-              <p>name</p>
-              <p>fota</p>
+              <Link style={styles.text}>
+                    <p>Zaloguj się</p>
+                    <span style={{fontSize: '32px', margin: 'auto', padding: '10px'}}><FaUserCircle /></span>
+              </Link>
           </div>
       </div>
   )
@@ -66,7 +77,7 @@ const styles = {
         justifyContent: 'space-between'
     },
     logo : {
-        width: '160px'
+        width: '120px'
     },
     menu : {
         margin: 0,
@@ -82,6 +93,8 @@ const styles = {
     },
     settings: {
 
+        display: 'flex',
+        alignItems: 'center'
     },
     text: {
         padding: '0 10px',
@@ -99,6 +112,15 @@ const styles = {
         position: 'relative',
         top: '3px',
         padding: '5px'
+    },
+    navbarStyle : {
+        position: 'fixed',
+        top: 0,
+        left: 0,
+        width: '100%',
+        backgroundColor: '#1b1d2a',
+        boxShadow: '0px 2px 5px rgba(0, 0, 0, 0.1)',
+        zIndex: 1000,
     }
 }
 
