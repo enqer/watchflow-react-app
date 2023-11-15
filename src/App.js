@@ -5,9 +5,9 @@ import {Outlet} from "react-router-dom";
 
 function App() {
   return (
-      <div>
-      <Navbar/>
-          <div>
+      <div className="container_fluid">
+        <Navbar/>
+          <div className="container">
               <Outlet/>
           </div>
       </div>
