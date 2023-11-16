@@ -5,10 +5,10 @@ import { IoSearch } from "react-icons/io5";
 import { PiTelevisionBold } from "react-icons/pi";
 import { BiNews } from "react-icons/bi";
 import { FaRankingStar } from "react-icons/fa6";
-import { FaUserCircle } from "react-icons/fa";
 import '../fonts/Roboto-Bold.ttf';
 import '../styles/navbar.css'
 import Logo from "./logo";
+import Login from "./login";
 
 const Navbar = () => {
     const [isHover, setIsHover] = useState(false)
@@ -127,8 +127,7 @@ const Navbar = () => {
         </ul>
             <div style={styles.settings}>
               <Link style={styles.text} onMouseEnter={() =>handleMouseEnter(6)} onMouseLeave={handleMouseLeave}>
-                    <p style={(numOfMenu===6 && isHover) ?styles.underlineAfter : styles.underline}>Zaloguj się</p>
-                    <span style={{fontSize: '32px', margin: 'auto', padding: '10px'}}><FaUserCircle /></span>
+                  <Login style={(numOfMenu===6 && isHover) ?styles.underlineAfter : styles.underline}/>
               </Link>
             </div>
       </div>
