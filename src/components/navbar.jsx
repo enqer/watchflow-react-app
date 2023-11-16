@@ -6,7 +6,6 @@ import { PiTelevisionBold } from "react-icons/pi";
 import { BiNews } from "react-icons/bi";
 import { FaRankingStar } from "react-icons/fa6";
 import '../fonts/Roboto-Bold.ttf';
-import '../styles/navbar.css'
 import Logo from "./logo";
 import Login from "./login";
 
@@ -80,7 +79,7 @@ const Navbar = () => {
         }
 
     }
-
+    // TODO idea: transparent navbar?? after scroll sticky fixed to top with different background??
   return (
       <div style={{...styles.container,...styles.navbarStyle}}>
         <ul style={styles.menu}>

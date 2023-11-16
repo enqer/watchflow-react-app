@@ -2,14 +2,24 @@
 import './App.css';
 import Navbar from "./components/navbar";
 import {Outlet} from "react-router-dom";
+import Footer from "./components/footer";
 
 function App() {
+
+    const styles = {
+        container : {
+            display: 'flex',
+            flexDirection: 'column',
+        }
+    }
+
   return (
-      <div className="container_fluid">
+      <div className="container_fluid" style={styles.container}>
           <Navbar style={{position: 'absolute', top: '0'}}></Navbar>
           <div className="container" style={{marginTop: '70px'}}>
               <Outlet/>
           </div>
+          <Footer />
       </div>
 
   );
