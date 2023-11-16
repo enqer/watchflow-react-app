@@ -25,6 +25,7 @@ const Footer = () => {
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
+            fontWeight: 'bold'
             // color: 'black'
         }
     }

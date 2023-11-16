@@ -112,13 +112,13 @@ const Navbar = () => {
                 </Link>
             </li>
             <li>
-                <Link style={styles.text} onMouseEnter={() =>handleMouseEnter(4)} onMouseLeave={handleMouseLeave}>
+                <Link to="/ranking" style={styles.text} onMouseEnter={() =>handleMouseEnter(4)} onMouseLeave={handleMouseLeave}>
                     <span style={styles.icon}><FaRankingStar /></span>
                     <p style={(numOfMenu===4 && isHover) ?styles.underlineAfter : styles.underline}>Ranking</p>
                 </Link>
             </li>
             <li>
-                <Link style={styles.text} onMouseEnter={() =>handleMouseEnter(5)} onMouseLeave={handleMouseLeave}>
+                <Link to="/news" style={styles.text} onMouseEnter={() =>handleMouseEnter(5)} onMouseLeave={handleMouseLeave}>
                     <span style={styles.icon}><BiNews /></span>
                     <p style={(numOfMenu===5 && isHover) ?styles.underlineAfter : styles.underline}>Newsy</p>
                 </Link>

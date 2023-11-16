@@ -7,6 +7,8 @@ import {BrowserRouter, Route, Routes} from "react-router-dom";
 import Movies from "./components/movies";
 import Home from "./components/home";
 import NotFound from "./components/notFound";
+import Ranking from "./components/ranking";
+import News from "./components/news";
 
 
 
@@ -17,6 +19,8 @@ ReactDOM.render(
                            <Route path="/" element={<App />}>
                                <Route path="/" element={<Home />}/>
                                <Route path="/movies" element={<Movies />}/>
+                               <Route path="/ranking" element={<Ranking />}/>
+                               <Route path="/news" element={<News />}/>
                                <Route path="*" element={<NotFound/>}/>
                            </Route>
                       </Routes>
