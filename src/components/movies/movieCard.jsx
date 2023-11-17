@@ -6,6 +6,7 @@ const MovieCard = (props) => {
     const styles = {
         card :{
             width: '500px',
+            height: '200px',
             display: 'flex',
             alignItems: 'flex-end',
             justifyContent: 'space-between'
