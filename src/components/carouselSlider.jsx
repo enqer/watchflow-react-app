@@ -1,4 +1,5 @@
 import Carousel from "@itseasy21/react-elastic-carousel";
+import '../styles/carousel.css'
 const CarouselSlider = () => {
     const breakPoints = [
         {width: 1, itemsToShow: 1},
@@ -8,7 +9,7 @@ const CarouselSlider = () => {
     ];
 
     const styles = {
-        carosuel: {
+        carosuelCell: {
             display: 'flex',
             justifyContent: 'center',
             alignItems: 'center',
@@ -18,18 +19,23 @@ const CarouselSlider = () => {
             color: '#fff',
             margin: '0 15px',
             fontSize: '4em',
+        },
+        carosuel : {
+            color: 'white'
         }
     }
     return (
 
         <div>
-
-            <Carousel breakPoints={breakPoints}>
-                <div style={styles.carosuel}>One</div>
-                <div style={styles.carosuel}>One</div>
-                <div style={styles.carosuel}>One</div>
-                <div style={styles.carosuel}>One</div>
-                <div style={styles.carosuel}>One</div>
+            <div>
+                <p>Odkryj nowości</p>
+            </div>
+            <Carousel style={styles.carosuel} breakPoints={breakPoints} >
+                <div style={styles.carosuelCell}>One</div>
+                <div style={styles.carosuelCell}>One</div>
+                <div style={styles.carosuelCell}>One</div>
+                <div style={styles.carosuelCell}>One</div>
+                <div style={styles.carosuelCell}>One</div>
             </Carousel>
         </div>
     )
