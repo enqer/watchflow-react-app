@@ -5,11 +5,15 @@ const MovieCard = (props) => {
 
     const styles = {
         card :{
+            // width: '500px',
+            // height: '200px',
             width: '500px',
             height: '200px',
+            padding: '15px',
             display: 'flex',
             alignItems: 'flex-end',
-            justifyContent: 'space-between'
+            justifyContent: 'space-between',
+            color: 'white'
         }
     }
 

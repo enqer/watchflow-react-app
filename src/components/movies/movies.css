@@ -25,6 +25,7 @@
     border-color: transparent;
     cursor: pointer;
     background-color: #555555;
+    transition: background-color .3s ease-in;
 }
 .moviesSelect:hover {
     background-color: #131313;

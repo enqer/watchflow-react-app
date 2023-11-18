@@ -1,19 +1,16 @@
-import {useState} from "react";
-import '../../styles/movies.css'
+import './movies.css'
 import img from '../../img/loki.jpg'
 
 const Movies = () => {
     const arr = [...Array(20).keys()]
 
         // TODO stylizacja select i jego menu i poprawienie wysokości żeby było na równi z filmami
-        // TODO dorobić własne menu + takie samo do ustawień
+        // TODO dorobić własne menu?? + takie samo do ustawień
 
   return(
       <div className="moviesContainer">
           <div className="moviesHeader">
-              <p className="moviesText">
-                  Filmy
-              </p>
+              <p className="moviesText">Filmy</p>
               <select className="moviesSelect" >
                   {options.map((option) =>(
                       <option className="moviesOpton" value={option.value}>{option.label}</option>
@@ -21,7 +18,6 @@ const Movies = () => {
               </select>
           </div>
           <div className="moviesWrapperImages">
-              {/*// TODO cells with img of movies*/}
               {arr.map(a => (
                       <div className="moviesImage">
                           {/*<div className="moviesImg">{a+1}</div>*/}
@@ -29,7 +25,6 @@ const Movies = () => {
                       </div>
               ))}
           </div>
-
       </div>
   )
 }
