@@ -12,7 +12,7 @@ function App() {
             flexDirection: 'column',
         }
     }
-
+// TODO pozmieniać czcionki na ładniejsze benc
   return (
       <div className="container_fluid" style={styles.container}>
           <Navbar style={{position: 'absolute', top: '0'}}></Navbar>
