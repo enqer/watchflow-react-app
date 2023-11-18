@@ -1,0 +1,104 @@
+.carouselContainer {
+    /*margin: 0 5vw;*/
+}
+
+.carouselCell {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 250px;
+    width: 100%;
+    color: var(--white);
+    margin: 0 15px;
+    object-fit:cover;
+    border-radius: 15px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*Strzałki*/
+.rec.rec-arrow {
+    margin: 15px;
+    border-radius: 50%;
+    background-color: var(--grey);
+    color: var(--background) !important
+}
+.rec.rec-arrow:disabled {
+    visibility: hidden;
+}
+
+.rec.rec-arrow:hover {
+    /*color: var(--white);*/
+    background-color: var(--darkBlue) !important;
+}
+.rec.rec-arrow:focus {
+    /*color: red !important;*/
+    background-color: var(--darkBlue) !important;
+}
+
+/*button.rec-dot:focus {*/
+/*    background-color: var(--darkBlue);*/
+
+/*}*/
+/*button.rec-dot:hover {*/
+/*    background-color: var(--darkBlue) !important;*/
+/*}*/
+.rec.rec-dot {
+    background-color: transparent !important;
+}
+.rec.rec-dot:active {
+    /*background-color:  var(--darkBlue) !important;*/
+}
+.rec.rec-dot:focus {
+    /*background-color:  var(--darkBlue) !important;*/
+}
+
+/*button.rec-dot{*/
+/*    !*background-color: rgb(0, 0, 0);*!*/
+/*    box-shadow: 0 0 1px 3px rgba(56, 108, 112, 0.5);*/
+/*}*/
+
+button.rec-dot {
+    /*box-shadow: none !important*/
+    /*box-shadow: black !important;*/
+    /*color: green !important*/
+}
+button.rec-dot{
+
+}
+
+
+
+
+.rec-carousel-item {
+    outline: none;
+    background-color: transparent !important
+}
+
+/*.rec-carousel-item {*/
+/*    box-shadow: 5px 5px 10px rgba(0, 0, 0, 7);*/
+/*}*/
+
+
+
+

@@ -2,3 +2,10 @@ body{
     background-color: #1b1d2a;
 }
 
+:root {
+    --background: #1b1d2a;
+    --grey: #353740;
+    --white: #e2dbc5;
+    --black: #060408;
+    --darkBlue: #204167;
+}

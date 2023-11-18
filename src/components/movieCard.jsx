@@ -13,7 +13,7 @@ const MovieCard = (props) => {
             display: 'flex',
             alignItems: 'flex-end',
             justifyContent: 'space-between',
-            color: 'white'
+            color: 'var(--white)'
         }
     }
 

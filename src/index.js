@@ -5,7 +5,7 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import {BrowserRouter, Route, Routes} from "react-router-dom";
 import Movies from "./components/movies/movies";
-import Home from "./components/home";
+import Home from "./components/home/home";
 import NotFound from "./components/notFound";
 import Ranking from "./components/ranking/ranking";
 import News from "./components/news";
