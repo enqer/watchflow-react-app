@@ -2,7 +2,7 @@ import CarouselSlider from '../carousel/carouselSlider';
 import './home.css'
 import img from "../../img/background.jpg";
 import img2 from "../../img/news.jpg";
-import NewsCard from "../newsCard";
+import NewsCard from "../cards/newsCard";
 
 const Home = () => {
         const arr = [...Array(10).keys()]

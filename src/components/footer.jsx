@@ -10,11 +10,9 @@ const Footer = () => {
             flexDirection: 'row',
             alignItems: 'center',
             backgroundColor: '#24242c',
-            justifyContent: 'space-between'
-            // position: 'fixed',
-            // left:0,
-            // bottom:0,
-            // right:0,
+            justifyContent: 'center',
+            padding: '15px'
+
         },
         icons : {
             padding: '10px'
@@ -27,24 +25,32 @@ const Footer = () => {
             alignItems: 'center',
             fontWeight: 'bold'
             // color: 'black'
+        },
+        contact :{
+            height: '100%',
+            display: 'flex',
+            alignItems: 'center',
+            position: 'absolute',
+            bottom: 0,
+            right: 0
         }
     }
 
     return (
         <div style={styles.container}>
-
-
             <div style={styles.copyright}>
                 <Logo/>
-                <p>© WatchFlow. Wszelkie prawa zastrzeżone.</p>
+                <p style={{margin: '0'}}>© WatchFlow. Wszelkie prawa zastrzeżone.</p>
             </div>
-                <div>
-                    <FaFacebook style={styles.icons} />
-                    <BsTwitterX style={styles.icons} />
-                    <FaGoogle style={styles.icons} />
-                    <FaInstagram style={styles.icons} />
-                    <FaLinkedin style={styles.icons} />
-                    <FaGithub style={styles.icons} />
+                <div style={{position: 'relative'}}>
+                    <div style={styles.contact}>
+                        <FaFacebook style={styles.icons} />
+                        <BsTwitterX style={styles.icons} />
+                        <FaGoogle style={styles.icons} />
+                        <FaInstagram style={styles.icons} />
+                        <FaLinkedin style={styles.icons} />
+                        <FaGithub style={styles.icons} />
+                    </div>
                 </div>
         </div>
     );

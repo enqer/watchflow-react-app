@@ -1,5 +1,5 @@
 import img from "../../img/zielona.jpg";
-import MovieCard from "../movieCard";
+import MovieCard from "../cards/movieCard";
 import './ranking.css'
 
 const Ranking = () => {

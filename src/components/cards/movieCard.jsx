@@ -1,5 +1,5 @@
-import MovieTitles from "./movieTitles";
-import MovieRating from "./movieRating";
+import MovieTitles from "../movies/movieTitles";
+import MovieRating from "../movies/movieRating";
 
 const MovieCard = (props) => {
 
