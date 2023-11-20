@@ -12,6 +12,7 @@ import Login from "./login";
 const Navbar = () => {
     const [isHover, setIsHover] = useState(false)
     const [numOfMenu,setNumOfMenu] = useState(0)
+    const [whichClicked, setWhichClicked] = useState(1)
 
     const handleMouseEnter = (n) => {
         setIsHover(true)
@@ -19,6 +20,9 @@ const Navbar = () => {
     }
     const handleMouseLeave = () => {
         setIsHover(false)
+    }
+    const handleSelectedMenu = (n) => {
+        setWhichClicked(n)
     }
 
     const styles = {
@@ -74,11 +78,17 @@ const Navbar = () => {
         },
         underlineAfter : {
             borderTop: '3px solid transparent',
-            borderBottom: '3px solid white',
+            borderBottom: '3px solid',
             transition: 'border-bottom 1.5s ease',
+        },
+        clicked :{
+            color: 'var(--darkBlue)',
+            borderColor: 'var(--darkBlue)',
         }
 
     }
+
+
     // TODO idea: transparent navbar?? after scroll sticky fixed to top with different background??
   return (
       <div style={{...styles.container,...styles.navbarStyle}}>
@@ -89,36 +99,53 @@ const Navbar = () => {
                 </Link>
             </li>
             <li>
-                <Link to="/" style={styles.text}
+                <Link to="/" style={{...styles.text, ...(whichClicked === 1 ? styles.clicked : null)}}
                       onMouseEnter={() => handleMouseEnter(1)}
-                      onMouseLeave={handleMouseLeave}>
+                      onMouseLeave={handleMouseLeave}
+                        onClick={() => handleSelectedMenu(1)}>
 
                     <span style={styles.icon}><IoMdHome/></span>
-                    <p style={(numOfMenu===1 && isHover) ?styles.underlineAfter : styles.underline}>Strona główna</p>
+                    <p style={((numOfMenu===1 && isHover) ?styles.underlineAfter : styles.underline)}>Strona główna</p>
                 </Link>
             </li>
             <li>
               {/*Form??*/}
               {/*  <input type="text" placeholder="Wyszukaj film" />*/}
-                <Link style={styles.text} onMouseEnter={() =>handleMouseEnter(2)} onMouseLeave={handleMouseLeave}>
+                <Link style={styles.text} style={{...styles.text, ...(whichClicked === 2 ? styles.clicked : null)}}
+                      onMouseEnter={() =>handleMouseEnter(2)}
+                      onMouseLeave={handleMouseLeave}
+                      onClick={() => handleSelectedMenu(2)}
+                >
                     <span style={styles.icon}><IoSearch /></span>
                     <p style={(numOfMenu===2 && isHover) ?styles.underlineAfter : styles.underline}>Wyszukaj</p>
                 </Link>
             </li>
             <li>
-                <Link to="/movies" style={styles.text} onMouseEnter={() =>handleMouseEnter(3)} onMouseLeave={handleMouseLeave}>
+                <Link to="/movies" style={styles.text} style={{...styles.text, ...(whichClicked === 3 ? styles.clicked : null)}}
+                      onMouseEnter={() =>handleMouseEnter(3)}
+                      onMouseLeave={handleMouseLeave}
+                      onClick={() => handleSelectedMenu(3)}
+                >
                     <span style={styles.icon}><PiTelevisionBold /></span>
                     <p style={(numOfMenu===3 && isHover) ?styles.underlineAfter : styles.underline}>Filmy</p>
                 </Link>
             </li>
             <li>
-                <Link to="/ranking" style={styles.text} onMouseEnter={() =>handleMouseEnter(4)} onMouseLeave={handleMouseLeave}>
+                <Link to="/ranking" style={styles.text} style={{...styles.text, ...(whichClicked === 4 ? styles.clicked : null)}}
+                      onMouseEnter={() =>handleMouseEnter(4)}
+                      onMouseLeave={handleMouseLeave}
+                      onClick={() => handleSelectedMenu(4)}
+                >
                     <span style={styles.icon}><FaRankingStar /></span>
                     <p style={(numOfMenu===4 && isHover) ?styles.underlineAfter : styles.underline}>Ranking</p>
                 </Link>
             </li>
             <li>
-                <Link to="/news" style={styles.text} onMouseEnter={() =>handleMouseEnter(5)} onMouseLeave={handleMouseLeave}>
+                <Link to="/news" style={styles.text} style={{...styles.text, ...(whichClicked === 5 ? styles.clicked : null)}}
+                      onMouseEnter={() =>handleMouseEnter(5)}
+                      onMouseLeave={handleMouseLeave}
+                      onClick={() => handleSelectedMenu(5)}
+                >
                     <span style={styles.icon}><BiNews /></span>
                     <p style={(numOfMenu===5 && isHover) ?styles.underlineAfter : styles.underline}>Newsy</p>
                 </Link>
