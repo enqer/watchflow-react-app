@@ -13,6 +13,15 @@ const Navbar = () => {
     const [isHover, setIsHover] = useState(false)
     const [numOfMenu,setNumOfMenu] = useState(0)
     const [whichClicked, setWhichClicked] = useState(1)
+    const [colorChange, setColorchange] = useState(false);
+
+    const changeNavbarColor = () => {
+        if (window.scrollY >= 70) {
+            setColorchange(true);
+        } else {
+            setColorchange(false);
+        }
+    };
 
     const handleMouseEnter = (n) => {
         setIsHover(true)
@@ -67,7 +76,7 @@ const Navbar = () => {
             top: 0,
             left: 0,
             width: '100%',
-            backgroundColor: '#1b1d2a',
+            backgroundColor: colorChange ? 'var(--black)':'#1b1d2a',
             boxShadow: '0px 2px 5px rgba(0, 0, 0, 0.1)',
             zIndex: 100,
         },
@@ -90,6 +99,7 @@ const Navbar = () => {
 
 
     // TODO idea: transparent navbar?? after scroll sticky fixed to top with different background??
+    window.addEventListener("scroll", changeNavbarColor);
   return (
       <div style={{...styles.container,...styles.navbarStyle}}>
         <ul style={styles.menu}>
