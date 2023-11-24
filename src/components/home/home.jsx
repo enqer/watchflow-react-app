@@ -16,7 +16,7 @@ const Home = () => {
                         <p className="homePopularText">Newsy tygodnia</p>
                         <div className="homeNews">
                                 {arr2.map(a => (
-                                    <NewsCard img={img2} headline={"Marvel nie skasuje Kanga. Jonathan Majors to co innego"} />
+                                    <NewsCard id={Math.floor(Math.random() * 10)} img={img2} headline={"Marvel nie skasuje Kanga. Jonathan Majors to co innego"} />
                                 ))}
                         </div>
                 </div>

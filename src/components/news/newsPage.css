@@ -1,0 +1,62 @@
+.newsPageBackground {
+    margin: 0;
+    background: url('../../img/news_background.jpg') no-repeat center center fixed;
+    background-size: cover;
+    padding-top: 20vh;
+
+
+}
+.newsPageContainer {
+    background-color: rgba(27,29,42,1);
+    width: 50%;
+    margin: auto;
+
+}
+.newsPageHeadline {
+    font-size: 32px;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.newsPageContainer img {
+    width: 100%;
+    height: 300px;
+    background-size: cover;
+    object-fit:cover;
+}
+
+.newsPageInfo {
+    display: flex;
+    margin: 10px;
+}
+.newsPageInfo p {
+    padding: 5px;
+    color: var(--black);
+}
+.newsPageAuthor:hover {
+    color: var(--darkBlue);
+}
+
+.newsPageText {
+    padding: 10px;
+    margin-left: 10px;
+}
+
+.newsPageMore {
+    display: flex;
+    flex-direction: column;
+}
+
+.newsPageMore p {
+    font-size: 26px;
+    padding: 10px;
+}
+
+.newsPageMoreNews {
+    display: flex;
+    height: 40vh;
+    justify-content: space-around;
+}

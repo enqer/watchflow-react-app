@@ -9,6 +9,7 @@ import Home from "./components/home/home";
 import NotFound from "./components/notFound";
 import Ranking from "./components/ranking/ranking";
 import News from "./components/news/news";
+import NewsPage from "./components/news/newsPage";
 
 
 
@@ -21,6 +22,7 @@ ReactDOM.render(
                                <Route path="/movies" element={<Movies />}/>
                                <Route path="/ranking" element={<Ranking />}/>
                                <Route path="/news" element={<News />}/>
+                               <Route path="/news/:id" element={<NewsPage />}/>
                                <Route path="*" element={<NotFound/>}/>
                            </Route>
                       </Routes>
