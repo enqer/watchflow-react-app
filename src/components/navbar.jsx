@@ -46,7 +46,7 @@ const Navbar = () => {
         setShowForm(false)
     }
 
-
+    // TODO do osobnego pliku css
     const styles = {
         container : {
             height: '70px',
@@ -66,7 +66,8 @@ const Navbar = () => {
         },
         settings: {
             display: 'flex',
-            alignItems: 'center'
+            alignItems: 'center',
+            cursor: 'pointer'
         },
         text: {
             padding: '0 10px',
@@ -178,7 +179,7 @@ const Navbar = () => {
               <div onClick={() => handleShowingForm()} style={styles.text} onMouseEnter={() =>handleMouseEnter(6)} onMouseLeave={handleMouseLeave}>
                   <Login style={(numOfMenu===6 && isHover) ? styles.underlineAfter : styles.underline}/>
               </div>
-                {showForm ? <FormPage handleCloseForm={handleCloseForm} /> : null}
+                {showForm && !isLogged ? <FormPage handleCloseForm={handleCloseForm} /> : null}
             </div>
       </div>
   )
