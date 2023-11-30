@@ -10,6 +10,7 @@ import NotFound from "./components/notFound";
 import Ranking from "./components/ranking/ranking";
 import News from "./components/news/news";
 import NewsPage from "./components/news/newsPage";
+import SignIn from "./components/logIn/signIn";
 
 
 
@@ -23,6 +24,7 @@ ReactDOM.render(
                                <Route path="/ranking" element={<Ranking />}/>
                                <Route path="/news" element={<News />}/>
                                <Route path="/news/:id" element={<NewsPage />}/>
+                               {/*<Route path="/signin" element={<SignIn />}/>*/}
                                <Route path="*" element={<NotFound/>}/>
                            </Route>
                       </Routes>

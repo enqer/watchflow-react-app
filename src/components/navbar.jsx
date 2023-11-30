@@ -7,13 +7,17 @@ import { BiNews } from "react-icons/bi";
 import { FaRankingStar } from "react-icons/fa6";
 import '../fonts/Roboto-Bold.ttf';
 import Logo from "./logo";
-import Login from "./login";
+import Login from "./logIn/login";
+import SignIn from "./logIn/signIn";
+import FormPage from "./logIn/formPage";
 
 const Navbar = () => {
     const [isHover, setIsHover] = useState(false)
     const [numOfMenu,setNumOfMenu] = useState(0)
     const [whichClicked, setWhichClicked] = useState(1)
     const [colorChange, setColorchange] = useState(false);
+    const [isLogged, setIsLogged] = useState(false);
+    const [showForm, setShowForm] = useState(false);
 
     const changeNavbarColor = () => {
         if (window.scrollY >= 70) {
@@ -33,6 +37,15 @@ const Navbar = () => {
     const handleSelectedMenu = (n) => {
         setWhichClicked(n)
     }
+
+    const handleShowingForm = () => {
+        setShowForm(true)
+    }
+
+    const handleCloseForm = () => {
+        setShowForm(false)
+    }
+
 
     const styles = {
         container : {
@@ -83,12 +96,12 @@ const Navbar = () => {
         underline : {
             borderBottom: '3px solid transparent',
             borderTop: '3px solid transparent',
-            transition: 'border-bottom 1.5s ease',
+            transition: 'border-bottom .5s ease',
         },
         underlineAfter : {
             borderTop: '3px solid transparent',
             borderBottom: '3px solid',
-            transition: 'border-bottom 1.5s ease',
+            transition: 'border-bottom 1 s ease',
         },
         clicked :{
             color: 'var(--darkBlue)',
@@ -162,15 +175,16 @@ const Navbar = () => {
             </li>
         </ul>
             <div style={styles.settings}>
-              <Link style={styles.text} onMouseEnter={() =>handleMouseEnter(6)} onMouseLeave={handleMouseLeave}>
-                  <Login style={(numOfMenu===6 && isHover) ?styles.underlineAfter : styles.underline}/>
-              </Link>
+              <div onClick={() => handleShowingForm()} style={styles.text} onMouseEnter={() =>handleMouseEnter(6)} onMouseLeave={handleMouseLeave}>
+                  <Login style={(numOfMenu===6 && isHover) ? styles.underlineAfter : styles.underline}/>
+              </div>
+                {showForm ? <FormPage handleCloseForm={handleCloseForm} /> : null}
             </div>
       </div>
   )
 
 }
-
+// tODO settings hover pokazuje prostokąt z opcjami a nie podkreślenie!!! change it
 
 
 export default Navbar;
