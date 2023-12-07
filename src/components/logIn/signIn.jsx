@@ -1,36 +1,47 @@
-import './signInUp.css'
+
 import {useState} from "react";
+import styles from  './formLogReg.module.css'
 
 const SignIn = (props) => {
 
-    const [isClickedEmail, setIsClickedEmail] = useState(false)
-    const [isClickedPassword, setIsClickedPassword] = useState(false)
+    const [login, setLogin]=useState('')
+    const [password, setPassword]=useState('')
 
-    const changePositionEmail = () => {document.getElementsByName("email")[0].value === "" ? setIsClickedEmail(!isClickedEmail) : setIsClickedEmail(true)}
+    // Design clicking
+    const [isClickedLogin, setIsClickedLogin] = useState(false)
+    const [isClickedPassword, setIsClickedPassword] = useState(false)
+    const changePositionLogin = () => {document.getElementsByName("login")[0].value === "" ? setIsClickedLogin(!isClickedLogin) : setIsClickedLogin(true)}
     const changePositionPassword = () => {document.getElementsByName("pass")[0].value === "" ? setIsClickedPassword(!isClickedPassword) : setIsClickedPassword(true)}
 
+    const handleSubmit = (event) => {
+        event.preventDefault()
+        console.log("log")
+    }
+
     return (
-            <div className="form">
-                <p className="signInTitle">Zaloguj się</p>
-                <form >
-                    <div className="signInInputWrapper">
-                        <input onFocus={() => changePositionEmail()} onBlur={() =>changePositionEmail()}
-                               className="signInInput" type="text" name="email"  required />
-                        <div className={isClickedEmail ? "inputText changePositionUp" : "inputText changePositionDown"}>Nazwa użytkownika lub e-mail</div>
+            <div className={styles.form}>
+                <p className={styles.signInTitle}>Zaloguj się</p>
+                <form onSubmit={handleSubmit}>
+                    <div className={styles.wrapper}>
+                        <input onFocus={() => changePositionLogin()} onBlur={() =>changePositionLogin()}
+                               onChange={(event) => setLogin(event.target.value)}
+                               className={styles.input} type="text" name="login"  required />
+                        <div className={isClickedLogin ? [styles.inputText, styles.changePositionUp].join(' ') : [styles.inputText,styles.changePositionDown].join(' ')}>Login</div>
                     </div>
-                    <div className="signInInputWrapper">
+                    <div className={styles.wrapper}>
                         <input onFocus={() => changePositionPassword()} onBlur={() => changePositionPassword()}
-                               className="signInInput" type="password" name="pass"  required />
-                        <div className={isClickedPassword ? "inputText changePositionUp" : "inputText changePositionDown"}>Hasło</div>
+                               onChange={(event) => setPassword(event.target.value)}
+                               className={styles.input} type="password" name="pass"  required />
+                        <div className={isClickedPassword ? [styles.inputText, styles.changePositionUp].join(' ') : [styles.inputText,styles.changePositionDown].join(' ')}>Hasło</div>
                     </div>
-                    <div className="signInForgotPass">
+                    <div className={styles.forgotPass}>
                         <p>Nie pamiętam hasła</p>
                     </div>
-                    <div className="signInNewAccount" onClick={() => props.handleSwitchForm()}>
-                        <p>Utwórz nowe konto</p>
+                    <div className={styles.switchForm} >
+                        <p onClick={() => props.handleSwitchForm()}>Utwórz nowe konto</p>
                     </div>
-                    <div className="signInSubmitWrapper">
-                        <input className="signInSubmit" type="submit"  value="Zaloguj" />
+                    <div className={styles.submitWrapper}>
+                        <input className={styles.submit} type="submit"  value="Zaloguj" />
                     </div>
                 </form>
         </div>

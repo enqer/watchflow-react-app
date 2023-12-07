@@ -111,8 +111,6 @@ const Navbar = () => {
 
     }
 
-
-    // TODO idea: transparent navbar?? after scroll sticky fixed to top with different background??
     window.addEventListener("scroll", changeNavbarColor);
   return (
       <div style={{...styles.container,...styles.navbarStyle}}>
