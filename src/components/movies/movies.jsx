@@ -1,27 +1,44 @@
-import './movies.css'
+import styles from './movies.module.css'
 import img from '../../img/loki.jpg'
-
+import {Link} from "react-router-dom";
+import { FaArrowRight } from "react-icons/fa";
+import {useState} from "react";
 const Movies = () => {
     const arr = [...Array(20).keys()]
+    const [isMoving, setIsMoving] = useState(false)
 
         // TODO stylizacja select i jego menu i poprawienie wysokości żeby było na równi z filmami
         // TODO dorobić własne menu?? + takie samo do ustawień
 
+    const handlerMovingArrow = () => {
+        setIsMoving(!isMoving)
+    }
+
   return(
-      <div className="moviesContainer">
-          <div className="moviesHeader">
-              <p className="moviesText">Filmy</p>
-              <select className="moviesSelect" >
-                  {options.map((option) =>(
-                      <option className="moviesOpton" value={option.value}>{option.label}</option>
-                  ))}
-              </select>
+      <div className={styles.container}>
+          <div className={styles.header}>
+              <div className={styles.choiceMovie}>
+                  <p className={styles.text}>Filmy</p>
+                  <select className={styles.select} >
+                      {options.map((option) =>(
+                          <option className={styles.option} value={option.value}>{option.label}</option>
+                      ))}
+                  </select>
+              </div>
+              <div>
+                  <Link to="add" className={styles.addNew} onMouseEnter={handlerMovingArrow} onMouseLeave={handlerMovingArrow}>
+                      <p>Dodaj film</p>
+                      <div className={styles.arrow}>
+                          <FaArrowRight className={isMoving ? styles.arrowMoveAfter : styles.arrowMoveBefore} />
+                      </div>
+                  </Link>
+              </div>
           </div>
-          <div className="moviesWrapperImages">
+          <div className={styles.wrapperImages}>
               {arr.map(a => (
-                      <div className="moviesImage">
+                      <div className={styles.movieCell}>
                           {/*<div className="moviesImg">{a+1}</div>*/}
-                          <img className="moviesImg" src={img}/>
+                          <img className={styles.moviesImg} src={img}/>
                       </div>
               ))}
           </div>

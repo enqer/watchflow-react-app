@@ -1,22 +1,68 @@
-.moviesContainer {
+.container {
     margin: auto;
     width: 90%;
     /*background-color: grey;*/
 }
 
-.moviesHeader {
+.header {
     display: flex;
     align-items: center;
     padding: 20px;
+    justify-content: space-between;
 }
 
-.moviesText {
+.text {
     font-size: 48px;
     color: #dfe1e3;
     margin: 0;
 }
+.choiceMovie {
+    display: flex;
+    align-items: center;
+}
+.addNew {
+    text-decoration: none;
+    font-size: 18px;
+    color: var(--white);
+    font-weight: bold;
+    /*background-color: var(--darkBlue);*/
+    padding: 10px 15px;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
 
-.moviesSelect {
+}
+.addNew p {
+    margin-right: 5px;
+}
+
+.arrow {
+    position: relative;
+    width: 30px;
+    display: flex;
+    align-items: center;
+    margin-left: 5px;
+
+}
+.arrowMoveBefore {
+    font-size: 12px;
+    position: absolute;
+    transform: translateX(-50%);
+    left: 0;
+    transition: all 0.3s;
+}
+
+.arrowMoveAfter {
+    font-size: 12px;
+    position: absolute;
+    transform: translateX(-50%);
+    left: 50%;
+    transition: all 0.3s;
+}
+
+
+
+.select {
     color: #dfe1e3;
     height: 35px;
     padding: 5px;
@@ -28,23 +74,23 @@
     transition: background-color .3s ease-in;
     outline: none;
 }
-.moviesSelect:hover {
+.select:hover {
     background-color: #131313;
     transition: background-color .3s ease-in;
 }
-.moviesOpton {
+.option {
     background-color: #181818;
     text-transform: uppercase;
     font-size: 12px;
     font-weight: bold;
 }
-.moviesWrapperImages {
+.wrapperImages {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
 }
 
-.moviesImage {
+.movieCell {
     margin: 10px;
 }
 
