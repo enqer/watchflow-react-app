@@ -11,6 +11,7 @@ import Ranking from "./components/ranking/ranking";
 import News from "./components/news/news";
 import NewsPage from "./components/news/newsPage";
 import SignIn from "./components/logIn/signIn";
+import AddMovie from "./components/movies/addMovie";
 
 
 
@@ -21,6 +22,7 @@ ReactDOM.render(
                            <Route path="/" element={<App />}>
                                <Route path="/" element={<Home />}/>
                                <Route path="/movies" element={<Movies />}/>
+                               <Route path="/movies/add" element={<AddMovie />}/>
                                <Route path="/ranking" element={<Ranking />}/>
                                <Route path="/news" element={<News />}/>
                                <Route path="/news/:id" element={<NewsPage />}/>

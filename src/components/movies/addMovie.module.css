@@ -1,0 +1,261 @@
+.container {
+    width: 90%;
+    margin: 0 auto;
+    /*height: 80vh;*/
+    display: flex;
+    /*flex-direction: column;*/
+    justify-content: center;
+    align-items: center;
+
+}
+
+.header {
+
+}
+
+.header p {
+    font-size: 28px;
+    padding: 10px;
+    color: var(--white);
+}
+
+.imgContainer {
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    margin: 5px;
+}
+
+.upLoadedImgWrapper {
+    overflow: hidden;
+    width: 300px;
+    height: 400px;
+    border-radius: 5px;
+    /*border: 3px solid var(--black);*/
+    background-color: var(--grey);
+    box-shadow: 0 0 5px rgba(0,0,0,0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.upLoadedImg {
+    /*width: 100%;*/
+
+    border-radius: 5px;
+    transition: all .2s ease;
+}
+.upLoadedImg:hover{
+    transform: scale(1.1);
+}
+
+.upLoadBtnWrapper {
+    display: flex;
+    justify-content: center;
+    margin: 5px;
+}
+
+.upLoadBtn {
+    padding: 5px 10px;
+    /*background-color: red;*/
+    margin: 5px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    /*display: inline-block;*/
+    color: var(--black);
+    background-color: var(--darkBlue);
+}
+
+input[type="file"]::file-selector-button {
+    /*font-size: 10px;*/
+    font-weight: bold;
+    color: var(--black);
+    background-color: var(--darkBlue);
+    padding: 0.5em;
+    /*border: thin solid grey;*/
+    border: none;
+    border-radius: 3px;
+}
+
+
+.form {
+    width: 90%;
+    margin: 0 auto;
+    color: white;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    /*margin: 0 20px;*/
+    padding: 20px;
+    flex-wrap: wrap;
+}
+
+.input {
+    font-size: 14px;
+    background-color: transparent;
+    border: none;
+    border-bottom: 2px solid var(--grey);
+    color: white;
+    flex-grow: 1;
+    justify-content: center;
+    padding: 5px;
+}
+
+input:focus {
+    border-bottom: 2px solid var(--darkBlue);
+    outline: none;
+}
+
+.changePositionUp {
+    top: -10px;
+    font-size: 10px;
+}
+.changePositionDown {
+    top: 0;
+    font-size: 18px;
+}
+
+.inputText{
+    position: absolute;
+    /*top: 0;*/
+    left: 0;
+    z-index: -1;
+    transition: all 0.3s ease-in-out;
+}
+.wrapper {
+    position: relative;
+    margin: 20px 20px 20px 0;
+    width: 250px;
+    display: flex;
+    align-content: center;
+}
+
+.dataWrapper {
+    margin-left: 20px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.mainData {
+    margin: 0 20px;
+}
+
+.select {
+    width: 70%;
+    /*color: #dfe1e3;*/
+    color: var(--black);
+    font-weight: bold;
+    height: 35px;
+    padding: 5px;
+    margin: 0 auto;
+    border-radius: 30px;
+    border-color: transparent;
+    cursor: pointer;
+    /*background-color: #555555;*/
+    background-color: var(--darkBlue);
+    transition: background-color .3s ease-in;
+    outline: none;
+}
+
+.option {
+    background-color: #181818;
+    color: var(--darkBlue);
+    text-transform: uppercase;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.option:hover {
+    background-color: #181818;
+}
+
+.selectGenre {
+    display: flex;
+    flex-direction: column;
+}
+
+input[type="date"] {
+    width: 70%;
+    margin: 0 auto;
+    /*font-size: 10px;*/
+    font-weight: bold;
+    color: var(--black);
+    background-color: var(--darkBlue);
+    padding: 0.5em;
+    /*border: thin solid grey;*/
+    border: none;
+    border-radius: 3px;
+}
+
+.selectDate {
+    display: flex;
+    flex-direction: column;
+}
+
+.selectDate select {
+    width: 30%;
+}
+
+.description {
+
+}
+
+.description textarea {
+    min-width: 350px;
+    min-height: 250px;
+    max-width: 350px;
+    max-height: 250px;
+    outline: none;
+    color: var(--white);
+    border: 2px solid var(--background);
+    padding: 5px;
+    margin-left: 20px;
+    font-size: 16px;
+    background-color: #27292f;
+    /*background-color: #F2F3F4;*/
+}
+textarea::-webkit-scrollbar {
+    width: 5px;
+    background-color: var(--black);
+}
+
+textarea::-webkit-scrollbar-thumb {
+    background-color: var(--darkBlue);
+}
+textarea::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+}
+textarea::-webkit-scrollbar-corner {
+    background-color: transparent;
+    outline: none;
+    border: none;
+}
+
+.wrapSubmit {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    margin: 20px;
+
+}
+
+.submit {
+    background-color: var(--darkBlue);
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    color: var(--black);
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.wrapColumn {
+    display: flex;
+    flex-direction: column;
+    align-content: space-between;
+}

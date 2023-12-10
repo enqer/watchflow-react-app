@@ -6,6 +6,7 @@ const Footer = () => {
     // TODO do poprawy wyśrodkowanie loga
     const styles = {
         container : {
+            height: '80px',
             display: 'flex',
             flexDirection: 'row',
             alignItems: 'center',

@@ -1,0 +1,37 @@
+.container {
+    margin: 0 5vw;
+}
+
+.popularText {
+    font-size: 24px;
+    font-weight: bold;
+    color: var(--white);
+}
+
+.news {
+    display: flex;
+    justify-content: space-around;
+}
+
+.wrapperImages {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.movieCell {
+    margin: 10px;
+}
+
+.moviesImg {
+    border-radius: 15px;
+    width: 300px;
+    height: 200px;
+    transition: .2s ease all;
+    object-fit:cover;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 7);
+}
+.moviesImg:hover {
+    position: relative;
+    transform: scale(1.05);
+}

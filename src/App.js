@@ -10,13 +10,14 @@ function App() {
         container : {
             display: 'flex',
             flexDirection: 'column',
+            // minHeight: '100%'
         }
     }
 // TODO pozmieniać czcionki na ładniejsze benc
   return (
       <div className="container_fluid" style={styles.container}>
           <Navbar style={{position: 'absolute', top: '0'}}></Navbar>
-          <div className="container" style={{marginTop: '70px'}}>
+          <div className="container" style={{marginTop: '70px', minHeight: 'calc(100vh - (110px + 70px))'}}>
               <Outlet/>
           </div>
           <Footer />

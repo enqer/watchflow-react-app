@@ -21,7 +21,7 @@ const SignIn = (props) => {
     return (
             <div className={styles.form}>
                 <p className={styles.signInTitle}>Zaloguj się</p>
-                <form autocomplete="off" onSubmit={handleSubmit}>
+                <form autoComplete="off" onSubmit={handleSubmit}>
                     <div className={styles.wrapper}>
                         <input onFocus={() => changePositionLogin()} onBlur={() =>changePositionLogin()}
                                onChange={(event) => setLogin(event.target.value)}
