@@ -116,7 +116,9 @@ const Navbar = () => {
       <div style={{...styles.container,...styles.navbarStyle}}>
         <ul style={styles.menu}>
             <li>
-                <Link to="/">
+                <Link to="/"
+                      onClick={() => handleSelectedMenu(1)}
+                >
                     <Logo />
                 </Link>
             </li>

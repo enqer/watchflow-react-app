@@ -13,8 +13,8 @@ const AddMovie = () => {
     const [selectedImage, setSelectedImage] = useState(null);
     const [name, setName] = useState('');
     const [director, setDirector] = useState('');
-    const [genre, setGenre] = useState('');
-    const [year, setYear] = useState('');
+    const [genre, setGenre] = useState(options[0]);
+    const [year, setYear] = useState(now);
     const [description, setDescription] = useState('');
 
     // Design clicking
@@ -24,8 +24,10 @@ const AddMovie = () => {
     const changePositionDirector = () => {document.getElementsByName("director")[0].value === "" ? setIsClickedDirector(!isClickedDirector) : setIsClickedDirector(true)}
 
 
+
     const handlerSubmit = (event) => {
         event.preventDefault()
+
         console.log(name)
         console.log(director)
         console.log(genre)
@@ -87,16 +89,17 @@ const AddMovie = () => {
                                 <div className={styles.selectGenre}>
                                     <p>Wybierz gatunek:</p>
                                     <select
+                                        defaultValue={options[0]}
                                         className={styles.select}
                                         onChange={(event) => setGenre(event.target.value)}
                                     >
                                         {options.map((option, index) =>(
                                             <option
                                                 className={styles.option}
-                                                value={option.value}
+                                                value={option}
                                                 selected={index === 0}
                                             >
-                                                {option.label}
+                                                {option}
                                             </option>
                                         ))}
                                     </select>
@@ -129,39 +132,5 @@ const AddMovie = () => {
     )
 }
 
-const options = [
-    {
-        label: "Akcja",
-        value: "1",
-    },
-    {
-        label: "Komedie",
-        value: "2",
-    },
-    {
-        label: "Dokumentalne",
-        value: "3",
-    },
-    {
-        label: "Dramaty",
-        value: "4",
-    },
-    {
-        label: "Komedie romantyczne",
-        value: "5",
-    },
-    {
-        label: "Science fiction",
-        value: "6",
-    },
-    {
-        label: "Thrillery",
-        value: "7",
-    },
-    {
-        label: "Dla dzieci",
-        value: "8",
-    },
-
-];
+const options = ["Akcja", "Komedie", "Dokumentalne", "Dramaty", "Komedie romantyczne","Science fiction", "Thrillery", "Dla dzieci"];
 export default AddMovie

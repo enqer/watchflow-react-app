@@ -3,6 +3,7 @@ import img from '../../img/loki.jpg'
 import {Link} from "react-router-dom";
 import { FaArrowRight } from "react-icons/fa";
 import {useState} from "react";
+import MovieCard from "./movieCard";
 const Movies = () => {
     const arr = [...Array(20).keys()]
     const [isMoving, setIsMoving] = useState(false)
@@ -36,10 +37,11 @@ const Movies = () => {
           </div>
           <div className={styles.wrapperImages}>
               {arr.map(a => (
-                      <div className={styles.movieCell}>
-                          {/*<div className="moviesImg">{a+1}</div>*/}
-                          <img className={styles.moviesImg} src={img}/>
-                      </div>
+                      // <div className={styles.movieCell}>
+                      //     {/*<div className="moviesImg">{a+1}</div>*/}
+                      //     <img className={styles.moviesImg} src={img}/>
+                      // </div>
+                  <MovieCard id={Math.floor(Math.random() * 100)} img={img} />
               ))}
           </div>
       </div>
