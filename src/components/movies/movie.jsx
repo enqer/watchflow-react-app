@@ -3,6 +3,7 @@ import styles from './movie.module.css'
 import img from "../../img/loki.jpg";
 import { FaArrowLeftLong } from "react-icons/fa6";
 import { IoStar, IoStarOutline } from "react-icons/io5";
+import { FaRegUserCircle } from "react-icons/fa";
 import {useState} from "react";
 import {Link} from "react-router-dom";
 
@@ -20,9 +21,12 @@ const Movie = () => {
         setWhichHover(num)
     }
     const getLabelByRate = (rate) => {
-        const matchingRates = rates.filter(rate => rate.value === rate);
-
-        return matchingRates.length > 0 ? matchingRates[0].label : null;
+        const matchingRates = rates.filter(r => r.value === rate);
+        return matchingRates.length > 0 ? matchingRates[0].label : "Widziałem, moja ocena:";
+    }
+    const getSelectedRate = (rate) => {
+        const matchingRates = rates.filter(r => r.value === rate);
+        return matchingRates.length > 0 ? matchingRates[0].value : null;
     }
 
 
@@ -65,7 +69,11 @@ const Movie = () => {
                 <div className={styles.rateWrapper}>
                     <div className={styles.displaySelectedRate}>
                         <div className={styles.ratingValues}>
-                            Coś
+                            <FaRegUserCircle className={styles.defaultIconNumber} />
+                            <div className={whichHover > 0 ?
+                                [styles.selectedRateNumber, styles.selectedRateNumberAfter].join(' ')
+                                                    :
+                                [styles.selectedRateNumber, styles.selectedRateNumberBefore].join(' ')}>{getSelectedRate(whichHover)}</div>
                         </div>
                         <div className={styles.ratingLabels}>
                             <p>{getLabelByRate(whichHover)}</p>
