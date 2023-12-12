@@ -6,7 +6,7 @@ import reportWebVitals from './reportWebVitals';
 import {BrowserRouter, Route, Routes} from "react-router-dom";
 import Movies from "./components/movies/movies";
 import Home from "./components/home/home";
-import NotFound from "./components/notFound";
+import NotFound from "./components/main/notFound";
 import Ranking from "./components/ranking/ranking";
 import News from "./components/news/news";
 import NewsPage from "./components/news/newsPage";

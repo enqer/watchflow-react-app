@@ -5,11 +5,11 @@ import { IoSearch } from "react-icons/io5";
 import { PiTelevisionBold } from "react-icons/pi";
 import { BiNews } from "react-icons/bi";
 import { FaRankingStar } from "react-icons/fa6";
-import '../fonts/Roboto-Bold.ttf';
+import '../../fonts/Roboto-Bold.ttf';
 import Logo from "./logo";
-import Login from "./logIn/login";
-import SignIn from "./logIn/signIn";
-import FormPage from "./logIn/formPage";
+import Login from "../logIn/login";
+import SignIn from "../logIn/signIn";
+import FormPage from "../logIn/formPage";
 
 const Navbar = () => {
     const [isHover, setIsHover] = useState(false)

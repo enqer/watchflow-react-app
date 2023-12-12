@@ -1,8 +1,8 @@
 
 import './App.css';
-import Navbar from "./components/navbar";
+import Navbar from "./components/main/navbar";
 import {Outlet} from "react-router-dom";
-import Footer from "./components/footer";
+import Footer from "./components/main/footer";
 
 function App() {
 

@@ -1,5 +1,5 @@
-import { FaStar } from "react-icons/fa6";
-import { IoStar, IoStarOutline } from "react-icons/io5";
+
+import { IoStar } from "react-icons/io5";
 const MovieRating = (props) => {
 
 
