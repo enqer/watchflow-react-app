@@ -1,26 +1,49 @@
 import { FaStar } from "react-icons/fa6";
+import { IoStar, IoStarOutline } from "react-icons/io5";
 const MovieRating = (props) => {
 
 
     return (
-        <>
             <div style={styles.wrapper}>
-                <FaStar />
-                <p>{props.rating}</p>
-                <div style={{fontSize: '10px'}}>
-                    <p>{props.numOfRating}<br/>oceny społeczności</p>
+                <IoStar  style={styles.star}/>
+                <p style={styles.rate}>{props.rating}</p>
+                <div style={styles.rateSociety}>
+                    <p style={styles.numSociety}>{props.numOfRating}</p>
+                    <p style={styles.textSociety}>oceny społeczności</p>
                 </div>
             </div>
-        </>
     )
 
 }
 const styles = {
     wrapper :{
         display: 'flex',
-        justifyContent: 'space-between',
         alignItems: 'center',
-        fontSize: '20px'
+        fontSize: '26px',
+        fontWeight: 'bold',
+        backgroundColor: 'var(--black)',
+        borderRadius: '10px',
+        padding: '5px 15px',
+        width: '180px'
+    },
+    rateSociety : {
+        marginLeft: '10px',
+        fontSize: '11px',
+    },
+    star : {
+        color: 'var(--darkBlue)'
+    },
+    rate : {
+        color: 'var(--white)',
+        margin: '0 0 0 5px'
+    },
+    numSociety : {
+        color: 'var(--darkBlue)',
+        margin: 0,
+    },
+    textSociety :{
+        color: 'var(--white)',
+        margin: 0,
     }
 }
 export default MovieRating

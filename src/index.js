@@ -12,7 +12,7 @@ import News from "./components/news/news";
 import NewsPage from "./components/news/newsPage";
 import SignIn from "./components/logIn/signIn";
 import AddMovie from "./components/movies/addMovie";
-import Movie from "./components/movies/movie";
+import Movie from "./components/singleMovie/movie";
 
 
 

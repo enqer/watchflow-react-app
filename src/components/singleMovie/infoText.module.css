@@ -1,0 +1,19 @@
+
+.singleInfoWrap {
+    display: flex;
+    margin: 10px 0;
+}
+
+.preInfoText {
+    color: var(--darkBlue);
+    font-weight: bold;
+    margin: 0;
+    font-size: 20px;
+}
+.infoText {
+    margin: 0 10px;
+    color: var(--white);
+    font-weight: bold;
+    font-size: 20px;
+    /*border-bottom: 3px solid var(--darkBlue);*/
+}

@@ -20,14 +20,18 @@
     color: var(--white);
 
 }
-
-
 .backPage p {
-    margin-left: 5px;
+    margin-left: 10px;
 }
 
 .container{
     /*background-color: red;*/
+    display: flex;
+    flex-direction: column;
+}
+.mainContainer {
+    display: flex;
+    flex-wrap: wrap;
 }
 
 .arrow {
@@ -58,49 +62,48 @@
 
 .container {
     display: flex;
+    justify-content: flex-start;
     flex-wrap: wrap;
     width: 90%;
     margin: 0 auto;
+    background-color: #24242c;
+    padding: 50px;
+    border-radius: 20px;
+    position: relative;
 }
 
 .displayImg {
-
+    width: 400px;
+    height: 300px;
 }
 .displayImg img {
-    width: 400px;
-    height: 400px;
+    width: 100%;
+    height: 100%;
+    /*height: 400px;*/
 }
 
 .infoDataWrapper {
-    margin: 0 20px;
+    margin: 0 30px;
+    width: 700px;
 }
 
-.singleInfoWrap {
-    display: flex;
-    margin: 15px;
-}
 
-.preInfoText {
+.ratingInfo {
     color: var(--darkBlue);
-    font-weight: bold;
-    margin: 0;
-    font-size: 20px;
 }
-.infoText {
-    margin: 0 10px;
-    color: var(--white);
-    font-weight: bold;
-    font-size: 20px;
-    /*border-bottom: 3px solid var(--darkBlue);*/
-}
-
 
 .rateWrapper {
     background-color: var(--black);
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
     color: white;
-    width: 350px;
-    height: 300px;
+    width: 330px;
+    height: 200px;
     padding: 10px;
+    position: absolute;
+    top: -45px;
+    right: -50px;
 }
 
 .displaySelectedRate {
@@ -149,6 +152,9 @@
 .ratingLabels {
     margin: 0 10px;
 }
+.ratingLabels p {
+    font-size: 18px;
+}
 
 .selectRateStar {
     padding: 5px;
@@ -158,4 +164,26 @@
     color: var(--darkBlue);
     /*color: #33335e;*/
     font-size: 32px;
+}
+
+.selectWatched {
+    display: flex;
+    justify-content: center;
+}
+.selectWatched p {
+    font-size: 18px;
+    font-weight: bold;
+    margin: 20px 10px 20px 0;
+}
+input[type="checkbox"] {
+    width: 25px;
+}
+
+.descriptionWrapper {
+    word-break: break-all;
+    width: 100%;
+}
+
+.descriptionWrapper p {
+    color: var(--white);
 }

@@ -1,0 +1,16 @@
+.infoDescription {
+    /*width: 40%;*/
+    /*word-break: break-word;*/
+}
+
+.infoDescription p {
+
+    color: var(--white);
+    font-size: 18px;
+}
+
+
+.ratingInfo {
+    color: var(--darkBlue);
+}
+
