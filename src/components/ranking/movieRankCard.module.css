@@ -1,0 +1,58 @@
+
+.card {
+    background-color: var(--darkBlue);
+    padding: 20px;
+    border-radius: 10px;
+    width: 400px;
+    height: 200px;
+    display: flex;
+    color: var(--black);
+    font-weight: bold;
+    position: relative;
+    overflow: hidden;
+    justify-content: space-around;
+}
+
+.imgWrapper {
+    overflow: hidden;
+    margin: 0;
+    border-radius: 10px;
+}
+.triangleDiv {
+    position: absolute;
+    top: 0;
+    left: 0;
+    color: white;
+    border-left: 50px solid var(--black);
+    border-top: 50px solid var(--black) ;
+    border-right: 50px solid transparent;
+    border-bottom: 50px solid transparent;
+}
+
+.triangleDiv p {
+    text-align: center;
+    width: 40px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-100% , -100%);
+    color: var(--white);
+    font-size: 30px;
+    margin: 0;
+    background-color: transparent;
+}
+
+.titles {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-left: 40px;
+}
+
+.dataWrapper {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    flex-direction: column;
+    /*margin-left: 20px;*/
+}

@@ -10,9 +10,10 @@ const BackPage = (props) => {
     }
     return(
         <div className={styles.backPage}>
-            <Link to={props.backTo}
-                  onMouseEnter={handlerArrow}
-                  onMouseLeave={handlerArrow}
+            <Link
+                to={props.backTo}
+                onMouseEnter={handlerArrow}
+                onMouseLeave={handlerArrow}
             >
                 <div className={styles.arrow}>
                     <FaArrowLeftLong className={arrowMove? styles.arrowMoveAfter : styles.arrowMoveBefore} />

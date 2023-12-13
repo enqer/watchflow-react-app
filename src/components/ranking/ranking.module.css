@@ -1,33 +1,9 @@
-.rankingBackground {
-    margin: 0;
-    background: url('../../img/background.jpg') no-repeat center center fixed;
-    background-size: cover;
-    padding-top: 20vh;
+
+.containerFluid {
+    width: 90%;
+    margin: 0 auto;
 }
 
-.rankingContainer {
-    background-color: rgba(27,29,42,1);
-    width: 50%;
-    margin: auto;
+.container {
 
-}
-
-.rankingTitle p {
-    margin: 0;
-    padding: 20px;
-    color: var(--white);
-    font-size: 40px;
-    font-weight: bold;
-    text-transform: uppercase;
-    text-align: center;
-}
-.rankingCard {
-    display: flex;
-    justify-content: center;
-
-}
-.rankingNum {
-    font-size: 50px;
-    padding: 15px;
-    color: var(--white);
 }
