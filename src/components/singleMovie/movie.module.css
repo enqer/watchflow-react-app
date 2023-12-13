@@ -4,61 +4,13 @@
     margin: 20px auto;
 }
 
-.backPage {
-    display: flex;
-    font-size: 32px;
-    align-items: center;
-    color: var(--white);
-
-}
-.backPage a {
-    margin: 0 10px;
-    font-weight: bold;
-    text-decoration: none;
-    display: flex;
-    flex-direction: row;
-    color: var(--white);
-    cursor: pointer;
-
-}
-.backPage p {
-    margin-left: 10px;
-}
-
 .container{
-    /*background-color: red;*/
     display: flex;
     flex-direction: column;
 }
 .mainContainer {
     display: flex;
     flex-wrap: wrap;
-}
-
-.arrow {
-    position: relative;
-    width: 50px;
-    display: flex;
-    align-items: center;
-    /*margin-left: 5px;*/
-
-}
-.arrowMoveBefore {
-    font-size: 28px;
-    position: absolute;
-    /*transform: translateX(-50%);*/
-    right: 0;
-    transition: all 0.4s;
-    /*color: var(--darkBlue);*/
-}
-
-.arrowMoveAfter {
-    color: var(--darkBlue);
-    font-size: 32px;
-    position: absolute;
-    /*transform: translateX(-50%);*/
-    right: 50%;
-    transition: all 0.4s;
 }
 
 .container {

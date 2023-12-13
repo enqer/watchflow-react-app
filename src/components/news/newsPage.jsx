@@ -1,10 +1,8 @@
 import styles from './newsPage.module.css'
 import img from "../../img/background.jpg";
-import NewsCard from "./newsCard";
 import loki from "../../img/loki.jpg";
-import {Link} from "react-router-dom";
-import {FaArrowLeftLong} from "react-icons/fa6";
 import {useState} from "react";
+import BackPage from "../main/backPage";
 
 const NewsPage = (props) => {
 
@@ -15,18 +13,7 @@ const NewsPage = (props) => {
 
     return(
         <div className={styles.newsContainerFluid}>
-            <div className={styles.backPage}
-            >
-                <Link to="/news"
-                      onMouseEnter={handlerArrow}
-                      onMouseLeave={handlerArrow}
-                >
-                    <div className={styles.arrow}>
-                        <FaArrowLeftLong className={arrowMove? styles.arrowMoveAfter : styles.arrowMoveBefore} />
-                    </div>
-                    <p>Powrót</p>
-                </Link>
-            </div>
+            <BackPage backTo={"/news"} title={"Powrót"} />
             <div className={styles.container}>
                 <div className={styles.titleWrap}>
                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illo, ipsum labore quibusdam rerum sapiente similique.</p>

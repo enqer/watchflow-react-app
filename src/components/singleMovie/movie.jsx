@@ -1,13 +1,12 @@
 
 import styles from './movie.module.css'
 import img from "../../img/loki.jpg";
-import { FaArrowLeftLong } from "react-icons/fa6";
 import { IoStar, IoStarOutline } from "react-icons/io5";
 import { FaRegUserCircle } from "react-icons/fa";
 import {useState} from "react";
 import {Link} from "react-router-dom";
-import MovieRating from "../movies/movieRating";
 import MovieInfo from "./movieInfo";
+import BackPage from "../main/backPage";
 
 
 
@@ -34,18 +33,7 @@ const Movie = () => {
 
     return (
         <div className={styles.containerFluid}>
-           <div className={styles.backPage}
-           >
-               <Link to="/movies"
-                     onMouseEnter={handlerArrow}
-                     onMouseLeave={handlerArrow}
-               >
-                   <div className={styles.arrow}>
-                       <FaArrowLeftLong className={arrowMove? styles.arrowMoveAfter : styles.arrowMoveBefore} />
-                   </div>
-                   <p>Loki</p>
-               </Link>
-           </div>
+            <BackPage backTo={"/movies"} title={"Loki"} />
             <div className={styles.container}>
                 <div className={styles.mainContainer}>
                     <div className={styles.displayImg}>

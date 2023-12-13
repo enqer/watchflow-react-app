@@ -1,0 +1,41 @@
+.backPage {
+    display: flex;
+    font-size: 32px;
+    align-items: center;
+    color: var(--white);
+}
+.backPage a {
+    margin: 0 10px;
+    font-weight: bold;
+    text-decoration: none;
+    display: flex;
+    flex-direction: row;
+    color: var(--white);
+    cursor: pointer;
+
+}
+.backPage p {
+    margin-left: 10px;
+}
+
+.arrow {
+    position: relative;
+    width: 50px;
+    display: flex;
+    align-items: center;
+
+}
+.arrowMoveBefore {
+    font-size: 28px;
+    position: absolute;
+    right: 0;
+    transition: all 0.4s;
+}
+
+.arrowMoveAfter {
+    color: var(--darkBlue);
+    font-size: 32px;
+    position: absolute;
+    right: 50%;
+    transition: all 0.4s;
+}
