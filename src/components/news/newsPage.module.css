@@ -1,0 +1,110 @@
+
+
+
+.newsContainerFluid {
+    width: 90%;
+    margin: 0 auto;
+}
+
+
+.backPage {
+    display: flex;
+    font-size: 32px;
+    align-items: center;
+    color: var(--white);
+}
+.backPage a {
+    margin: 0 10px;
+    font-weight: bold;
+    text-decoration: none;
+    display: flex;
+    flex-direction: row;
+    color: var(--white);
+    cursor: pointer;
+
+}
+.backPage p {
+    margin-left: 10px;
+}
+
+
+.arrow {
+    position: relative;
+    width: 50px;
+    display: flex;
+    align-items: center;
+
+}
+.arrowMoveBefore {
+    font-size: 28px;
+    position: absolute;
+    right: 0;
+    transition: all 0.4s;
+}
+
+.arrowMoveAfter {
+    color: var(--darkBlue);
+    font-size: 32px;
+    position: absolute;
+    right: 50%;
+    transition: all 0.4s;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    /*justify-content: flex-start;*/
+    flex-wrap: wrap;
+    width: 80%;
+    margin: 10px auto;
+    background-color: #24242c;
+    padding: 30px;
+    border-radius: 20px;
+}
+
+.titleWrap{
+
+}
+.titleWrap p {
+    font-size: 32px;
+    color: var(--white);
+}
+
+.authorInfo {
+
+}
+.authorInfo p {
+    color: var(--white);
+    font-weight: bold;
+}
+.spanColor {
+    color: var(--darkBlue);
+}
+
+.imgWrapper {
+    width: 90%;
+    margin: 10px auto;
+}
+.imgWrapper img {
+    width: 100%;
+    height: 350px;
+    border-radius: 10px;
+}
+
+.descriptionWrapper {
+    /*color: var(--white);*/
+}
+.descriptionWrapper h3 {
+    color: var(--black);
+}
+
+.horizontalDisplay {
+    display: flex;
+}
+.horizontalDisplay img {
+    width: 40%;
+    height: 40%;
+}
+.horizontalDisplay p{
+    margin: 20px;
+}

@@ -31,7 +31,6 @@ const Movie = () => {
         const matchingRates = rates.filter(r => r.value === rate);
         return matchingRates.length > 0 ? matchingRates[0].value : null;
     }
-    // TODO obramowanie radius na cały container? + absolute na rating na right corner
 
     return (
         <div className={styles.containerFluid}>
