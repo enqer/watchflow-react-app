@@ -9,7 +9,7 @@ const Ranking = () => {
 
     return (
         <div className={styles.containerFluid}>
-            <BackPage backTo={"/"} title={"Powrót do strony głównej"} />
+            <BackPage backTo={"/home"} title={"Powrót do strony głównej"} />
             <p className={styles.rankingText}>Odkryj ranking</p>
             <div className={styles.container}>
                 <MovieRankCard rank={"1"}  img={img} title={"Zielona mila"} titleEng={"The Green Mile 1999"} rating={"8,6"} numOfRating={"980 732"} genre={"Dramat"} director={"Frank Darabont"}/>

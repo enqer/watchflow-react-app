@@ -116,14 +116,14 @@ const Navbar = () => {
       <div style={{...styles.container,...styles.navbarStyle}}>
         <ul style={styles.menu}>
             <li>
-                <Link to="/"
+                <Link to="/home"
                       onClick={() => handleSelectedMenu(1)}
                 >
                     <Logo />
                 </Link>
             </li>
             <li>
-                <Link to="/" style={{...styles.text, ...(whichClicked === 1 ? styles.clicked : null)}}
+                <Link to="/home" style={{...styles.text, ...(whichClicked === 1 ? styles.clicked : null)}}
                       onMouseEnter={() => handleMouseEnter(1)}
                       onMouseLeave={handleMouseLeave}
                         onClick={() => handleSelectedMenu(1)}>
