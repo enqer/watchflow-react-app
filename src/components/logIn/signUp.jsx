@@ -2,11 +2,11 @@ import {useState} from "react";
 import styles from  './formLogReg.module.css'
 
 import * as valid from '../../utils/Validation'
+import axios from "axios";
 
 const SignUp = (props) => {
 
     const [login, setLogin]=useState('')
-    const [name, setName]=useState('')
     const [email, setEmail]=useState('')
     const [password, setPassword]=useState('')
     const [alert, setAlert] = useState('')
@@ -15,20 +15,33 @@ const SignUp = (props) => {
     const [isClickedEmail, setIsClickedEmail] = useState(false)
     const [isClickedPassword, setIsClickedPassword] = useState(false)
     const [isClickedLogin, setIsClickedLogin] = useState(false)
-    const [isClickedName, setIsClickedName] = useState(false)
+
     const changePositionEmail = () => {document.getElementsByName("email")[0].value === "" ? setIsClickedEmail(!isClickedEmail) : setIsClickedEmail(true)}
     const changePositionPassword = () => {document.getElementsByName("pass")[0].value === "" ? setIsClickedPassword(!isClickedPassword) : setIsClickedPassword(true)}
     const changePositionLogin = () => {document.getElementsByName("login")[0].value === "" ? setIsClickedLogin(!isClickedLogin) : setIsClickedLogin(true)}
-    const changePositionName = () => {document.getElementsByName("name")[0].value === "" ? setIsClickedName(!isClickedName) : setIsClickedName(true)}
 
+    const handleChangeRoute = () => {
+        props.handleSwitchForm()
+    }
 
     const handleSubmit = (event) => {
         event.preventDefault()
 
-        if (isFormValid()){
-            console.log("register")
-        }
+        if (!isFormValid()) return;
 
+        axios({
+            method: 'post',
+            url: 'https://at.usermd.net/api/user/create',
+            data: {
+                name: login,
+                email: email,
+                password: password
+            }
+        }).then((response) => {
+            handleChangeRoute()
+        }).catch((error) => {
+            setAlert("Rejestracja nie powiodła się")
+        })
     }
 
     const isFormValid = () => {
@@ -52,12 +65,6 @@ const SignUp = (props) => {
                            onChange={(event) => setLogin(event.target.value)}
                            className={styles.input} type="text" name="login"  required />
                     <div className={isClickedLogin ? [styles.inputText, styles.changePositionUp].join(' ') : [styles.inputText,styles.changePositionDown].join(' ')}>Login</div>
-                </div>
-                <div className={styles.wrapper}>
-                    <input onFocus={() => changePositionName()} onBlur={() =>changePositionName()}
-                           onChange={(event) => setName(event.target.value)}
-                           className={styles.input} type="text" name="name"  required />
-                    <div className={isClickedName ? [styles.inputText, styles.changePositionUp].join(' ') : [styles.inputText,styles.changePositionDown].join(' ')}>Nazwa</div>
                 </div>
                 <div className={styles.wrapper}>
                     <input onFocus={() => changePositionEmail()} onBlur={() =>changePositionEmail()}
