@@ -1,10 +1,63 @@
 
-.card {
-    background-color: var(--darkBlue);
-    padding: 20px;
-    border-radius: 10px;
+.flipCard {
+    background-color: transparent;
     width: 400px;
     height: 200px;
+    border-radius: 10px;
+    perspective: 1000px;
+    margin: 30px;
+}
+
+.flipCardInner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+}
+
+/*.flipCard:hover .flipCardInner {*/
+/*    transform: rotateY(180deg);*/
+/*}*/
+
+.flipped {
+    transform: rotateY(180deg);
+}
+
+.cardFront, .cardBack {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+}
+
+.cardFront {
+    background-image: linear-gradient(to bottom right, var(--black), var(--darkBlue));
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 20px;
+    height: 100%;
+    border-radius: 10px;
+}
+
+.cardFront p {
+    font-size: 64px;
+    font-weight: bold;
+    margin: 0;
+    color: var(--white);
+}
+
+.cardBack {
+    transform: rotateY(180deg);
+    background-color: var(--darkBlue);
+    border-radius: 10px;
+    width: 100%;
+    padding: 20px;
+    height: 100%;
     display: flex;
     color: var(--black);
     font-weight: bold;
@@ -16,6 +69,7 @@
 .imgWrapper {
     overflow: hidden;
     margin: 0;
+    /*border-radius: 0 10px 10px 0;*/
     border-radius: 10px;
 }
 .triangleDiv {
@@ -51,8 +105,9 @@
 
 .dataWrapper {
     display: flex;
-    justify-content: center;
-    align-content: center;
+    justify-content: flex-start;
+    align-content: flex-start;
+    /*align-items: flex-start;*/
     flex-direction: column;
     /*margin-left: 20px;*/
 }
