@@ -10,13 +10,15 @@ import Logo from "./logo";
 import Login from "../logIn/login";
 import SignIn from "../logIn/signIn";
 import FormPage from "../logIn/formPage";
+import {isExpired} from "react-jwt";
 
 const Navbar = () => {
+    const isLogged = !isExpired(localStorage.getItem('token'))
+
     const [isHover, setIsHover] = useState(false)
     const [numOfMenu,setNumOfMenu] = useState(0)
     const [whichClicked, setWhichClicked] = useState(1)
     const [colorChange, setColorchange] = useState(false);
-    const [isLogged, setIsLogged] = useState(false);
     const [showForm, setShowForm] = useState(false);
 
     const changeNavbarColor = () => {
@@ -49,7 +51,7 @@ const Navbar = () => {
     // TODO do osobnego pliku css
     const styles = {
         container : {
-            height: '70px',
+            // height: '70px',
             display: 'flex',
             justifyContent: 'space-between'
         },
@@ -62,12 +64,16 @@ const Navbar = () => {
             alignItems: 'center',
             listStyle: 'none',
             height: '100%',
-            alignContent: 'center'
+            alignContent: 'center',
+            flexWrap: 'wrap'
         },
         settings: {
             display: 'flex',
+            justifyContent: 'center',
             alignItems: 'center',
-            cursor: 'pointer'
+            cursor: 'pointer',
+            position: 'relative',
+            width: '200px'
         },
         text: {
             padding: '0 10px',
@@ -176,8 +182,8 @@ const Navbar = () => {
             </li>
         </ul>
             <div style={styles.settings}>
-              <div onClick={() => handleShowingForm()} style={styles.text} onMouseEnter={() =>handleMouseEnter(6)} onMouseLeave={handleMouseLeave}>
-                  <Login style={(numOfMenu===6 && isHover) ? styles.underlineAfter : styles.underline}/>
+              <div onClick={() => handleShowingForm()}  onMouseEnter={() =>handleMouseEnter(6)} onMouseLeave={handleMouseLeave}>
+                  <Login style={(numOfMenu===6 && isHover && !isLogged) ? styles.underlineAfter : styles.underline}/>
               </div>
                 {showForm && !isLogged ? <FormPage handleCloseForm={handleCloseForm} /> : null}
             </div>
