@@ -10,9 +10,11 @@ const Ranking = () => {
     return (
         <div className={styles.containerFluid}>
             <BackPage backTo={"/home"} title={"Powrót do strony głównej"} />
-            <p className={styles.rankingText}>Odkryj ranking</p>
+            <div className={styles.titleRanking}>
+                <p className={styles.rankingText}>Odkryj ranking</p>
+            </div>
             <div className={styles.container}>
-                <MovieRankCard rank={"1"}  img={img} title={"Zielona mila"} titleEng={"The Green Mile 1999"} rating={"8,6"} numOfRating={"980 732"} genre={"Dramat"} director={"Frank Darabont"}/>
+            <MovieRankCard rank={"1"}  img={img} title={"Zielona mila"} titleEng={"The Green Mile 1999"} rating={"8,6"} numOfRating={"980 732"} genre={"Dramat"} director={"Frank Darabont"}/>
                 <MovieRankCard rank={"2"}  img={img} title={"Zielona mila"} titleEng={"The Green Mile 1999"} rating={"8,6"} numOfRating={"980 732"} genre={"Dramat"} director={"Frank Darabont"}/>
                 <MovieRankCard rank={"3"}  img={img} title={"Zielona mila"} titleEng={"The Green Mile 1999"} rating={"8,6"} numOfRating={"980 732"} genre={"Dramat"} director={"Frank Darabont"}/>
                 <MovieRankCard rank={"4"}  img={img} title={"Zielona mila"} titleEng={"The Green Mile 1999"} rating={"8,6"} numOfRating={"980 732"} genre={"Dramat"} director={"Frank Darabont"}/>
