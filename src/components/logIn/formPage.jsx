@@ -1,4 +1,4 @@
-import Logo from "../main/logo";
+import Logo from "../common/logo";
 import {IoMdClose} from "react-icons/io";
 import {useState} from "react";
 import SignIn from "./signIn";

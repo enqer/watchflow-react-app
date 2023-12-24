@@ -6,7 +6,7 @@ import { FaRegUserCircle } from "react-icons/fa";
 import {useState} from "react";
 import {Link} from "react-router-dom";
 import MovieInfo from "./movieInfo";
-import BackPage from "../main/backPage";
+import BackPage from "../common/backPage";
 
 
 

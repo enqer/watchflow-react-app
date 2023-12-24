@@ -6,7 +6,7 @@ import reportWebVitals from './reportWebVitals';
 import {BrowserRouter, Navigate, Route, Routes} from "react-router-dom";
 import Movies from "./components/movies/movies";
 import Home from "./components/home/home";
-import NotFound from "./components/main/notFound";
+import NotFound from "./components/common/notFound";
 import Ranking from "./components/ranking/ranking";
 import News from "./components/news/news";
 import NewsPage from "./components/news/newsPage";
@@ -20,14 +20,15 @@ ReactDOM.render(
     <React.StrictMode>
         <BrowserRouter>
                       <Routes>
-                           <Route path="/" element={<App />}>
-                               <Route path="/home" element={<Home />}/>
-                               <Route path="/movies" element={<Movies />}/>
-                               <Route path="/movies/add" element={isExpired(localStorage.getItem('token')) ? <Navigate replace to="/home" /> : <AddMovie />}/>
-                               <Route path="/movie/:id" element={<Movie />}/>
-                               <Route path="/ranking" element={<Ranking />}/>
-                               <Route path="/news" element={<News />}/>
-                               <Route path="/news/:id" element={<NewsPage />}/>
+                           <Route path="/"  element={<App /> }>
+                               <Route path="/" element={<Navigate to="home" />}/>
+                               <Route path="home" element={<Home />}/>
+                               <Route path="movies" element={<Movies />}/>
+                               <Route path="movies/add" element={isExpired(localStorage.getItem('token')) ? <Navigate replace to="/home" /> : <AddMovie />}/>
+                               <Route path="movie/:id" element={<Movie />}/>
+                               <Route path="ranking" element={<Ranking />}/>
+                               <Route path="news" element={<News />}/>
+                               <Route path="news/:id" element={<NewsPage />}/>
                                <Route path="*" element={<NotFound/>}/>
                            </Route>
                       </Routes>

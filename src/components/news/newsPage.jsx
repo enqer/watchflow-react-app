@@ -2,7 +2,7 @@ import styles from './newsPage.module.css'
 import img from "../../img/background.jpg";
 import loki from "../../img/loki.jpg";
 import {useState} from "react";
-import BackPage from "../main/backPage";
+import BackPage from "../common/backPage";
 
 const NewsPage = (props) => {
 

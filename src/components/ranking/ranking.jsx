@@ -1,7 +1,7 @@
 import img from "../../img/zielona.jpg";
 import styles from './ranking.module.css'
 
-import BackPage from "../main/backPage";
+import BackPage from "../common/backPage";
 import MovieRankCard from "./movieRankCard";
 
 const Ranking = () => {
