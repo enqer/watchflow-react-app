@@ -1,15 +1,70 @@
 import {FaUserCircle} from "react-icons/fa";
-import React from "react";
+import { FiLogOut } from "react-icons/fi";
+import { IoMdSettings } from "react-icons/io";
+import React, {useState} from "react";
+import { isExpired, decodeToken  } from "react-jwt";
+import styles from './login.module.css'
+import {useNavigate} from "react-router";
+import {Link} from "react-router-dom";
+import axios from "axios";
 
 const Login = (props) => {
-    // var to check if logged
+    let navigate = useNavigate()
+    const user = decodeToken(localStorage.getItem('token'))
+    const isLogged = !isExpired(localStorage.getItem('token'))
+
+    const [isHover, setIsHover] = useState(false)
+
+    const handleHover = () => {
+        setIsHover(!isHover)
+    }
+
+    const handleChangeRoute = () => {
+        navigate('/home')
+        window.location.reload()
+    }
+
+    const handleLogout = () => {
+        axios
+            .delete(`https://at.usermd.net/api/user/logout/${user.userId}`, {
+                userId: user.userId
+            })
+            .then((response)=> {
+                console.log("logout")
+                localStorage.clear()
+                handleChangeRoute()
+            } )
+            .catch((error) => {
+                console.log(error)
+            })
+    }
+
     return (
-        // TODO checking if logged if not display defalut else display nickname with chosen photo
-        //  TODO p onClick to navigate to log in or register
-        <>
-            <p style={props.style}>Zaloguj się</p>
-            <span style={{fontSize: '32px', margin: 'auto', padding: '10px'}}><FaUserCircle /></span>
-        </>
+        <div className={isHover && isLogged ? [styles.container,styles.containerHover].join(' ') : styles.container}
+            onMouseEnter={handleHover}
+             onMouseLeave={handleHover}
+        >
+            <div className={styles.userDetails}>
+                <p>{isLogged ? user.name : "Zaloguj się"}</p>
+                <span><FaUserCircle/></span>
+            </div>
+
+            {isLogged && isHover ?
+                <div>
+                    <div className={styles.userDetails}>
+                        <p>Ustawienia</p>
+                        <span><IoMdSettings /></span>
+                    </div>
+                    <div className={styles.userDetails}
+                        onClick={handleLogout}
+                    >
+                            <p>Wyloguj</p>
+                            <span><FiLogOut/></span>
+                    </div>
+                </div>
+                : null}
+
+        </div>
     )
 }
 export default Login
