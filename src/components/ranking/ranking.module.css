@@ -18,3 +18,7 @@
     font-weight: bold;
     margin: 0 0 0 70px
 }
+.titleRanking {
+    display: flex;
+    justify-content: center;
+}
