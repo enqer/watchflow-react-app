@@ -4,7 +4,11 @@ import {Link} from "react-router-dom";
 import { FaArrowRight } from "react-icons/fa";
 import {useState} from "react";
 import MovieCard from "./movieCard";
+import {isExpired} from "react-jwt";
 const Movies = () => {
+
+    const isLogged = !isExpired(localStorage.getItem('token'))
+
     const arr = [...Array(20).keys()]
     const [isMoving, setIsMoving] = useState(false)
 
@@ -26,22 +30,25 @@ const Movies = () => {
                       ))}
                   </select>
               </div>
-              <div>
-                  <Link to="add" className={styles.addNew} onMouseEnter={handlerMovingArrow} onMouseLeave={handlerMovingArrow}>
-                      <p>Dodaj film</p>
-                      <div className={styles.arrow}>
-                          <FaArrowRight className={isMoving ? styles.arrowMoveAfter : styles.arrowMoveBefore} />
-                      </div>
-                  </Link>
-              </div>
+              {isLogged &&
+                  <div>
+                      <Link to="add" className={styles.addNew} onMouseEnter={handlerMovingArrow}
+                            onMouseLeave={handlerMovingArrow}>
+                          <p>Dodaj film</p>
+                          <div className={styles.arrow}>
+                              <FaArrowRight className={isMoving ? styles.arrowMoveAfter : styles.arrowMoveBefore}/>
+                          </div>
+                      </Link>
+                  </div>
+              }
           </div>
           <div className={styles.wrapperImages}>
               {arr.map(a => (
-                      // <div className={styles.movieCell}>
-                      //     {/*<div className="moviesImg">{a+1}</div>*/}
-                      //     <img className={styles.moviesImg} src={img}/>
-                      // </div>
-                  <MovieCard id={Math.floor(Math.random() * 100)} img={img} />
+                  // <div className={styles.movieCell}>
+                  //     {/*<div className="moviesImg">{a+1}</div>*/}
+                  //     <img className={styles.moviesImg} src={img}/>
+                  // </div>
+                  <MovieCard id={Math.floor(Math.random() * 100)} img={img}/>
               ))}
           </div>
       </div>
