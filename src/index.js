@@ -28,7 +28,6 @@ ReactDOM.render(
                                <Route path="/ranking" element={<Ranking />}/>
                                <Route path="/news" element={<News />}/>
                                <Route path="/news/:id" element={<NewsPage />}/>
-                               {/*<Route path="/signin" element={<SignIn />}/>*/}
                                <Route path="*" element={<NotFound/>}/>
                            </Route>
                       </Routes>

@@ -51,7 +51,7 @@ const Navbar = () => {
     // TODO do osobnego pliku css
     const styles = {
         container : {
-            // height: '70px',
+            minHeight: '70px',
             display: 'flex',
             justifyContent: 'space-between'
         },
@@ -183,7 +183,7 @@ const Navbar = () => {
         </ul>
             <div style={styles.settings}>
               <div onClick={() => handleShowingForm()}  onMouseEnter={() =>handleMouseEnter(6)} onMouseLeave={handleMouseLeave}>
-                  <Login style={(numOfMenu===6 && isHover && !isLogged) ? styles.underlineAfter : styles.underline}/>
+                  <Login style={(numOfMenu === 6 && isHover) ? styles.underlineAfter : styles.underline}/>
               </div>
                 {showForm && !isLogged ? <FormPage handleCloseForm={handleCloseForm} /> : null}
             </div>

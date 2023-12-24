@@ -4,8 +4,12 @@ import { IoMdSettings } from "react-icons/io";
 import React, {useState} from "react";
 import { isExpired, decodeToken  } from "react-jwt";
 import styles from './login.module.css'
+import {useNavigate} from "react-router";
+import {Link} from "react-router-dom";
+import axios from "axios";
 
 const Login = (props) => {
+    let navigate = useNavigate()
     const user = decodeToken(localStorage.getItem('token'))
     const isLogged = !isExpired(localStorage.getItem('token'))
 
@@ -15,10 +19,28 @@ const Login = (props) => {
         setIsHover(!isHover)
     }
 
+    const handleChangeRoute = () => {
+        navigate('/home')
+        window.location.reload()
+    }
+
+    const handleLogout = () => {
+        axios
+            .delete(`https://at.usermd.net/api/user/logout/${user.userId}`, {
+                userId: user.userId
+            })
+            .then((response)=> {
+                console.log("logout")
+                localStorage.clear()
+                handleChangeRoute()
+            } )
+            .catch((error) => {
+                console.log(error)
+            })
+    }
+
     return (
-        // TODO checking if logged if not display defalut else display nickname with chosen photo
-        //  TODO p onClick to navigate to log in or register
-        <div className={isHover ? [styles.container,styles.containerHover].join(' ') : styles.container}
+        <div className={isHover && isLogged ? [styles.container,styles.containerHover].join(' ') : styles.container}
             onMouseEnter={handleHover}
              onMouseLeave={handleHover}
         >
@@ -33,9 +55,11 @@ const Login = (props) => {
                         <p>Ustawienia</p>
                         <span><IoMdSettings /></span>
                     </div>
-                    <div className={styles.userDetails}>
-                        <p>Wyloguj</p>
-                        <span><FiLogOut/></span>
+                    <div className={styles.userDetails}
+                        onClick={handleLogout}
+                    >
+                            <p>Wyloguj</p>
+                            <span><FiLogOut/></span>
                     </div>
                 </div>
                 : null}
