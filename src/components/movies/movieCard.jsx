@@ -1,16 +1,24 @@
 import styles from "./movieCard.module.css";
 import img from "../../img/loki.jpg";
 import {Link} from "react-router-dom";
+import {useState} from "react";
 
 
 const MovieCard = (props) => {
+    const [isHover, setIsHover] = useState(false)
 
+    const handleHover = () => {
+        setIsHover(!isHover)
+    }
 
-    // TODO star rating right corner, middle title absolute
     return(
-        <Link to={`/movie/${props.id}`} >
+        <Link to={`/movie/${props.id}`}
+                onMouseLeave={handleHover}
+                onMouseEnter={handleHover}
+        >
             <div className={styles.movieCell}>
-                <img className={styles.movieImg} src={props.img}/>
+                <img className={isHover ? [styles.movieImg,styles.movieImgHover].join(' ') : styles.movieImg} src={props.img} alt="Zdjęcie film"/>
+                {isHover && <p className={styles.title}>{props.title}</p>}
             </div>
         </Link>
 

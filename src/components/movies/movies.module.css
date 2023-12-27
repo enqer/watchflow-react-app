@@ -92,4 +92,9 @@
     justify-content: center;
 }
 
+.notFound {
+    font-size: 48px;
+    font-weight: bold;
+    color: var(--white);
+}
 

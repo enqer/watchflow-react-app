@@ -1,5 +1,9 @@
 .movieCell {
     margin: 10px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .movieImg {
@@ -10,7 +14,35 @@
     object-fit:cover;
     box-shadow: 5px 5px 10px rgba(0, 0, 0, 7);
 }
-.movieImg:hover {
+
+.movieImgHover {
     position: relative;
     transform: scale(1.05);
 }
+
+
+.title {
+    position: absolute;
+    /*top: 50%;*/
+    /*left: 50%;*/
+    background-color: rgba(0,0,0,0.6);
+    color: var(--white);
+    font-size: 26px;
+    /*border-radius: 15px;*/
+    margin: 0;
+    padding: 5px 0;
+    width: 100%;
+    /*height: 100%;*/
+    transition: .2s ease all;
+    transform: scale(1.05);
+    text-align: center;
+    font-weight: bold;
+}
+
+
+/*.movieImg:hover > .title{*/
+/*    transform: scale(1.05);*/
+/*}*/
+
+
+
