@@ -1,0 +1,47 @@
+.container {
+    display: flex;
+    padding: 10px 0;
+}
+
+.commentWrapper {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.textInfo {
+    color: var(--white);
+    font-size: 18px;
+    font-weight: bold;
+    text-transform: capitalize;
+}
+.textPreInfo {
+    color: var(--darkBlue);
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.content {
+    color: var(--white);
+    font-size: 18px;
+    margin: 0;
+}
+
+.deleteWrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50px;
+
+}
+.deleteWrapper svg {
+    font-size: 24px;
+    background-color: transparent;
+    padding: 10px;
+    border-radius: 50%;
+}
+
+.deleteWrapper svg:hover{
+    background-color: var(--grey);
+    cursor: pointer;
+}

@@ -8,21 +8,23 @@ import {Link, useParams} from "react-router-dom";
 import MovieInfo from "./movieInfo";
 import BackPage from "../common/backPage";
 import axios from "axios";
+import comment from "./comment";
+import Comment from "./comment";
 
 
 
 const Movie = () => {
 
-    const [arrowMove, setArrowMove]=useState(false)
+    // const [arrowMove, setArrowMove]=useState(false)
     const [whichHover, setWhichHover] = useState(0)
     const [watched, setWatched] = useState(false)
     const [data,setData]= useState({})
     const movieId = useParams()
 
 
-    const handlerArrow = () => {
-      setArrowMove(!arrowMove)
-    }
+    // const handlerArrow = () => {
+    //   setArrowMove(!arrowMove)
+    // }
     const handlerStarHover = (num) => {
         setWhichHover(num)
     }
@@ -61,7 +63,7 @@ const Movie = () => {
                     </div>
                     <div className={styles.infoDataWrapper}>
                         <MovieInfo
-                            firstLine={data.content.substring(0, data.content.indexOf('.'))}
+                            firstLine={data.content}
                             title={data.title}
                             director={data.director}
                             productionYear={data.productionYear}
@@ -103,6 +105,19 @@ const Movie = () => {
                     <p>
                         {data.content}
                     </p>
+                </div>
+                <div>
+                    <h2>Komentarze:</h2>
+                    {data.comments?.length > 0 ? data.comments.map((comment)=>
+                        <Comment
+                            id={comment.id}
+                            content={comment.content}
+                            publishedAt={comment.publishedAt}
+                            movieId={comment.movieId}
+                            userId={comment.userId}
+                            userLogin={comment.userLogin}
+                        />
+                    ) : <p className={styles.missingComment} >Brak komentarzy, aby dodać komentarz musisz być zalogowany.</p>}
                 </div>
             </div>
         </div>

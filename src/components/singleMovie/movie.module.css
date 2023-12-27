@@ -142,3 +142,7 @@ input[type="checkbox"] {
 .descriptionWrapper p {
     color: var(--white);
 }
+
+.missingComment {
+    font-size: 20px;
+}
