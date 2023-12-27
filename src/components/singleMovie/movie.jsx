@@ -63,7 +63,7 @@ const Movie = () => {
                     </div>
                     <div className={styles.infoDataWrapper}>
                         <MovieInfo
-                            firstLine={data.content}
+                            firstLine={data.content?.substring(0, data.content.indexOf('.'))}
                             title={data.title}
                             director={data.director}
                             productionYear={data.productionYear}

@@ -42,6 +42,6 @@
 }
 
 .deleteWrapper svg:hover{
-    background-color: var(--grey);
+    background-color: var(--darkBlue);
     cursor: pointer;
 }

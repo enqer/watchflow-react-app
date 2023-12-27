@@ -1,9 +1,26 @@
 import styles from './comment.module.css'
 import { MdDelete } from "react-icons/md";
 import {decodeToken} from "react-jwt";
+import axios from "axios";
 const Comment = (props) => {
 
     const user = decodeToken(localStorage.getItem('token'))
+
+
+    const config = {
+        headers: { Authorization: `Bearer ${localStorage.getItem('token')}`
+        }
+}
+    const handleDeleteComment = () => {
+      axios
+          .delete(`http://localhost:8080/api/movies/comments/${props.id}`,
+              config)
+          .then((response)=> {
+              console.log('Deleted')
+              window.location.reload()
+          })
+          .catch((error) => console.error(error))
+    }
 
     return(
         <div className={styles.container}>
@@ -19,7 +36,7 @@ const Comment = (props) => {
                 </div>
             </div>
             <div className={styles.deleteWrapper}>
-                {user.userId === props.userId.toString() ? <MdDelete/> : null}
+                {user.userId === props.userId.toString() ? <MdDelete onClick={handleDeleteComment}/> : null}
             </div>
 
         </div>
