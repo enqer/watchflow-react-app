@@ -3,18 +3,19 @@ import styles from './movie.module.css'
 import img from "../../img/loki.jpg";
 import { IoStar, IoStarOutline } from "react-icons/io5";
 import { FaRegUserCircle } from "react-icons/fa";
-import {useEffect, useState} from "react";
+import {Component, useEffect, useState} from "react";
 import {Link, useParams} from "react-router-dom";
 import MovieInfo from "./movieInfo";
 import BackPage from "../common/backPage";
 import axios from "axios";
-import comment from "./comment";
 import Comment from "./comment";
-
+import {decodeToken, isExpired} from "react-jwt";
+import AddComment from "./addComment";
 
 
 const Movie = () => {
-
+    const isLogged = !isExpired(localStorage.getItem('token'))
+    const user = decodeToken(localStorage.getItem('token'))
     // const [arrowMove, setArrowMove]=useState(false)
     const [whichHover, setWhichHover] = useState(0)
     const [watched, setWatched] = useState(false)
@@ -118,6 +119,9 @@ const Movie = () => {
                             userLogin={comment.userLogin}
                         />
                     ) : <p className={styles.missingComment} >Brak komentarzy, aby dodać komentarz musisz być zalogowany.</p>}
+                </div>
+                <div>
+                    {isLogged && <AddComment movieId={movieId.id} userId={user.userId}/>}
                 </div>
             </div>
         </div>
