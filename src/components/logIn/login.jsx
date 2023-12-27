@@ -29,6 +29,7 @@ const Login = (props) => {
         handleChangeRoute()
     }
 
+    // TODO bug fix display
 
     return (
         <div className={isHover && isLogged ? [styles.container,styles.containerHover].join(' ') : styles.container}

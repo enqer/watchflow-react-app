@@ -56,7 +56,7 @@ const Movie = () => {
 
     return (
         <div className={styles.containerFluid}>
-            <BackPage backTo={"/movies"} title={"Loki"} />
+            <BackPage backTo={"/movies"} title={data.title} />
             <div className={styles.container}>
                 <div className={styles.mainContainer}>
                     <div className={styles.displayImg}>
