@@ -25,19 +25,10 @@ const Login = (props) => {
     }
 
     const handleLogout = () => {
-        axios
-            .delete(`https://at.usermd.net/api/user/logout/${user.userId}`, {
-                userId: user.userId
-            })
-            .then((response)=> {
-                console.log("logout")
-                localStorage.clear()
-                handleChangeRoute()
-            } )
-            .catch((error) => {
-                console.log(error)
-            })
+        localStorage.clear();
+        handleChangeRoute()
     }
+
 
     return (
         <div className={isHover && isLogged ? [styles.container,styles.containerHover].join(' ') : styles.container}
@@ -45,7 +36,7 @@ const Login = (props) => {
              onMouseLeave={handleHover}
         >
             <div className={styles.userDetails}>
-                <p>{isLogged ? user.name : "Zaloguj się"}</p>
+                <p>{isLogged ? user.login: "Zaloguj się"}</p>
                 <span><FaUserCircle/></span>
             </div>
 

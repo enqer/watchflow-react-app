@@ -31,9 +31,9 @@ const SignUp = (props) => {
 
         axios({
             method: 'post',
-            url: 'https://at.usermd.net/api/user/create',
+            url: 'http://localhost:8080/api/auth/register',
             data: {
-                name: login,
+                login: login,
                 email: email,
                 password: password
             }

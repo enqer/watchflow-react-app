@@ -29,12 +29,13 @@ const SignIn = (props) => {
         if (!validate()) return;
 
         axios
-            .post('https://at.usermd.net/api/user/auth',{
+            .post('http://localhost:8080/api/auth/authenticate',{
                 login: login,
                 password: password
             })
             .then((response) => {
                 localStorage.setItem('token', response.data.token)
+                console.log(response.data.token)
                 handleChangeRoute()
             })
             .catch((err) => {
