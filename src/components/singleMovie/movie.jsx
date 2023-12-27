@@ -3,10 +3,11 @@ import styles from './movie.module.css'
 import img from "../../img/loki.jpg";
 import { IoStar, IoStarOutline } from "react-icons/io5";
 import { FaRegUserCircle } from "react-icons/fa";
-import {useState} from "react";
-import {Link} from "react-router-dom";
+import {useEffect, useState} from "react";
+import {Link, useParams} from "react-router-dom";
 import MovieInfo from "./movieInfo";
 import BackPage from "../common/backPage";
+import axios from "axios";
 
 
 
@@ -15,6 +16,9 @@ const Movie = () => {
     const [arrowMove, setArrowMove]=useState(false)
     const [whichHover, setWhichHover] = useState(0)
     const [watched, setWatched] = useState(false)
+    const [data,setData]= useState({})
+    const movieId = useParams()
+
 
     const handlerArrow = () => {
       setArrowMove(!arrowMove)
@@ -31,16 +35,41 @@ const Movie = () => {
         return matchingRates.length > 0 ? matchingRates[0].value : null;
     }
 
+    const getInfoMovie = () => {
+        axios
+            .get(`http://localhost:8080/api/movies/${movieId.id}`)
+            .then((response)=>{
+                console.log(response.data)
+                setData(response.data)
+            })
+            .catch((err) => {
+                console.log(err)
+            })
+    }
+
+    useEffect(() => {
+        getInfoMovie()
+    }, []);
+
     return (
         <div className={styles.containerFluid}>
             <BackPage backTo={"/movies"} title={"Loki"} />
             <div className={styles.container}>
                 <div className={styles.mainContainer}>
                     <div className={styles.displayImg}>
-                        <img src={img} alt=""/>
+                        <img src={data.image} alt="Zdjęcie przedstawia plakat filmu"/>
                     </div>
                     <div className={styles.infoDataWrapper}>
-                        <MovieInfo />
+                        <MovieInfo
+                            firstLine={data.content.substring(0, data.content.indexOf('.'))}
+                            title={data.title}
+                            director={data.director}
+                            productionYear={data.productionYear}
+                            genre={data.genre}
+                            rating={data.rating}
+                            numOfRatings={data.numOfRatings}
+                            content={data.content}
+                        />
                     </div>
                     <div className={styles.rateWrapper}>
                         <div className={styles.displaySelectedRate}>
@@ -72,7 +101,7 @@ const Movie = () => {
                 </div>
                 <div className={styles.descriptionWrapper}>
                     <p>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum doloribus maiores natus nisi numquam possimus sequi voluptates. Accusantium aliquam consequatur incidunt, neque possimus quod ratione recusandae voluptatibus? Cumque debitis eaque eos esse iure minus numquam quisquam ut. Accusamus aspernatur autem dicta dignissimos doloribus ducimus facilis, fugit inventore ipsa iste iure mollitia obcaecati praesentium ratione veniam voluptatem voluptatibus? Alias aliquam aut cumque ex facere, fugit impedit inventore placeat quae, recusandae, rem temporibus veritatis voluptatem. Architecto asperiores consequatur dicta eligendi et ex facere id illo in iste magnam modi nesciunt numquam pariatur porro quaerat quas quo ratione reiciendis, rem repellat repudiandae similique tempore voluptate voluptates! Ad aliquam aperiam, consectetur doloremque dolores ea error expedita facilis fugiat iusto labore, laborum, laudantium libero maiores maxime minima modi officia omnis quis sapiente similique soluta suscipit tempora tempore velit. Aliquid cum eos facilis, iusto neque possimus quas quasi quibusdam, quos, repellendus sequi unde voluptate. Amet atque, dolore, dolorem error explicabo fugiat nesciunt numquam officia optio praesentium quam sit soluta tempore ullam voluptatem. Accusantium amet architecto doloremque enim ipsa natus omnis! Accusamus aspernatur debitis dolore, doloremque doloribus eos exercitationem, hic ipsam iste molestiae optio pariatur porro quod reiciendis repellat suscipit tenetur ullam velit. Doloremque eius minima odit.
+                        {data.content}
                     </p>
                 </div>
             </div>
