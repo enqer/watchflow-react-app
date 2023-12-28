@@ -21,6 +21,11 @@ const Movie = () => {
     const [watched, setWatched] = useState(false)
     const [data,setData]= useState({})
     const movieId = useParams()
+    const config = {
+        headers: {
+            Authorization: `Bearer ${localStorage.getItem('token')}`
+        }
+    }
 
 
     // const handlerArrow = () => {
@@ -50,11 +55,74 @@ const Movie = () => {
             })
     }
 
+    const getWatcherInfo = () => {
+        axios
+            .get(`http://localhost:8080/api/movies/${movieId.id}/watchers/${user.userId}`)
+            .then((response) => {
+                if (response.data.isWatcher){
+                    setWatched(true)
+                }
+            })
+            .catch((error) => {
+                console.error(error)
+                setWatched(false)
+            })
+    }
+
     useEffect(() => {
         getInfoMovie()
+        isLogged && getWatcherInfo()
     }, []);
 
-    return (
+    const handleSelectRating = (rate) => {
+        if (!isLogged){
+            alert("Aby ocenić film, musisz się zalogować!")
+            return
+        }
+        alert("test")
+    }
+
+    const deleteWatcher = () => {
+        axios
+            .delete(`http://localhost:8080/api/movies/${movieId.id}/watchers/${user.userId}`,
+                config)
+            .then((response) => {
+                console.log(response)
+                setWatched(false)
+            })
+            .catch((error) => {
+                console.error(error)
+                setWatched(true)
+            })
+    }
+
+    const addWatcher = () => {
+        axios
+            .post(`http://localhost:8080/api/movies/${movieId.id}/watchers/${user.userId}`,
+                config)
+            .then((response) => {
+                console.log(response)
+                setWatched(true)
+            })
+            .catch((error) => {
+                console.error(error)
+                setWatched(false)
+            })
+    }
+    const handleIsWatched = () => {
+        if (!isLogged){
+            alert("Aby zapisać film do obejrzanych, musisz się zalogować!")
+            return
+        }
+        if (watched)
+            deleteWatcher()
+        else
+            addWatcher()
+    }
+
+
+
+return (
         <div className={styles.containerFluid}>
             <BackPage backTo={"/movies"} title={data.title} />
             <div className={styles.container}>
@@ -85,20 +153,20 @@ const Movie = () => {
                             </div>
                         </div>
                         <div className={styles.selectRateStar}>
-                            <Link to="" onMouseEnter={() =>handlerStarHover(1)} onMouseLeave={() =>handlerStarHover(0)}>{whichHover >= 1 ? <IoStar /> : <IoStarOutline />}</Link>
-                            <Link to="" onMouseEnter={() =>handlerStarHover(2)} onMouseLeave={() =>handlerStarHover(0)}>{whichHover >= 2 ? <IoStar /> : <IoStarOutline />}</Link>
-                            <Link to="" onMouseEnter={() =>handlerStarHover(3)} onMouseLeave={() =>handlerStarHover(0)}>{whichHover >= 3 ? <IoStar /> : <IoStarOutline />}</Link>
-                            <Link to="" onMouseEnter={() =>handlerStarHover(4)} onMouseLeave={() =>handlerStarHover(0)}>{whichHover >= 4 ? <IoStar /> : <IoStarOutline />}</Link>
-                            <Link to="" onMouseEnter={() =>handlerStarHover(5)} onMouseLeave={() =>handlerStarHover(0)}>{whichHover >= 5 ? <IoStar /> : <IoStarOutline />}</Link>
-                            <Link to="" onMouseEnter={() =>handlerStarHover(6)} onMouseLeave={() =>handlerStarHover(0)}>{whichHover >= 6 ? <IoStar /> : <IoStarOutline />}</Link>
-                            <Link to="" onMouseEnter={() =>handlerStarHover(7)} onMouseLeave={() =>handlerStarHover(0)}>{whichHover >= 7 ? <IoStar /> : <IoStarOutline />}</Link>
-                            <Link to="" onMouseEnter={() =>handlerStarHover(8)} onMouseLeave={() =>handlerStarHover(0)}>{whichHover >= 8 ? <IoStar /> : <IoStarOutline />}</Link>
-                            <Link to="" onMouseEnter={() =>handlerStarHover(9)} onMouseLeave={() =>handlerStarHover(0)}>{whichHover >= 9 ? <IoStar /> : <IoStarOutline />}</Link>
-                            <Link to="" onMouseEnter={() =>handlerStarHover(10)} onMouseLeave={() =>handlerStarHover(0)}>{whichHover >= 10 ? <IoStar /> : <IoStarOutline />}</Link>
+                            <Link to="" onClick={() => handleSelectRating(1)} onMouseEnter={() =>handlerStarHover(1)} onMouseLeave={() =>handlerStarHover(0)}>{whichHover >= 1 ? <IoStar /> : <IoStarOutline />}</Link>
+                            <Link to="" onClick={() => handleSelectRating(2)} onMouseEnter={() =>handlerStarHover(2)} onMouseLeave={() =>handlerStarHover(0)}>{whichHover >= 2 ? <IoStar /> : <IoStarOutline />}</Link>
+                            <Link to="" onClick={() => handleSelectRating(3)} onMouseEnter={() =>handlerStarHover(3)} onMouseLeave={() =>handlerStarHover(0)}>{whichHover >= 3 ? <IoStar /> : <IoStarOutline />}</Link>
+                            <Link to="" onClick={() => handleSelectRating(4)} onMouseEnter={() =>handlerStarHover(4)} onMouseLeave={() =>handlerStarHover(0)}>{whichHover >= 4 ? <IoStar /> : <IoStarOutline />}</Link>
+                            <Link to="" onClick={() => handleSelectRating(5)} onMouseEnter={() =>handlerStarHover(5)} onMouseLeave={() =>handlerStarHover(0)}>{whichHover >= 5 ? <IoStar /> : <IoStarOutline />}</Link>
+                            <Link to="" onClick={() => handleSelectRating(6)} onMouseEnter={() =>handlerStarHover(6)} onMouseLeave={() =>handlerStarHover(0)}>{whichHover >= 6 ? <IoStar /> : <IoStarOutline />}</Link>
+                            <Link to="" onClick={() => handleSelectRating(7)} onMouseEnter={() =>handlerStarHover(7)} onMouseLeave={() =>handlerStarHover(0)}>{whichHover >= 7 ? <IoStar /> : <IoStarOutline />}</Link>
+                            <Link to="" onClick={() => handleSelectRating(8)} onMouseEnter={() =>handlerStarHover(8)} onMouseLeave={() =>handlerStarHover(0)}>{whichHover >= 8 ? <IoStar /> : <IoStarOutline />}</Link>
+                            <Link to="" onClick={() => handleSelectRating(9)} onMouseEnter={() =>handlerStarHover(9)} onMouseLeave={() =>handlerStarHover(0)}>{whichHover >= 9 ? <IoStar /> : <IoStarOutline />}</Link>
+                            <Link to="" onClick={() => handleSelectRating(10)} onMouseEnter={() =>handlerStarHover(10)} onMouseLeave={() =>handlerStarHover(0)}>{whichHover >= 10 ? <IoStar /> : <IoStarOutline />}</Link>
                         </div>
                         <div className={styles.selectWatched}>
                             <p>Już obejrzane?</p>
-                            <input type="checkbox" checked={watched} onChange={(event) => setWatched(!watched)}/>
+                            <input type="checkbox" checked={watched} onChange={(event) => handleIsWatched()}/>
                         </div>
                     </div>
                 </div>
