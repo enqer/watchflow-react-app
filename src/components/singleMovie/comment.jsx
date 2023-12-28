@@ -1,10 +1,11 @@
 import styles from './comment.module.css'
 import { MdDelete } from "react-icons/md";
-import {decodeToken} from "react-jwt";
+import {decodeToken, isExpired} from "react-jwt";
 import axios from "axios";
 const Comment = (props) => {
 
     const user = decodeToken(localStorage.getItem('token'))
+    const isLogged = !isExpired(localStorage.getItem('token'))
 
 
     const config = {
@@ -36,7 +37,7 @@ const Comment = (props) => {
                 </div>
             </div>
             <div className={styles.deleteWrapper}>
-                {user.userId === props.userId.toString() ? <MdDelete onClick={handleDeleteComment}/> : null}
+                {isLogged && user.userId === props.userId.toString() ? <MdDelete onClick={handleDeleteComment}/> : null}
             </div>
 
         </div>
