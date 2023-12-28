@@ -82,9 +82,28 @@ const Movie = () => {
             alert("Aby ocenić film, musisz się zalogować!")
             return
         }
-        selectRating(rate)
+        if (whichRateSelect === 0)
+            selectRating(rate)
+        else
+            updateRating(rate)
     }
 
+    const updateRating = (rate) => {
+        axios
+            .patch(`http://localhost:8080/api/rating/${ratingData.id}`,
+                {
+                    rate: rate
+                },
+                config
+            )
+            .then((response) => {
+                setRatingData(response.data)
+                setWhichRateSelect(rate)
+            })
+            .catch((error)=>{
+                console.error(error)
+            })
+    }
     const selectRating = (rate) => {
         axios
             .post(`http://localhost:8080/api/rating`,
@@ -96,7 +115,6 @@ const Movie = () => {
                 config
             )
             .then((response) => {
-                setRatingData(response.data)
                 setWhichRateSelect(rate)
             })
             .catch((error)=>{
