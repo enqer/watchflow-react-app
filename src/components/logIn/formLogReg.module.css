@@ -55,7 +55,7 @@ form {
 /*    width: 100%;*/
 /*}*/
 
-input:focus {
+.input:focus {
     border-bottom: 2px solid var(--darkBlue);
     outline: none;
 }

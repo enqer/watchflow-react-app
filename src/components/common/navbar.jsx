@@ -141,7 +141,7 @@ const Navbar = () => {
             <li>
               {/*Form??*/}
               {/*  <input type="text" placeholder="Wyszukaj film" />*/}
-                <Link style={styles.text} style={{...styles.text, ...(whichClicked === 2 ? styles.clicked : null)}}
+                <Link to="search" style={styles.text} style={{...styles.text, ...(whichClicked === 2 ? styles.clicked : null)}}
                       onMouseEnter={() =>handleMouseEnter(2)}
                       onMouseLeave={handleMouseLeave}
                       onClick={() => handleSelectedMenu(2)}

@@ -24,7 +24,7 @@ const Ranking = () => {
 
     return (
         <div className={styles.containerFluid}>
-            <BackPage backTo={"/home"} title={"Powrót do strony głównej"} />
+            {/*<BackPage backTo={"/home"} title={"Powrót do strony głównej"} />*/}
             <div className={styles.titleRanking}>
                 <p className={styles.rankingText}>Odkryj ranking</p>
             </div>

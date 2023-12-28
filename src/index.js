@@ -13,6 +13,7 @@ import NewsPage from "./components/news/newsPage";
 import AddMovie from "./components/movies/addMovie";
 import Movie from "./components/singleMovie/movie";
 import {isExpired} from "react-jwt";
+import Search from "./components/search/search";
 
 
 
@@ -23,6 +24,7 @@ ReactDOM.render(
                            <Route path="/"  element={<App /> }>
                                <Route path="/" element={<Navigate to="home" />}/>
                                <Route path="home" element={<Home />}/>
+                               <Route path="search" element={<Search />}/>
                                <Route path="movies" element={<Movies />}/>
                                <Route path="movies/add" element={isExpired(localStorage.getItem('token')) ? <Navigate replace to="/home" /> : <AddMovie />}/>
                                <Route path="movie/:id" element={<Movie />}/>
