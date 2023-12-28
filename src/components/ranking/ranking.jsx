@@ -3,9 +3,24 @@ import styles from './ranking.module.css'
 
 import BackPage from "../common/backPage";
 import MovieRankCard from "./movieRankCard";
+import {useEffect, useState} from "react";
+import axios from "axios";
 
 const Ranking = () => {
-    const arr = [...Array(10).keys()]
+
+    const [data, setData] = useState([])
+
+    const getRankingMovies = () => {
+      axios
+          .get(`http://localhost:8080/api/movies/ranking?first=5`)
+          .then((response)=> setData(response.data))
+          .catch((erro) => console.error(erro))
+    }
+
+    useEffect(() => {
+        getRankingMovies()
+    }, []);
+
 
     return (
         <div className={styles.containerFluid}>
@@ -14,16 +29,20 @@ const Ranking = () => {
                 <p className={styles.rankingText}>Odkryj ranking</p>
             </div>
             <div className={styles.container}>
-            <MovieRankCard rank={"1"}  img={img} title={"Zielona mila"} titleEng={"The Green Mile 1999"} rating={"8,6"} numOfRating={"980 732"} genre={"Dramat"} director={"Frank Darabont"}/>
-                <MovieRankCard rank={"2"}  img={img} title={"Zielona mila"} titleEng={"The Green Mile 1999"} rating={"8,6"} numOfRating={"980 732"} genre={"Dramat"} director={"Frank Darabont"}/>
-                <MovieRankCard rank={"3"}  img={img} title={"Zielona mila"} titleEng={"The Green Mile 1999"} rating={"8,6"} numOfRating={"980 732"} genre={"Dramat"} director={"Frank Darabont"}/>
-                <MovieRankCard rank={"4"}  img={img} title={"Zielona mila"} titleEng={"The Green Mile 1999"} rating={"8,6"} numOfRating={"980 732"} genre={"Dramat"} director={"Frank Darabont"}/>
-                <MovieRankCard rank={"5"}  img={img} title={"Zielona mila"} titleEng={"The Green Mile 1999"} rating={"8,6"} numOfRating={"980 732"} genre={"Dramat"} director={"Frank Darabont"}/>
-                <MovieRankCard rank={"6"}  img={img} title={"Zielona mila"} titleEng={"The Green Mile 1999"} rating={"8,6"} numOfRating={"980 732"} genre={"Dramat"} director={"Frank Darabont"}/>
-                <MovieRankCard rank={"7"}  img={img} title={"Zielona mila"} titleEng={"The Green Mile 1999"} rating={"8,6"} numOfRating={"980 732"} genre={"Dramat"} director={"Frank Darabont"}/>
-                <MovieRankCard rank={"8"}  img={img} title={"Zielona mila"} titleEng={"The Green Mile 1999"} rating={"8,6"} numOfRating={"980 732"} genre={"Dramat"} director={"Frank Darabont"}/>
-                <MovieRankCard rank={"9"}  img={img} title={"Zielona mila"} titleEng={"The Green Mile 1999"} rating={"8,6"} numOfRating={"980 732"} genre={"Dramat"} director={"Frank Darabont"}/>
-                <MovieRankCard rank={"10"}  img={img} title={"Zielona mila"} titleEng={"The Green Mile 1999"} rating={"8,6"} numOfRating={"980 732"} genre={"Dramat"} director={"Frank Darabont"}/>
+                {   data.length > 0 ?
+                    data.map((movie, index)=>
+                        <MovieRankCard rank={index+1}
+                                       img={movie.image}
+                                       title={movie.title}
+                                       rating={movie.rating}
+                                       numOfRating={movie.numOfRatings}
+                                       genre={movie.genre}
+                                       director={movie.director}
+                        />
+                    ) :
+                    <p className={styles.missingRanking}>Brak wyników</p>
+                }
+
             </div>
         </div>
     )
