@@ -84,8 +84,23 @@ const Movie = () => {
         }
         if (whichRateSelect === 0)
             selectRating(rate)
+        else if (whichRateSelect === rate)
+            deleteRating()
         else
             updateRating(rate)
+    }
+
+    const deleteRating = () => {
+       axios
+           .delete(`http://localhost:8080/api/ratings/${ratingData.id}`,
+               config
+           )
+           .then((response) => {
+               setWhichRateSelect(0)
+           })
+           .catch((error)=>{
+               console.error(error)
+           })
     }
 
     const updateRating = (rate) => {
