@@ -74,6 +74,7 @@ const Movie = () => {
     useEffect(() => {
         getInfoMovie()
         isLogged && getWatcherInfo()
+        isLogged && getRating()
     }, []);
 
     const handleSelectRating = (rate) => {
@@ -97,6 +98,18 @@ const Movie = () => {
             .then((response) => {
                 setRatingData(response.data)
                 setWhichRateSelect(rate)
+            })
+            .catch((error)=>{
+                console.error(error)
+            })
+    }
+
+    const getRating = () => {
+        axios
+            .get(`http://localhost:8080/api/ratings/movies/${movieId.id}/users/${user.userId}`)
+            .then((response) => {
+                setRatingData(response.data)
+                setWhichRateSelect(response.data.rate)
             })
             .catch((error)=>{
                 console.error(error)
