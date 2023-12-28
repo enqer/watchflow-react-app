@@ -21,6 +21,7 @@ const Movie = () => {
     const [whichRateSelect, setWhichRateSelect] = useState(0)
     const [watched, setWatched] = useState(false)
     const [data,setData]= useState({})
+    const [ratingData, setRatingData] = useState({})
     const movieId = useParams()
     const config = {
         headers: {
@@ -80,7 +81,26 @@ const Movie = () => {
             alert("Aby ocenić film, musisz się zalogować!")
             return
         }
-        setWhichRateSelect(rate)
+        selectRating(rate)
+    }
+
+    const selectRating = (rate) => {
+        axios
+            .post(`http://localhost:8080/api/rating`,
+                {
+                    rate: rate,
+                    movieId: movieId.id,
+                    userId: user.userId
+                },
+                config
+            )
+            .then((response) => {
+                setRatingData(response.data)
+                setWhichRateSelect(rate)
+            })
+            .catch((error)=>{
+                console.error(error)
+            })
     }
 
     const deleteWatcher = () => {
