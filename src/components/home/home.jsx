@@ -11,6 +11,7 @@ const Home = () => {
         const arr = [...Array(10).keys()]
         const arr2 = [...Array(3).keys()]
         const [data, setData] = useState([])
+        const [newsData, setNewsData] = useState([])
 
 
         const getPopularMovies = () => {
@@ -22,8 +23,18 @@ const Home = () => {
                     .catch((error) => console.log(error))
         }
 
+        const getNews = () => {
+                axios
+                    .get(`http://localhost:8080/api/news/lastest?last=${3}`)
+                    .then((response) => {
+                            setNewsData(response.data)
+                    })
+                    .catch((error) => console.log(error))
+        }
+
         useEffect(() => {
                 getPopularMovies()
+                getNews()
         }, []);
 
         return (
@@ -33,9 +44,12 @@ const Home = () => {
                 <div>
                         <p className={styles.popularText}>Newsy tygodnia</p>
                         <div className={styles.news}>
-                                {arr2.map(a => (
-                                    <NewsCard id={Math.floor(Math.random() * 10)} img={img2} headline={"Marvel nie skasuje Kanga. Jonathan Majors to co innego"} />
-                                ))}
+                                {
+                                        newsData.map((news) => (
+                                            <NewsCard id={news.id} img={news.image} headline={news.title}/>
+                                        ))
+
+                                }
                         </div>
                 </div>
                 <div >
