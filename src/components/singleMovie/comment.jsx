@@ -37,7 +37,12 @@ const Comment = (props) => {
                 </div>
             </div>
             <div className={styles.deleteWrapper}>
-                {isLogged && user.userId === props.userId.toString() ? <MdDelete onClick={handleDeleteComment}/> : null}
+                {isLogged
+                    && (user.userId === props.userId.toString() || user.isAdmin)
+                    && (
+                        <MdDelete onClick={handleDeleteComment}/>
+                    )
+                }
             </div>
 
         </div>

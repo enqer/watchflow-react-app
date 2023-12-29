@@ -1,6 +1,5 @@
 
 import styles from './movie.module.css'
-import img from "../../img/loki.jpg";
 import { IoStar, IoStarOutline } from "react-icons/io5";
 import { FaRegUserCircle } from "react-icons/fa";
 import { useEffect, useState} from "react";
@@ -11,9 +10,12 @@ import axios from "axios";
 import Comment from "./comment";
 import AddComment from "./addComment";
 import { config, isLogged, user } from '../../config/authConfig'
+import {MdDelete} from "react-icons/md";
+import {useNavigate} from "react-router";
 
 const Movie = () => {
 
+    let navigate = useNavigate()
     const [whichHover, setWhichHover] = useState(0)
     const [whichRateSelect, setWhichRateSelect] = useState(0)
     const [watched, setWatched] = useState(false)
@@ -177,7 +179,21 @@ const Movie = () => {
     }
 
 
+    const switchRoute = () => {
+        navigate('/movies')
+        window.location.reload()
+    }
 
+    const handleDeleteMovie = () => {
+        axios
+            .delete(`http://localhost:8080/api/movies/${movieId.id}`,
+                config
+            )
+            .then((response) => {
+                switchRoute()
+            })
+            .catch((error) => console.log(error))
+    }
 return (
         <div className={styles.containerFluid}>
             <BackPage backTo={"/movies"} title={data.title} />
@@ -188,7 +204,7 @@ return (
                     </div>
                     <div className={styles.infoDataWrapper}>
                         <MovieInfo
-                            firstLine={data.content?.substring(0, 100)+"..."}
+                            firstLine={data.content?.substring(0, 100) + "..."}
                             title={data.title}
                             director={data.director}
                             productionYear={data.productionYear}
@@ -201,24 +217,45 @@ return (
                     <div className={styles.rateWrapper}>
                         <div className={styles.displaySelectedRate}>
                             <div className={styles.ratingValues}>
-                                <FaRegUserCircle className={styles.defaultIconNumber} />
-                                <div className={whichHover > 0 || whichRateSelect > 0? [styles.selectedRateNumber, styles.selectedRateNumberAfter].join(' ') : [styles.selectedRateNumber, styles.selectedRateNumberBefore].join(' ')}>{whichRateSelect > 0 && whichHover === 0 ? getSelectedRate(whichRateSelect) : getSelectedRate(whichHover)}</div>
+                                <FaRegUserCircle className={styles.defaultIconNumber}/>
+                                <div
+                                    className={whichHover > 0 || whichRateSelect > 0 ? [styles.selectedRateNumber, styles.selectedRateNumberAfter].join(' ') : [styles.selectedRateNumber, styles.selectedRateNumberBefore].join(' ')}>{whichRateSelect > 0 && whichHover === 0 ? getSelectedRate(whichRateSelect) : getSelectedRate(whichHover)}</div>
                             </div>
                             <div className={styles.ratingLabels}>
                                 <p>{whichRateSelect > 0 && whichHover === 0 ? getLabelByRate(whichRateSelect) : getLabelByRate(whichHover)}</p>
                             </div>
                         </div>
                         <div className={styles.selectRateStar}>
-                            <Link to="" onClick={() => handleSelectRating(1)} onMouseEnter={() =>handlerStarHover(1)} onMouseLeave={() =>handlerStarHover(0)}>{whichHover >= 1 || (whichRateSelect >= 1 && whichHover === 0) ? <IoStar /> : <IoStarOutline />}</Link>
-                            <Link to="" onClick={() => handleSelectRating(2)} onMouseEnter={() =>handlerStarHover(2)} onMouseLeave={() =>handlerStarHover(0)}>{whichHover >= 2 || (whichRateSelect >= 2 && whichHover === 0)  ? <IoStar /> : <IoStarOutline />}</Link>
-                            <Link to="" onClick={() => handleSelectRating(3)} onMouseEnter={() =>handlerStarHover(3)} onMouseLeave={() =>handlerStarHover(0)}>{whichHover >= 3 || (whichRateSelect >= 3 && whichHover === 0) ? <IoStar /> : <IoStarOutline />}</Link>
-                            <Link to="" onClick={() => handleSelectRating(4)} onMouseEnter={() =>handlerStarHover(4)} onMouseLeave={() =>handlerStarHover(0)}>{whichHover >= 4 || (whichRateSelect >= 4 && whichHover === 0) ? <IoStar /> : <IoStarOutline />}</Link>
-                            <Link to="" onClick={() => handleSelectRating(5)} onMouseEnter={() =>handlerStarHover(5)} onMouseLeave={() =>handlerStarHover(0)}>{whichHover >= 5 || (whichRateSelect >= 5 && whichHover === 0) ? <IoStar /> : <IoStarOutline />}</Link>
-                            <Link to="" onClick={() => handleSelectRating(6)} onMouseEnter={() =>handlerStarHover(6)} onMouseLeave={() =>handlerStarHover(0)}>{whichHover >= 6 || (whichRateSelect >= 6 && whichHover === 0) ? <IoStar /> : <IoStarOutline />}</Link>
-                            <Link to="" onClick={() => handleSelectRating(7)} onMouseEnter={() =>handlerStarHover(7)} onMouseLeave={() =>handlerStarHover(0)}>{whichHover >= 7 || (whichRateSelect >= 7 && whichHover === 0) ? <IoStar /> : <IoStarOutline />}</Link>
-                            <Link to="" onClick={() => handleSelectRating(8)} onMouseEnter={() =>handlerStarHover(8)} onMouseLeave={() =>handlerStarHover(0)}>{whichHover >= 8 || (whichRateSelect >= 8 && whichHover === 0) ? <IoStar /> : <IoStarOutline />}</Link>
-                            <Link to="" onClick={() => handleSelectRating(9)} onMouseEnter={() =>handlerStarHover(9)} onMouseLeave={() =>handlerStarHover(0)}>{whichHover >= 9 || (whichRateSelect >= 9 && whichHover === 0) ? <IoStar /> : <IoStarOutline />}</Link>
-                            <Link to="" onClick={() => handleSelectRating(10)} onMouseEnter={() =>handlerStarHover(10)} onMouseLeave={() =>handlerStarHover(0)}>{whichHover >= 10 || (whichRateSelect >= 10 && whichHover === 0) ? <IoStar /> : <IoStarOutline />}</Link>
+                            <Link to="" onClick={() => handleSelectRating(1)} onMouseEnter={() => handlerStarHover(1)}
+                                  onMouseLeave={() => handlerStarHover(0)}>{whichHover >= 1 || (whichRateSelect >= 1 && whichHover === 0) ?
+                                <IoStar/> : <IoStarOutline/>}</Link>
+                            <Link to="" onClick={() => handleSelectRating(2)} onMouseEnter={() => handlerStarHover(2)}
+                                  onMouseLeave={() => handlerStarHover(0)}>{whichHover >= 2 || (whichRateSelect >= 2 && whichHover === 0) ?
+                                <IoStar/> : <IoStarOutline/>}</Link>
+                            <Link to="" onClick={() => handleSelectRating(3)} onMouseEnter={() => handlerStarHover(3)}
+                                  onMouseLeave={() => handlerStarHover(0)}>{whichHover >= 3 || (whichRateSelect >= 3 && whichHover === 0) ?
+                                <IoStar/> : <IoStarOutline/>}</Link>
+                            <Link to="" onClick={() => handleSelectRating(4)} onMouseEnter={() => handlerStarHover(4)}
+                                  onMouseLeave={() => handlerStarHover(0)}>{whichHover >= 4 || (whichRateSelect >= 4 && whichHover === 0) ?
+                                <IoStar/> : <IoStarOutline/>}</Link>
+                            <Link to="" onClick={() => handleSelectRating(5)} onMouseEnter={() => handlerStarHover(5)}
+                                  onMouseLeave={() => handlerStarHover(0)}>{whichHover >= 5 || (whichRateSelect >= 5 && whichHover === 0) ?
+                                <IoStar/> : <IoStarOutline/>}</Link>
+                            <Link to="" onClick={() => handleSelectRating(6)} onMouseEnter={() => handlerStarHover(6)}
+                                  onMouseLeave={() => handlerStarHover(0)}>{whichHover >= 6 || (whichRateSelect >= 6 && whichHover === 0) ?
+                                <IoStar/> : <IoStarOutline/>}</Link>
+                            <Link to="" onClick={() => handleSelectRating(7)} onMouseEnter={() => handlerStarHover(7)}
+                                  onMouseLeave={() => handlerStarHover(0)}>{whichHover >= 7 || (whichRateSelect >= 7 && whichHover === 0) ?
+                                <IoStar/> : <IoStarOutline/>}</Link>
+                            <Link to="" onClick={() => handleSelectRating(8)} onMouseEnter={() => handlerStarHover(8)}
+                                  onMouseLeave={() => handlerStarHover(0)}>{whichHover >= 8 || (whichRateSelect >= 8 && whichHover === 0) ?
+                                <IoStar/> : <IoStarOutline/>}</Link>
+                            <Link to="" onClick={() => handleSelectRating(9)} onMouseEnter={() => handlerStarHover(9)}
+                                  onMouseLeave={() => handlerStarHover(0)}>{whichHover >= 9 || (whichRateSelect >= 9 && whichHover === 0) ?
+                                <IoStar/> : <IoStarOutline/>}</Link>
+                            <Link to="" onClick={() => handleSelectRating(10)} onMouseEnter={() => handlerStarHover(10)}
+                                  onMouseLeave={() => handlerStarHover(0)}>{whichHover >= 10 || (whichRateSelect >= 10 && whichHover === 0) ?
+                                <IoStar/> : <IoStarOutline/>}</Link>
                         </div>
                         <div className={styles.selectWatched}>
                             <p>Już obejrzane?</p>
@@ -233,7 +270,7 @@ return (
                 </div>
                 <div>
                     <h2>Komentarze:</h2>
-                    {data.comments?.length > 0 ? data.comments.map((comment)=>
+                    {data.comments?.length > 0 ? data.comments.map((comment) =>
                         <Comment
                             id={comment.id}
                             content={comment.content}
@@ -242,14 +279,31 @@ return (
                             userId={comment.userId}
                             userLogin={comment.userLogin}
                         />
-                    ) : <p className={styles.missingComment} >Brak komentarzy, aby dodać komentarz musisz być zalogowany.</p>}
+                    ) : <p className={styles.missingComment}>Brak komentarzy, aby dodać komentarz musisz być
+                        zalogowany.</p>}
                 </div>
                 <div>
-                    {isLogged && <AddComment movieId={movieId.id} userId={user.userId}/>}
+                    {isLogged && (
+                        <AddComment movieId={movieId.id} userId={user.userId}/>
+                    )}
+                </div>
+                <div>
+                    {isLogged
+                        && user.isAdmin
+                        && (
+                            <div
+                                className={styles.deleteMovie}
+                                onClick={handleDeleteMovie}
+                            >
+                                <p>Usuń film</p>
+                                <MdDelete />
+                            </div>
+                        )
+                    }
                 </div>
             </div>
         </div>
-    )
+)
 }
 
 const rates = [

@@ -24,8 +24,8 @@ function App() {
       <div className="container_fluid" style={styles.container}>
           <Navbar style={styles.navbar} />
           {/*<div className="container" style={{marginTop: '70px', minHeight: 'calc(100vh - (110px + 70px))'}}>*/}
-          {/*<div className="container" style={{flexGrow: 1, margin: '70px auto', width: '100%'}}>*/}
-          <div className="container" style={{flexGrow: 1}}>
+          <div className="container" style={{flexGrow: 1, margin: '70px auto', width: '100%'}}>
+          {/*<div className="container" style={{flexGrow: 1}}>*/}
               <Outlet/>
           </div>
           <Footer />

@@ -63,3 +63,14 @@
 .horizontalDisplay p{
     margin: 20px;
 }
+
+.deleteMovie {
+    display: flex;
+    align-items: center;
+    color: var(--blue);
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 20px;
+    width: 150px;
+}
+
