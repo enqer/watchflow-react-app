@@ -32,6 +32,7 @@ const Ranking = () => {
                 {   data.length > 0 ?
                     data.map((movie, index)=>
                         <MovieRankCard rank={index+1}
+                                       id={movie.id}
                                        img={movie.image}
                                        title={movie.title}
                                        rating={movie.rating}

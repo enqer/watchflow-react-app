@@ -64,6 +64,7 @@
     position: relative;
     overflow: hidden;
     justify-content: space-around;
+    text-decoration: none;
 }
 
 .imgWrapper {

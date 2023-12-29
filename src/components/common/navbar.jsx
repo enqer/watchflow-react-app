@@ -8,12 +8,11 @@ import { FaRankingStar } from "react-icons/fa6";
 import '../../fonts/Roboto-Bold.ttf';
 import Logo from "./logo";
 import Login from "../logIn/login";
-import SignIn from "../logIn/signIn";
 import FormPage from "../logIn/formPage";
-import {isExpired} from "react-jwt";
+import { isLogged } from "../../config/authConfig";
+
 
 const Navbar = () => {
-    const isLogged = !isExpired(localStorage.getItem('token'))
 
     const [isHover, setIsHover] = useState(false)
     const [numOfMenu,setNumOfMenu] = useState(0)

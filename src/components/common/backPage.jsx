@@ -2,7 +2,9 @@ import styles from './backPage.module.css'
 import {Link} from "react-router-dom";
 import {FaArrowLeftLong} from "react-icons/fa6";
 import {useState} from "react";
+import { useNavigate } from "react-router-dom";
 const BackPage = (props) => {
+    const navigate = useNavigate();
 
     const [arrowMove, setArrowMove]=useState(false)
     const handlerArrow = () => {
@@ -11,7 +13,9 @@ const BackPage = (props) => {
     return(
         <div className={styles.backPage}>
             <Link
-                to={props.backTo}
+                to={""}
+                onClick={() => navigate(-1)}
+                // to={history.goBack()}
                 onMouseEnter={handlerArrow}
                 onMouseLeave={handlerArrow}
             >
