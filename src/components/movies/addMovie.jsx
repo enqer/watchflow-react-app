@@ -5,13 +5,16 @@ import {useState} from "react";
 import upload from '../../img/upload.png'
 import BackPage from "../common/backPage";
 
-import { imageDb} from "../../firebase/config";
+import { imageDb} from "../../config/firebaseConfig";
 import { ref, uploadBytes, getDownloadURL } from 'firebase/storage'
 import { v4 } from 'uuid'
+import { config, isLogged, user } from "../../config/authConfig";
+import axios from "axios";
+import {useNavigate} from "react-router";
 
 
 const AddMovie = () => {
-
+    let navigate = useNavigate()
     //Date
     const now = new Date().getUTCFullYear();
     const years = Array(now - (now - (now - 1899))).fill('').map((v, idx) => now - idx);
@@ -22,7 +25,10 @@ const AddMovie = () => {
     const [genre, setGenre] = useState(options[0]);
     const [year, setYear] = useState(now);
     const [description, setDescription] = useState('');
+    const [validText, setValidText] = useState('')
+    const [urlImage, setUrlImage] = useState('')
 
+    // TODO SEPARATE COMPONENT COMMON
     // Design clicking
     const [isClickedName, setIsClickedName] = useState(false)
     const [isClickedDirector, setIsClickedDirector] = useState(false)
@@ -30,10 +36,23 @@ const AddMovie = () => {
     const changePositionDirector = () => {document.getElementsByName("director")[0].value === "" ? setIsClickedDirector(!isClickedDirector) : setIsClickedDirector(true)}
 
 
+    const validate = () => {
+        if (description.trim().length < 100){
+            setValidText('Wprowadź dłuższy opis')
+            return false
+        }
+        if (selectedImage === null){
+            setValidText('Wybierz zdjęcie')
+            return false
+        }
+        setDescription(description.replace('"',''))
+        return true
+    }
 
 
     const handlerSubmit = (event) => {
         event.preventDefault()
+        if (!validate()) return
 
         console.log(name)
         console.log(director)
@@ -47,10 +66,37 @@ const AddMovie = () => {
                 return getDownloadURL(res.ref)
             })
             .then(url => {
+                setUrlImage(url)
                 console.log("url: " + url)
+                addMovie()
             })
+            .catch(error => {
+                setValidText("Dodanie filmu nie powiodło się")
+            })
+    }
 
-        // console.log(mountainsRef)
+    const addMovie = () => {
+        axios
+            .post(`http://localhost:8080/api/movie`,
+                {
+                    title: name,
+                    image: urlImage,
+                    content: description,
+                    genre: genre,
+                    productionYear: year,
+                    director: director
+                },
+                config
+            )
+            .then((response) => {
+                    switchRoute(response.data.id)
+            })
+            .catch(error => setValidText("Dodanie filmu nie powiodło się"))
+    }
+
+    const switchRoute = (id) => {
+        navigate(`/movie/${id}`)
+        window.location.reload()
     }
 
     // tODO do poprawy img picker resizing!!
@@ -67,6 +113,7 @@ const AddMovie = () => {
                         autoComplete="off"
                     >
                         <div className={styles.imgContainer}>
+                            <p className={styles.metaInfo}>Zdjęcie</p>
                             <div className={styles.upLoadedImgWrapper}>
                                 <img className={styles.upLoadedImg}
                                      alt="Twoje wybrane zdjęcie"
@@ -84,7 +131,6 @@ const AddMovie = () => {
                                        name="myImage"
                                        accept="image/png, image/jpeg"
                                        onChange={(event) => {
-                                           console.log(event.target.files[0]);
                                            setSelectedImage(event.target.files[0]);
                                        }}
                                 />
@@ -93,17 +139,23 @@ const AddMovie = () => {
                         </div>
                         <div className={styles.dataWrapper}>
                             <div className={styles.mainData}>
+                                <p className={styles.metaInfo}>Informacje</p>
                                 <div className={styles.wrapper}>
                                     <input onFocus={() => changePositionName()} onBlur={() => changePositionName()}
                                            onChange={(event) => setName(event.target.value)}
-                                           className={styles.input} type="text" name="name"  required />
-                                    <div className={isClickedName ? [styles.inputText, styles.changePositionUp].join(' ') : [styles.inputText,styles.changePositionDown].join(' ')}>Nazwa</div>
+                                           className={styles.input} type="text" name="name" required/>
+                                    <div
+                                        className={isClickedName ? [styles.inputText, styles.changePositionUp].join(' ') : [styles.inputText, styles.changePositionDown].join(' ')}>Nazwa
+                                    </div>
                                 </div>
                                 <div className={styles.wrapper}>
-                                    <input onFocus={() => changePositionDirector()} onBlur={() => changePositionDirector()}
+                                    <input onFocus={() => changePositionDirector()}
+                                           onBlur={() => changePositionDirector()}
                                            onChange={(event) => setDirector(event.target.value)}
-                                           className={styles.input} type="text" name="director"  required />
-                                    <div className={isClickedDirector ? [styles.inputText, styles.changePositionUp].join(' ') : [styles.inputText,styles.changePositionDown].join(' ')}>Reżyser</div>
+                                           className={styles.input} type="text" name="director" required/>
+                                    <div
+                                        className={isClickedDirector ? [styles.inputText, styles.changePositionUp].join(' ') : [styles.inputText, styles.changePositionDown].join(' ')}>Reżyser
+                                    </div>
                                 </div>
                                 <div className={styles.selectGenre}>
                                     <p>Wybierz gatunek:</p>
@@ -112,7 +164,7 @@ const AddMovie = () => {
                                         className={styles.select}
                                         onChange={(event) => setGenre(event.target.value)}
                                     >
-                                        {options.map((option, index) =>(
+                                        {options.map((option, index) => (
                                             <option
                                                 className={styles.option}
                                                 value={option}
@@ -125,8 +177,8 @@ const AddMovie = () => {
                                 </div>
                                 <div className={styles.selectDate}>
                                     <p>Wybierz rok:</p>
-                                    <select className={styles.select} onChange={(event) => setYear(event.target.value)} >
-                                        {years.map((option) =>(
+                                    <select className={styles.select} onChange={(event) => setYear(event.target.value)}>
+                                        {years.map((option) => (
                                             <option className={styles.option}>{option}</option>
                                         ))}
                                     </select>
@@ -134,13 +186,13 @@ const AddMovie = () => {
                             </div>
                             <div className={styles.wrapColumn}>
                                 <div className={styles.description}>
-                                    <p>Opis filmu:</p>
+                                    <p className={styles.metaInfo}>Opis filmu</p>
                                     <textarea spellCheck="false" placeholder="Napisz coś..." onChange={(event) => setDescription(event.target.value)}></textarea>
 
                                 </div>
                                 <div className={styles.wrapSubmit}>
                                     <input className={styles.submit} type="submit" value="Dodaj film"/>
-                                    <p>Wprowadź dobre dane</p>
+                                    <p>{validText}</p>
                                 </div>
                             </div>
                         </div>

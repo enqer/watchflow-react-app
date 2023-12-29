@@ -5,12 +5,10 @@ import React, {useState} from "react";
 import { isExpired, decodeToken  } from "react-jwt";
 import styles from './login.module.css'
 import {useNavigate} from "react-router";
-
+import { isLogged, user} from "../../config/authConfig";
 
 const Login = (props) => {
     let navigate = useNavigate()
-    const user = decodeToken(localStorage.getItem('token'))
-    const isLogged = !isExpired(localStorage.getItem('token'))
 
     const [isHover, setIsHover] = useState(false)
 

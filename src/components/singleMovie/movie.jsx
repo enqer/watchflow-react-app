@@ -3,36 +3,25 @@ import styles from './movie.module.css'
 import img from "../../img/loki.jpg";
 import { IoStar, IoStarOutline } from "react-icons/io5";
 import { FaRegUserCircle } from "react-icons/fa";
-import {Component, useEffect, useState} from "react";
+import { useEffect, useState} from "react";
 import {Link, useParams} from "react-router-dom";
 import MovieInfo from "./movieInfo";
 import BackPage from "../common/backPage";
 import axios from "axios";
 import Comment from "./comment";
-import {decodeToken, isExpired} from "react-jwt";
 import AddComment from "./addComment";
-
+import { config, isLogged, user } from '../../config/authConfig'
 
 const Movie = () => {
-    const isLogged = !isExpired(localStorage.getItem('token'))
-    const user = decodeToken(localStorage.getItem('token'))
-    // const [arrowMove, setArrowMove]=useState(false)
+
     const [whichHover, setWhichHover] = useState(0)
     const [whichRateSelect, setWhichRateSelect] = useState(0)
     const [watched, setWatched] = useState(false)
     const [data,setData]= useState({})
     const [ratingData, setRatingData] = useState({})
     const movieId = useParams()
-    const config = {
-        headers: {
-            Authorization: `Bearer ${localStorage.getItem('token')}`
-        }
-    }
 
 
-    // const handlerArrow = () => {
-    //   setArrowMove(!arrowMove)
-    // }
     const handlerStarHover = (num) => {
         setWhichHover(num)
     }
@@ -199,7 +188,7 @@ return (
                     </div>
                     <div className={styles.infoDataWrapper}>
                         <MovieInfo
-                            firstLine={data.content?.substring(0, data.content.indexOf('.'))}
+                            firstLine={data.content?.substring(0, 100)+"..."}
                             title={data.title}
                             director={data.director}
                             productionYear={data.productionYear}

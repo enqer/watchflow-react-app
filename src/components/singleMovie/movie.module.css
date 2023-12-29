@@ -7,10 +7,12 @@
 .container{
     display: flex;
     flex-direction: column;
+    width: 100%;
 }
 .mainContainer {
     display: flex;
     flex-wrap: wrap;
+    width: 100%;
 }
 
 .container {
@@ -37,7 +39,7 @@
 
 .infoDataWrapper {
     margin: 0 30px;
-    width: 700px;
+    width: 600px;
 }
 
 

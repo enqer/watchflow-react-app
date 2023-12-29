@@ -1,6 +1,6 @@
 .infoDescription {
-    /*width: 40%;*/
-    /*word-break: break-word;*/
+    width: 100%;
+    word-break: break-word;
 }
 
 .infoDescription p {
@@ -9,6 +9,9 @@
     font-size: 18px;
 }
 
+.container {
+    width: 100%;
+}
 
 .ratingInfo {
     color: var(--darkBlue);

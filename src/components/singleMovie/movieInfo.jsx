@@ -5,7 +5,7 @@ import InfoText from "./infoText";
 const MovieInfo = (props) => {
 
     return (
-        <div>
+        <div className={styles.container}>
             <div className={styles.infoDescription}>
                 <p>{props.firstLine}</p>
             </div>
