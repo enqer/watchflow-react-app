@@ -36,10 +36,13 @@ const CarouselSlider = () => {
                       itemsToScroll={1}
                       isRTL={false}
             >
-                {
-                    data.map((movie) =>
-                        (
-                            <MovieCard id={movie.id} title={''} img={movie.image} />
+                {data.map((movie) => (
+                            <MovieCard
+                                id={movie.id}
+                                title={''}
+                                img={movie.image}
+                                key={movie.id}
+                            />
                         )
                     )
                 }

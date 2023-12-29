@@ -29,19 +29,22 @@ const Ranking = () => {
                 <p className={styles.rankingText}>Odkryj ranking</p>
             </div>
             <div className={styles.container}>
-                {data.length > 0 ? data.map((movie, index)=>
-                        <MovieRankCard rank={index+1}
-                                       id={movie.id}
-                                       img={movie.image}
-                                       title={movie.title}
-                                       rating={movie.rating}
-                                       numOfRating={movie.numOfRatings}
-                                       genre={movie.genre}
-                                       director={movie.director}
-                        />
-                    ) :
+                {data.length > 0 ? (
+                    data.map((movie, index) =>
+                        <MovieRankCard
+                            rank={index+1}
+                            id={movie.id}
+                            img={movie.image}
+                            title={movie.title}
+                            rating={movie.rating}
+                            numOfRating={movie.numOfRatings}
+                            genre={movie.genre}
+                            director={movie.director}
+                            key={movie.id}
+                        />)
+                ) : (
                     <p className={styles.missingRanking}>Brak wyników</p>
-                }
+                )}
 
             </div>
         </div>

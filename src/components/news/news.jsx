@@ -24,9 +24,13 @@ const News = () => {
         <div className="newsContainer">
             <p className="newsHeaderText">Newsy</p>
             <div className="newsWrapper">
-                {
-                    newsData.map((news) => (
-                        <NewsCard id={news.id} img={news.image} headline={news.title}/>
+                {newsData.map((news) => (
+                        <NewsCard
+                            id={news.id}
+                            img={news.image}
+                            headline={news.title}
+                            key={news.id}
+                        />
                     ))
 
                 }

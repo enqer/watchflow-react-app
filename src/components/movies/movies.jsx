@@ -68,8 +68,14 @@ const Movies = () => {
               <div className={styles.choiceMovie}>
                   <p className={styles.text}>Filmy</p>
                   <select className={styles.select} onChange={handleOptionSelect} >
-                      {options.map((option) =>(
-                          <option className={styles.option} value={option.label}>{option.label}</option>
+                      {options.map((option, index) => (
+                          <option
+                              className={styles.option} 
+                              value={option.label}
+                              key={index}
+                          >
+                              {option.label}
+                          </option>
                       ))}
                   </select>
               </div>
@@ -86,9 +92,18 @@ const Movies = () => {
               }
           </div>
           <div className={styles.wrapperImages}>
-              {!isNotFound ? data.map(d => (
-                  <MovieCard id={d.id} img={d.image} title={d.title} />
-              )) : <p className={styles.notFound}>Nie znaleziono</p>}
+              {!isNotFound ?
+                  data.map(d => (
+                      <MovieCard
+                          id={d.id}
+                          img={d.image}
+                          title={d.title}
+                          key={d.id}
+                      />
+                  )) : (
+                      <p className={styles.notFound}>Nie znaleziono</p>
+                  )
+              }
           </div>
       </div>
   )

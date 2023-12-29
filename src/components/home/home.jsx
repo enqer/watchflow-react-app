@@ -44,10 +44,14 @@ const Home = () => {
                 <div>
                         <p className={styles.popularText}>Newsy tygodnia</p>
                         <div className={styles.news}>
-                                {
-                                        newsData.map((news) => (
-                                            <NewsCard id={news.id} img={news.image} headline={news.title}/>
-                                        ))
+                                {newsData.map((news) => (
+                                    <NewsCard
+                                        id={news.id}
+                                        img={news.image}
+                                        headline={news.title}
+                                        key={news.id}
+                                    />
+                                ))
 
                                 }
                         </div>
@@ -55,10 +59,14 @@ const Home = () => {
                 <div >
                         <p className={styles.popularText}>Najpopularniejsze</p>
                         <div className={styles.wrapperImages}>
-                                {
-                                        data.map((movie) => (
-                                            <MovieCard id={movie.id} img={movie.image} title={movie.title} />
-                                        ))
+                                {data.map((movie) => (
+                                    <MovieCard
+                                        id={movie.id}
+                                        img={movie.image}
+                                        title={movie.title}
+                                        key={movie.id}
+                                    />
+                                ))
                                 }
                         </div>
                 </div>

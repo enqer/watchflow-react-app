@@ -14,10 +14,13 @@ import AddMovie from "./components/movies/addMovie";
 import Movie from "./components/singleMovie/movie";
 import {isExpired} from "react-jwt";
 import Search from "./components/search/search";
+import {createRoot} from "react-dom/client";
 
 
+const rootElement = document.getElementById("root");
+const root = createRoot(rootElement);
 
-ReactDOM.render(
+root.render(
     <React.StrictMode>
         <BrowserRouter>
                       <Routes>
@@ -35,8 +38,7 @@ ReactDOM.render(
                            </Route>
                       </Routes>
                    </BrowserRouter>
-    </React.StrictMode>,
-    document.getElementById('root')
+    </React.StrictMode>
 );
 
 
