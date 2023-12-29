@@ -1,17 +1,35 @@
 import NewsCard from "./newsCard";
 import img2 from "../../img/news.jpg";
 import './news.css'
+import axios from "axios";
+import {useEffect, useState} from "react";
 
 const News = () => {
-    const arr2 = [1,2,3,4,5,6,7,8,9,10]
+    const [newsData, setNewsData] = useState([])
+    const getNews = () => {
+        axios
+            .get(`http://localhost:8080/api/news`)
+            .then((response) => {
+                setNewsData(response.data)
+            })
+            .catch((error) => console.log(error))
+    }
+
+    useEffect(() => {
+
+        getNews()
+    }, []);
 
     return (
         <div className="newsContainer">
-            <p className="newsHeaderText">Newsy tygodnia</p>
+            <p className="newsHeaderText">Newsy</p>
             <div className="newsWrapper">
-                {arr2.map(a => (
-                    <NewsCard id={Math.floor(Math.random() * 10)} img={img2} headline={"Marvel nie skasuje Kanga. Jonathan Majors to co innego"} />
-                ))}
+                {
+                    newsData.map((news) => (
+                        <NewsCard id={news.id} img={news.image} headline={news.title}/>
+                    ))
+
+                }
             </div>
         </div>
     )
