@@ -29,8 +29,7 @@ const Ranking = () => {
                 <p className={styles.rankingText}>Odkryj ranking</p>
             </div>
             <div className={styles.container}>
-                {   data.length > 0 ?
-                    data.map((movie, index)=>
+                {data.length > 0 ? data.map((movie, index)=>
                         <MovieRankCard rank={index+1}
                                        id={movie.id}
                                        img={movie.image}

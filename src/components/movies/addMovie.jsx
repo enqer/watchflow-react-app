@@ -11,6 +11,7 @@ import { v4 } from 'uuid'
 import { config, isLogged, user } from "../../config/authConfig";
 import axios from "axios";
 import {useNavigate} from "react-router";
+import TextInput from "../common/textInput";
 
 
 const AddMovie = () => {
@@ -27,14 +28,6 @@ const AddMovie = () => {
     const [description, setDescription] = useState('');
     const [validText, setValidText] = useState('')
     const [urlImage, setUrlImage] = useState('')
-
-    // TODO SEPARATE COMPONENT COMMON
-    // Design clicking
-    const [isClickedName, setIsClickedName] = useState(false)
-    const [isClickedDirector, setIsClickedDirector] = useState(false)
-    const changePositionName = () => {document.getElementsByName("name")[0].value === "" ? setIsClickedName(!isClickedName) : setIsClickedName(true)}
-    const changePositionDirector = () => {document.getElementsByName("director")[0].value === "" ? setIsClickedDirector(!isClickedDirector) : setIsClickedDirector(true)}
-
 
     const validate = () => {
         if (description.trim().length < 100){
@@ -140,22 +133,18 @@ const AddMovie = () => {
                         <div className={styles.dataWrapper}>
                             <div className={styles.mainData}>
                                 <p className={styles.metaInfo}>Informacje</p>
-                                <div className={styles.wrapper}>
-                                    <input onFocus={() => changePositionName()} onBlur={() => changePositionName()}
-                                           onChange={(event) => setName(event.target.value)}
-                                           className={styles.input} type="text" name="name" required/>
-                                    <div
-                                        className={isClickedName ? [styles.inputText, styles.changePositionUp].join(' ') : [styles.inputText, styles.changePositionDown].join(' ')}>Nazwa
-                                    </div>
-                                </div>
-                                <div className={styles.wrapper}>
-                                    <input onFocus={() => changePositionDirector()}
-                                           onBlur={() => changePositionDirector()}
-                                           onChange={(event) => setDirector(event.target.value)}
-                                           className={styles.input} type="text" name="director" required/>
-                                    <div
-                                        className={isClickedDirector ? [styles.inputText, styles.changePositionUp].join(' ') : [styles.inputText, styles.changePositionDown].join(' ')}>Reżyser
-                                    </div>
+
+                                <div className={styles.inputWrapper}>
+                                    <TextInput
+                                        state={setName}
+                                        name={"tytuł"}
+                                        type={"text"}
+                                    />
+                                    <TextInput
+                                        state={setDirector}
+                                        name={"Reżyser"}
+                                        type={"text"}
+                                    />
                                 </div>
                                 <div className={styles.selectGenre}>
                                     <p>Wybierz gatunek:</p>

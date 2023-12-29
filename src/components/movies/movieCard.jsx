@@ -18,7 +18,9 @@ const MovieCard = (props) => {
         >
             <div className={styles.movieCell}>
                 <img className={isHover ? [styles.movieImg,styles.movieImgHover].join(' ') : styles.movieImg} src={props.img} alt="Zdjęcie film"/>
-                {(isHover && props.title !== "") && <p className={styles.title}>{props.title}</p>}
+                {(isHover && props.title !== "") &&
+                    <p className={styles.title}>{props.title}</p>
+                }
             </div>
         </Link>
 

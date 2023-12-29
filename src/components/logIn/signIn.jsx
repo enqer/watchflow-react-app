@@ -3,6 +3,7 @@ import {useState} from "react";
 import styles from  './formLogReg.module.css'
 import axios from "axios";
 import {useNavigate} from "react-router";
+import TextInput from "../common/textInput";
 
 const SignIn = (props) => {
     let navigate = useNavigate()
@@ -10,12 +11,6 @@ const SignIn = (props) => {
     const [login, setLogin]=useState('')
     const [password, setPassword]=useState('')
     const [alert, setAlert]=useState('')
-
-    // Design clicking
-    const [isClickedLogin, setIsClickedLogin] = useState(false)
-    const [isClickedPassword, setIsClickedPassword] = useState(false)
-    const changePositionLogin = () => {document.getElementsByName("login")[0].value === "" ? setIsClickedLogin(!isClickedLogin) : setIsClickedLogin(true)}
-    const changePositionPassword = () => {document.getElementsByName("pass")[0].value === "" ? setIsClickedPassword(!isClickedPassword) : setIsClickedPassword(true)}
 
 
     const handleChangeRoute = () => {
@@ -60,21 +55,17 @@ const SignIn = (props) => {
             <div className={styles.form}>
                 <p className={styles.signInTitle}>Zaloguj się</p>
                 <form autoComplete="off" onSubmit={handleSubmit}>
-                    <div className={styles.wrapper}>
-                        <input onFocus={() => changePositionLogin()} onBlur={() => changePositionLogin()}
-                               onChange={(event) => setLogin(event.target.value)}
-                               className={styles.input} type="text" name="login" required/>
-                        <div
-                            className={isClickedLogin ? [styles.inputText, styles.changePositionUp].join(' ') : [styles.inputText, styles.changePositionDown].join(' ')}>Login
-                        </div>
-                    </div>
-                    <div className={styles.wrapper}>
-                        <input onFocus={() => changePositionPassword()} onBlur={() => changePositionPassword()}
-                               onChange={(event) => setPassword(event.target.value)}
-                               className={styles.input} type="password" name="pass" required/>
-                        <div
-                            className={isClickedPassword ? [styles.inputText, styles.changePositionUp].join(' ') : [styles.inputText, styles.changePositionDown].join(' ')}>Hasło
-                        </div>
+                    <div>
+                        <TextInput
+                            state={setLogin}
+                            name={"login"}
+                            type={"text"}
+                        />
+                        <TextInput
+                            state={setPassword}
+                            name={"hasło"}
+                            type={"password"}
+                        />
                     </div>
                     <div className={styles.forgotPass}>
                         <p>Nie pamiętam hasła</p>
@@ -92,5 +83,4 @@ const SignIn = (props) => {
             </div>
     )
 }
-
 export default SignIn
