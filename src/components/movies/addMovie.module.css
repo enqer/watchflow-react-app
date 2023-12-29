@@ -10,12 +10,14 @@
 }
 
 .header {
-
+    display: flex;
+    justify-content: center;
 }
 
 .header p {
     font-size: 28px;
     padding: 10px;
+    font-weight: bold;
     color: var(--white);
 }
 

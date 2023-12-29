@@ -3,6 +3,12 @@ import styles from './addMovie.module.css'
 import {useState} from "react";
 
 import upload from '../../img/upload.png'
+import BackPage from "../common/backPage";
+
+import { imageDb} from "../../firebase/config";
+import { ref, uploadBytes, getDownloadURL } from 'firebase/storage'
+import { v4 } from 'uuid'
+
 
 const AddMovie = () => {
 
@@ -25,6 +31,7 @@ const AddMovie = () => {
 
 
 
+
     const handlerSubmit = (event) => {
         event.preventDefault()
 
@@ -34,12 +41,24 @@ const AddMovie = () => {
         console.log(year)
         console.log(description)
         console.log(selectedImage)
+        const imgRef = ref(imageDb, `images/${v4()}`);
+        uploadBytes(imgRef, selectedImage)
+            .then(res => {
+                return getDownloadURL(res.ref)
+            })
+            .then(url => {
+                console.log("url: " + url)
+            })
+
+        // console.log(mountainsRef)
     }
 
     // tODO do poprawy img picker resizing!!
     return(
         <div className={styles.container}>
             <div style={{width: '100%', margin: '0 auto'}}>
+
+                <BackPage backTo={"/movies"} title={"Powrót"}  />
                 <header className={styles.header}><p>Dodaj nowy film</p></header>
                 <div>
                     <form
@@ -63,7 +82,7 @@ const AddMovie = () => {
                                 <input className={styles.upLoadBtn}
                                        type="file"
                                        name="myImage"
-                                       accept="image/png, image/gif, image/jpeg"
+                                       accept="image/png, image/jpeg"
                                        onChange={(event) => {
                                            console.log(event.target.files[0]);
                                            setSelectedImage(event.target.files[0]);
@@ -132,5 +151,5 @@ const AddMovie = () => {
     )
 }
 
-const options = ["Akcja", "Komedie", "Dokumentalne", "Dramaty", "Komedie romantyczne","Science fiction", "Thrillery", "Dla dzieci"];
+const options = ["Akcja", "Komedia", "Dokumentalny", "Dramat", "Komedia romantyczna","Science fiction", "Thriller", "Dla dzieci"];
 export default AddMovie
