@@ -3,6 +3,7 @@ import styles from './carousel.css'
 import {useEffect, useState} from "react";
 import axios from "axios";
 import Circle from "./circle";
+import MovieCard from "../movies/movieCard";
 const CarouselSlider = () => {
     const [data, setData] = useState([])
     const breakPoints = [
@@ -15,7 +16,7 @@ const CarouselSlider = () => {
     ]
     const getNewestMovie = () => {
         axios
-            .get(`http://localhost:8080/api/movies/lastest?last=${3}`)
+            .get(`http://localhost:8080/api/movies/lastest?last=${10}`)
             .then((response) => {
                 setData(response.data)
             })
@@ -34,31 +35,11 @@ const CarouselSlider = () => {
                       autoPlaySpeed={5000}
                       itemsToScroll={1}
                       isRTL={false}
-
-
-                      // renderPagination={({ pages, activePage, onClick }) => {
-                      //     return (
-                      //         <div className={styles.paginationWrapper}>
-                      //             {pages.map(page => {
-                      //                 const isActivePage = activePage === page
-                      //                 return (
-                      //                     <Circle
-                      //                         key={page}
-                      //                         onClick={() => onClick(page)}
-                      //                         active={isActivePage}
-                      //                     />
-                      //                 )
-                      //             })}
-                      //         </div>
-                      //     )
-                      // }}
             >
                 {
                     data.map((movie) =>
                         (
-                            <div>
-                                <img src={movie.image} alt=""/>
-                            </div>
+                            <MovieCard id={movie.id} title={''} img={movie.image} />
                         )
                     )
                 }
