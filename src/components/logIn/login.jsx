@@ -26,7 +26,9 @@ const Login = (props) => {
         handleChangeRoute()
     }
 
-    // TODO bug fix display
+    const handleSettings = () => {
+        alert("Innych nie będzie")
+    }
 
     return (
         <div className={isHover && isLogged ? [styles.container,styles.containerHover].join(' ') : styles.container}
@@ -34,24 +36,31 @@ const Login = (props) => {
              onMouseLeave={handleHover}
         >
             <div className={styles.userDetails}>
-                <p>{isLogged ? user.login: "Zaloguj się"}</p>
+                <p>{isLogged ? user.login : "Zaloguj się"}</p>
                 <span><FaUserCircle/></span>
             </div>
 
-            {isLogged && isHover ?
-                <div>
-                    <div className={styles.userDetails}>
-                        <p>Ustawienia</p>
-                        <span><IoMdSettings /></span>
-                    </div>
-                    <div className={styles.userDetails}
-                        onClick={handleLogout}
-                    >
+            {isLogged
+                && isHover
+                && (
+                    <div>
+                        <div
+                            className={styles.userDetails}
+                            onClick={handleSettings}
+                        >
+                            <p>Ustawienia</p>
+                            <span><IoMdSettings /></span>
+                        </div>
+                        <div
+                            className={styles.userDetails}
+                            onClick={handleLogout}
+                        >
                             <p>Wyloguj</p>
                             <span><FiLogOut/></span>
+                        </div>
                     </div>
-                </div>
-                : null}
+                )
+            }
 
         </div>
     )

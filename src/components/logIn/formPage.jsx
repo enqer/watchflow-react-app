@@ -4,7 +4,7 @@ import {useState} from "react";
 import SignIn from "./signIn";
 import './formPage.css'
 import SignUp from "./signUp";
-import Logo from "../common/logo";
+import Logo from "../common/logo"
 
 
 const FormPage = (props) => {

@@ -68,7 +68,7 @@ const Navbar = () => {
         },
         settings: {
             display: 'flex',
-            justifyContent: 'center',
+            justifyContent: 'flex-end',
             alignItems: 'center',
             cursor: 'pointer',
             position: 'relative',
@@ -190,7 +190,5 @@ const Navbar = () => {
   )
 
 }
-// tODO settings hover pokazuje prostokąt z opcjami a nie podkreślenie!!! change it
-
 
 export default Navbar;

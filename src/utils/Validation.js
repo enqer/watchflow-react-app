@@ -1,5 +1,4 @@
 
-// TODO check if data exist in db
 
 export const checkPasswordStrength = (inputPassword) => {
     const hasUpperCase = /[A-Z]/.test(inputPassword);
