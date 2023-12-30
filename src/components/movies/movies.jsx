@@ -27,7 +27,7 @@ const Movies = () => {
         axios
             .get('http://localhost:8080/api/movies')
             .then((response)=>{
-                setData(response.data)
+                response.status === 200 && setData(response.data)
                 setIsNotFound(false)
             })
             .catch((err) => {
@@ -93,7 +93,7 @@ const Movies = () => {
           </div>
           <div className={styles.wrapperImages}>
               {!isNotFound ?
-                  data.map(d => (
+                  data?.map(d => (
                       <MovieCard
                           id={d.id}
                           img={d.image}

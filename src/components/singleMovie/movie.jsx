@@ -298,6 +298,7 @@ return (
                             movieId={comment.movieId}
                             userId={comment.userId}
                             userLogin={comment.userLogin}
+                            key={comment.id}
                         />
                     ) : (
                         <p className={styles.missingComment}>Brak komentarzy, aby dodać komentarz musisz być zalogowany.</p>
