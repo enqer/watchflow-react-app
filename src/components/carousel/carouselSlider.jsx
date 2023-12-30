@@ -21,7 +21,10 @@ const CarouselSlider = () => {
             .then((response) => {
                 setData(response.data)
             })
-            .catch((error) => setError(true))
+            .catch((error) => {
+                setError(true)
+                setData([])
+            })
     }
 
     useEffect(() => {
@@ -37,14 +40,15 @@ const CarouselSlider = () => {
                       itemsToScroll={1}
                       isRTL={false}
             >
-                {data.map((movie) => (
+                {Array.isArray(data) && (
+                    data?.map((movie) => (
                             <MovieCard
                                 id={movie.id}
                                 title={''}
                                 img={movie.image}
                                 key={movie.id}
                             />
-                        )
+                    ))
                 )}
             </Carousel>
             {error && (

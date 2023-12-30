@@ -26,14 +26,16 @@ const News = () => {
             <p className={styles.headerText}>Newsy</p>
             <div className={styles.wrapper}>
                 {!error ? (
-                    newsData.map((news) => (
-                        <NewsCard
-                            id={news.id}
-                            img={news.image}
-                            headline={news.title}
-                            key={news.id}
-                        />
-                    ))) : (
+                    Array.isArray(newsData) && (
+                        newsData.map((news) => (
+                            <NewsCard
+                                id={news.id}
+                                img={news.image}
+                                headline={news.title}
+                                key={news.id}
+                            />
+                        ))
+                    )) : (
                         <NotFoundText text={"Brak wyników"} />
                 )}
             </div>

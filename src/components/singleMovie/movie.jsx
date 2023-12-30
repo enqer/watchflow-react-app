@@ -1,9 +1,8 @@
 
 import styles from './movie.module.css'
-import { IoStar, IoStarOutline } from "react-icons/io5";
 import { FaRegUserCircle } from "react-icons/fa";
 import { useEffect, useState} from "react";
-import {Link, useParams} from "react-router-dom";
+import { useParams} from "react-router-dom";
 import MovieInfo from "./movieInfo";
 import BackPage from "../common/backPage";
 import axios from "axios";
@@ -108,13 +107,15 @@ const Movie = () => {
                 config
             )
             .then((response) => {
-                setRatingData(response.data)
-                setWhichRateSelect(rate)
+                // console.log(response.data)
+                // setRatingData(response.data)
+
             })
             .catch((error)=>{
                 setError(true)
                 setErrorMsg('Problem z zaktualizowaniem oceny')
             })
+        setWhichRateSelect(rate)
     }
     const selectRating = (rate) => {
         axios
@@ -153,6 +154,7 @@ const Movie = () => {
             .delete(`http://localhost:8080/api/movies/${movieId.id}/watchers/${user.userId}`,
                 config)
             .then((response) => {
+                console.log(response)
                 setWatched(false)
             })
             .catch((error) => {
@@ -165,7 +167,8 @@ const Movie = () => {
     const addWatcher = () => {
         axios
             .post(`http://localhost:8080/api/movies/${movieId.id}/watchers/${user.userId}`,
-                config)
+                config
+            )
             .then((response) => {
                 setWatched(true)
             })
@@ -302,7 +305,7 @@ return (
                     }
                 </div>
                 {error && (
-                    <p className={styles.error}>Problem z wyświetleniem filmu</p>
+                    <p className={styles.error}>{errorMsg}</p>
                 )}
             </div>
         </div>

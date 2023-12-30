@@ -28,18 +28,20 @@ const Ranking = () => {
             </div>
             <div className={styles.container}>
                 {data.length > 0 ? (
-                    data.map((movie, index) =>
-                        <MovieRankCard
-                            rank={index+1}
-                            id={movie.id}
-                            img={movie.image}
-                            title={movie.title}
-                            rating={movie.rating}
-                            numOfRating={movie.numOfRatings}
-                            genre={movie.genre}
-                            director={movie.director}
-                            key={movie.id}
-                        />)
+                    Array.isArray(data) && (
+                        data.map((movie, index) =>
+                            <MovieRankCard
+                                rank={index+1}
+                                id={movie.id}
+                                img={movie.image}
+                                title={movie.title}
+                                rating={movie.rating}
+                                numOfRating={movie.numOfRatings}
+                                genre={movie.genre}
+                                director={movie.director}
+                                key={movie.id}
+                            />
+                        ))
                 ) : (
                     <NotFoundText text={"Brak wyników"} />
                 )}

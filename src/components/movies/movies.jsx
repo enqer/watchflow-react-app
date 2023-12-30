@@ -93,14 +93,15 @@ const Movies = () => {
           </div>
           <div className={styles.wrapperImages}>
               {!isNotFound ?
-                  data?.map(d => (
-                      <MovieCard
-                          id={d.id}
-                          img={d.image}
-                          title={d.title}
-                          key={d.id}
-                      />
-                  )) : (
+                  Array.isArray(data) && (
+                      data?.map(d => (
+                          <MovieCard
+                              id={d.id}
+                              img={d.image}
+                              title={d.title}
+                              key={d.id}
+                          />
+                  ))) : (
                       <p className={styles.notFound}>Nie znaleziono</p>
                   )
               }

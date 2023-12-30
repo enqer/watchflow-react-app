@@ -1,15 +1,11 @@
 import CarouselSlider from '../carousel/carouselSlider';
 import styles from './home.module.css'
-import img from "../../img/background.jpg";
-import img2 from "../../img/news.jpg";
 import NewsCard from "../news/newsCard";
 import {useEffect, useState} from "react";
 import axios from "axios";
 import MovieCard from "../movies/movieCard";
 
 const Home = () => {
-        const arr = [...Array(10).keys()]
-        const arr2 = [...Array(3).keys()]
         const [data, setData] = useState([])
         const [newsData, setNewsData] = useState([])
 
@@ -20,7 +16,7 @@ const Home = () => {
                     .then((response) => {
                             setData(response.data)
                     })
-                    .catch((error) => console.log(error))
+                    .catch((error) => setData([]))
         }
 
         const getNews = () => {
@@ -29,7 +25,7 @@ const Home = () => {
                     .then((response) => {
                             setNewsData(response.data)
                     })
-                    .catch((error) => console.log(error))
+                    .catch((error) => setNewsData([]))
         }
 
         useEffect(() => {
@@ -44,30 +40,31 @@ const Home = () => {
                 <div>
                         <p className={styles.popularText}>Newsy tygodnia</p>
                         <div className={styles.news}>
-                                {newsData.map((news) => (
-                                    <NewsCard
-                                        id={news.id}
-                                        img={news.image}
-                                        headline={news.title}
-                                        key={news.id}
-                                    />
-                                ))
-
-                                }
+                                {Array.isArray(newsData) && (
+                                    newsData.map((news) => (
+                                        <NewsCard
+                                            id={news.id}
+                                            img={news.image}
+                                            headline={news.title}
+                                            key={news.id}
+                                        />
+                                    ))
+                                )}
                         </div>
                 </div>
                 <div >
                         <p className={styles.popularText}>Najpopularniejsze</p>
                         <div className={styles.wrapperImages}>
-                                {data.map((movie) => (
-                                    <MovieCard
-                                        id={movie.id}
-                                        img={movie.image}
-                                        title={movie.title}
-                                        key={movie.id}
-                                    />
-                                ))
-                                }
+                                {Array.isArray(data) && (
+                                    data.map((movie) => (
+                                        <MovieCard
+                                            id={movie.id}
+                                            img={movie.image}
+                                            title={movie.title}
+                                            key={movie.id}
+                                        />
+                                    ))
+                                )}
                         </div>
                 </div>
             </div>
