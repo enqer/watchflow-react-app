@@ -12,6 +12,7 @@ import AddComment from "./addComment";
 import { config, isLogged, user } from '../../config/authConfig'
 import {MdDelete} from "react-icons/md";
 import {useNavigate} from "react-router";
+import Rating from "./rating";
 
 const Movie = () => {
 
@@ -241,38 +242,12 @@ return (
                                 <p>{whichRateSelect > 0 && whichHover === 0 ? getLabelByRate(whichRateSelect) : getLabelByRate(whichHover)}</p>
                             </div>
                         </div>
-                        <div className={styles.selectRateStar}>
-                            <Link to="" onClick={() => handleSelectRating(1)} onMouseEnter={() => handlerStarHover(1)}
-                                  onMouseLeave={() => handlerStarHover(0)}>{whichHover >= 1 || (whichRateSelect >= 1 && whichHover === 0) ?
-                                <IoStar/> : <IoStarOutline/>}</Link>
-                            <Link to="" onClick={() => handleSelectRating(2)} onMouseEnter={() => handlerStarHover(2)}
-                                  onMouseLeave={() => handlerStarHover(0)}>{whichHover >= 2 || (whichRateSelect >= 2 && whichHover === 0) ?
-                                <IoStar/> : <IoStarOutline/>}</Link>
-                            <Link to="" onClick={() => handleSelectRating(3)} onMouseEnter={() => handlerStarHover(3)}
-                                  onMouseLeave={() => handlerStarHover(0)}>{whichHover >= 3 || (whichRateSelect >= 3 && whichHover === 0) ?
-                                <IoStar/> : <IoStarOutline/>}</Link>
-                            <Link to="" onClick={() => handleSelectRating(4)} onMouseEnter={() => handlerStarHover(4)}
-                                  onMouseLeave={() => handlerStarHover(0)}>{whichHover >= 4 || (whichRateSelect >= 4 && whichHover === 0) ?
-                                <IoStar/> : <IoStarOutline/>}</Link>
-                            <Link to="" onClick={() => handleSelectRating(5)} onMouseEnter={() => handlerStarHover(5)}
-                                  onMouseLeave={() => handlerStarHover(0)}>{whichHover >= 5 || (whichRateSelect >= 5 && whichHover === 0) ?
-                                <IoStar/> : <IoStarOutline/>}</Link>
-                            <Link to="" onClick={() => handleSelectRating(6)} onMouseEnter={() => handlerStarHover(6)}
-                                  onMouseLeave={() => handlerStarHover(0)}>{whichHover >= 6 || (whichRateSelect >= 6 && whichHover === 0) ?
-                                <IoStar/> : <IoStarOutline/>}</Link>
-                            <Link to="" onClick={() => handleSelectRating(7)} onMouseEnter={() => handlerStarHover(7)}
-                                  onMouseLeave={() => handlerStarHover(0)}>{whichHover >= 7 || (whichRateSelect >= 7 && whichHover === 0) ?
-                                <IoStar/> : <IoStarOutline/>}</Link>
-                            <Link to="" onClick={() => handleSelectRating(8)} onMouseEnter={() => handlerStarHover(8)}
-                                  onMouseLeave={() => handlerStarHover(0)}>{whichHover >= 8 || (whichRateSelect >= 8 && whichHover === 0) ?
-                                <IoStar/> : <IoStarOutline/>}</Link>
-                            <Link to="" onClick={() => handleSelectRating(9)} onMouseEnter={() => handlerStarHover(9)}
-                                  onMouseLeave={() => handlerStarHover(0)}>{whichHover >= 9 || (whichRateSelect >= 9 && whichHover === 0) ?
-                                <IoStar/> : <IoStarOutline/>}</Link>
-                            <Link to="" onClick={() => handleSelectRating(10)} onMouseEnter={() => handlerStarHover(10)}
-                                  onMouseLeave={() => handlerStarHover(0)}>{whichHover >= 10 || (whichRateSelect >= 10 && whichHover === 0) ?
-                                <IoStar/> : <IoStarOutline/>}</Link>
-                        </div>
+                        <Rating
+                            handleSelectRating={handleSelectRating}
+                            whichHover={whichHover}
+                            handlerStarHover={handlerStarHover}
+                            whichRateSelect={whichRateSelect}
+                        />
                         <div className={styles.selectWatched}>
                             <p>Już obejrzane?</p>
                             <input

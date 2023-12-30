@@ -2,10 +2,11 @@ import Carousel from "@itseasy21/react-elastic-carousel";
 import styles from './carousel.css'
 import {useEffect, useState} from "react";
 import axios from "axios";
-import Circle from "./circle";
 import MovieCard from "../movies/movieCard";
+import NotFoundText from "../common/notFoundText";
 const CarouselSlider = () => {
     const [data, setData] = useState([])
+    const [error, setError] = useState(false)
     const breakPoints = [
         { width: 1, itemsToShow: 1 },
         { width: 550, itemsToShow: 2, pagination: false },
@@ -20,7 +21,7 @@ const CarouselSlider = () => {
             .then((response) => {
                 setData(response.data)
             })
-            .catch((error) => console.log(error))
+            .catch((error) => setError(true))
     }
 
     useEffect(() => {
@@ -44,9 +45,11 @@ const CarouselSlider = () => {
                                 key={movie.id}
                             />
                         )
-                    )
-                }
+                )}
             </Carousel>
+            {error && (
+                <NotFoundText text={"Nie znaleziono"} />
+            )}
         </div>
     )
 

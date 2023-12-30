@@ -3,6 +3,7 @@ import styles from './ranking.module.css'
 import MovieRankCard from "./movieRankCard";
 import {useEffect, useState} from "react";
 import axios from "axios";
+import NotFoundText from "../common/notFoundText";
 
 const Ranking = () => {
 
@@ -40,7 +41,7 @@ const Ranking = () => {
                             key={movie.id}
                         />)
                 ) : (
-                    <p className={styles.missingRanking}>Brak wyników</p>
+                    <NotFoundText text={"Brak wyników"} />
                 )}
             </div>
         </div>

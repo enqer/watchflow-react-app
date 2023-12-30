@@ -2,6 +2,7 @@ import NewsCard from "./newsCard";
 import styles from './news.module.css'
 import axios from "axios";
 import {useEffect, useState} from "react";
+import NotFoundText from "../common/notFoundText";
 
 const News = () => {
     const [newsData, setNewsData] = useState([])
@@ -24,19 +25,18 @@ const News = () => {
         <div className={styles.container}>
             <p className={styles.headerText}>Newsy</p>
             <div className={styles.wrapper}>
-                {newsData.map((news) => (
+                {!error ? (
+                    newsData.map((news) => (
                         <NewsCard
                             id={news.id}
                             img={news.image}
                             headline={news.title}
                             key={news.id}
                         />
-                    ))
-                }
+                    ))) : (
+                        <NotFoundText text={"Brak wyników"} />
+                )}
             </div>
-            {error && (
-                <p className={styles.error}>Brak newsów</p>
-            )}
         </div>
     )
 }
