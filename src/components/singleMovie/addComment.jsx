@@ -1,18 +1,17 @@
 import styles from './addComment.module.css'
 import {useState} from "react";
 import axios from "axios";
+import { config} from "../../config/authConfig";
+
 const AddComment = (props) => {
     const [commentText, setCommentText] = useState('');
+    const [error, setError] = useState(false)
     const handleClear = () => {
         document.getElementById("area").value=''
         setCommentText('')
     }
 
-    const config = {
-        headers: {
-            Authorization: `Bearer ${localStorage.getItem('token')}`
-        }
-    }
+
     const data = {
         content: commentText,
         movieId: parseInt(props.movieId),
@@ -25,8 +24,8 @@ const AddComment = (props) => {
                     data,
                     config
                 )
-                .then((response) => console.log(response))
-                .catch((error) => console.error(error))
+                .then((response) => setError(false))
+                .catch((error) => setError(true))
         }
         window.location.reload()
     }
@@ -34,14 +33,31 @@ const AddComment = (props) => {
     return(
         <div>
             <h3>Dodaj komentarz:</h3>
-            <textarea className={styles.textarea}
-                      name="area" id="area" spellCheck="false" placeholder="Napisz coś..."
-                      onChange={(event) => setCommentText(event.target.value)}
-            ></textarea>
+            <textarea
+                className={styles.textarea}
+                name="area"
+                id="area"
+                spellCheck="false"
+                placeholder="Napisz coś..."
+                onChange={(event) => setCommentText(event.target.value)}
+            />
             <div className={styles.btnWrapper}>
-                <button className={styles.btn} onClick={handleClear} >Wyczyść</button>
-                <button className={styles.btn} onClick={handleSubmit}>Dodaj</button>
+                <button
+                    className={styles.btn}
+                    onClick={handleClear}
+                >
+                    Wyczyść
+                </button>
+                <button
+                    className={styles.btn}
+                    onClick={handleSubmit}
+                >
+                    Dodaj
+                </button>
             </div>
+            {error && (
+                <p className={styles.error}>Problem z dodaniem komentarza</p>
+            )}
         </div>
     )
 }

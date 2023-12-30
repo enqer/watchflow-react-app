@@ -19,6 +19,8 @@ const Movie = () => {
     const [whichHover, setWhichHover] = useState(0)
     const [whichRateSelect, setWhichRateSelect] = useState(0)
     const [watched, setWatched] = useState(false)
+    const [error, setError] = useState(false)
+    const [errorMsg, setErrorMsg] = useState('')
     const [data,setData]= useState({})
     const [ratingData, setRatingData] = useState({})
     const movieId = useParams()
@@ -40,11 +42,11 @@ const Movie = () => {
         axios
             .get(`http://localhost:8080/api/movies/${movieId.id}`)
             .then((response)=>{
-                console.log(response.data)
                 setData(response.data)
             })
             .catch((err) => {
-                console.log(err)
+                setError(true)
+                setErrorMsg('Problem z wyświetleniem filmu')
             })
     }
 
@@ -57,8 +59,9 @@ const Movie = () => {
                 }
             })
             .catch((error) => {
-                console.error(error)
+                setError(true)
                 setWatched(false)
+                setErrorMsg('Problem z wyświetleniem dodatkowych informacji filmu')
             })
     }
 
@@ -90,7 +93,8 @@ const Movie = () => {
                setWhichRateSelect(0)
            })
            .catch((error)=>{
-               console.error(error)
+               setError(true)
+               setErrorMsg('Problem z wyświetleniem dodatkowych informacji filmu')
            })
     }
 
@@ -107,7 +111,8 @@ const Movie = () => {
                 setWhichRateSelect(rate)
             })
             .catch((error)=>{
-                console.error(error)
+                setError(true)
+                setErrorMsg('Problem z zaktualizowaniem oceny')
             })
     }
     const selectRating = (rate) => {
@@ -124,7 +129,8 @@ const Movie = () => {
                 setWhichRateSelect(rate)
             })
             .catch((error)=>{
-                console.error(error)
+                setError(true)
+                setErrorMsg('Problem z ocenianiem filmu')
             })
     }
 
@@ -136,7 +142,8 @@ const Movie = () => {
                 setWhichRateSelect(response.data.rate)
             })
             .catch((error)=>{
-                console.error(error)
+                setError(true)
+                setErrorMsg('Problem z wyświetleniem oceny filmu')
             })
     }
 
@@ -145,11 +152,11 @@ const Movie = () => {
             .delete(`http://localhost:8080/api/movies/${movieId.id}/watchers/${user.userId}`,
                 config)
             .then((response) => {
-                console.log(response)
                 setWatched(false)
             })
             .catch((error) => {
-                console.error(error)
+                setError(true)
+                setErrorMsg('Problem z usunięciem filmu')
                 setWatched(true)
             })
     }
@@ -159,11 +166,11 @@ const Movie = () => {
             .post(`http://localhost:8080/api/movies/${movieId.id}/watchers/${user.userId}`,
                 config)
             .then((response) => {
-                console.log(response)
                 setWatched(true)
             })
             .catch((error) => {
-                console.error(error)
+                setError(true)
+                setErrorMsg('Problem z dodaniem obejrzenia')
                 setWatched(false)
             })
     }
@@ -192,15 +199,24 @@ const Movie = () => {
             .then((response) => {
                 switchRoute()
             })
-            .catch((error) => console.log(error))
+            .catch((error) => {
+                setError(true)
+                setErrorMsg('Problem z usunięciem filmu')
+            })
     }
 return (
         <div className={styles.containerFluid}>
-            <BackPage backTo={"/movies"} title={data.title} />
+            <BackPage
+                backTo={"/movies"}
+                title={data.title}
+            />
             <div className={styles.container}>
                 <div className={styles.mainContainer}>
                     <div className={styles.displayImg}>
-                        <img src={data.image} alt="Zdjęcie przedstawia plakat filmu"/>
+                        <img
+                            src={data.image}
+                            alt="Przedstawia plakat filmu"
+                        />
                     </div>
                     <div className={styles.infoDataWrapper}>
                         <MovieInfo
@@ -259,7 +275,11 @@ return (
                         </div>
                         <div className={styles.selectWatched}>
                             <p>Już obejrzane?</p>
-                            <input type="checkbox" checked={watched} onChange={(event) => handleIsWatched()}/>
+                            <input
+                                type="checkbox"
+                                checked={watched}
+                                onChange={(event) => handleIsWatched()}
+                            />
                         </div>
                     </div>
                 </div>
@@ -279,12 +299,16 @@ return (
                             userId={comment.userId}
                             userLogin={comment.userLogin}
                         />
-                    ) : <p className={styles.missingComment}>Brak komentarzy, aby dodać komentarz musisz być
-                        zalogowany.</p>}
+                    ) : (
+                        <p className={styles.missingComment}>Brak komentarzy, aby dodać komentarz musisz być zalogowany.</p>
+                    )}
                 </div>
                 <div>
                     {isLogged && (
-                        <AddComment movieId={movieId.id} userId={user.userId}/>
+                        <AddComment
+                            movieId={movieId.id}
+                            userId={user.userId}
+                        />
                     )}
                 </div>
                 <div>
@@ -301,6 +325,9 @@ return (
                         )
                     }
                 </div>
+                {error && (
+                    <p className={styles.error}>Problem z wyświetleniem filmu</p>
+                )}
             </div>
         </div>
 )

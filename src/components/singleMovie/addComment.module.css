@@ -44,3 +44,10 @@
     cursor: pointer;
     margin: 10px;
 }
+
+.error {
+    font-size: 32px;
+    color: grey;
+    font-weight: bold;
+}
+

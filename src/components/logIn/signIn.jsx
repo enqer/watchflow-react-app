@@ -30,12 +30,10 @@ const SignIn = (props) => {
             })
             .then((response) => {
                 localStorage.setItem('token', response.data.token)
-                console.log(response.data.token)
                 handleChangeRoute()
             })
             .catch((err) => {
                 setAlert('Podane dane są złe')
-                console.log(err)
             })
     }
 

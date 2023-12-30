@@ -47,12 +47,6 @@ const AddMovie = () => {
         event.preventDefault()
         if (!validate()) return
 
-        console.log(name)
-        console.log(director)
-        console.log(genre)
-        console.log(year)
-        console.log(description)
-        console.log(selectedImage)
         const imgRef = ref(imageDb, `images/${v4()}`);
         uploadBytes(imgRef, selectedImage)
             .then(res => {
@@ -60,7 +54,6 @@ const AddMovie = () => {
             })
             .then(url => {
                 setUrlImage(url)
-                console.log("url: " + url)
                 addMovie()
             })
             .catch(error => {
@@ -92,11 +85,9 @@ const AddMovie = () => {
         window.location.reload()
     }
 
-    // tODO do poprawy img picker resizing!!
     return(
         <div className={styles.container}>
             <div style={{width: '100%', margin: '0 auto'}}>
-
                 <BackPage backTo={"/movies"} title={"Powrót"}  />
                 <header className={styles.header}><p>Dodaj nowy film</p></header>
                 <div>
@@ -108,32 +99,35 @@ const AddMovie = () => {
                         <div className={styles.imgContainer}>
                             <p className={styles.metaInfo}>Zdjęcie</p>
                             <div className={styles.upLoadedImgWrapper}>
-                                <img className={styles.upLoadedImg}
-                                     alt="Twoje wybrane zdjęcie"
-                                     width={selectedImage ? '100%' : "25px"}
-                                     src={selectedImage ? URL.createObjectURL(selectedImage) : upload}
+                                <img
+                                    className={styles.upLoadedImg}
+                                    alt="Twoje wybrane zdjęcie"
+                                    width={selectedImage ? '100%' : "25px"}
+                                    src={selectedImage ? URL.createObjectURL(selectedImage) : upload}
                                 />
                                 <br />
-
-
                             </div>
                             <div className={styles.upLoadBtnWrapper}>
-                                <button className={styles.upLoadBtn} onClick={() => setSelectedImage(null)}>Remove</button>
-                                <input className={styles.upLoadBtn}
-                                       type="file"
-                                       name="myImage"
-                                       accept="image/png, image/jpeg"
-                                       onChange={(event) => {
+                                <button
+                                    className={styles.upLoadBtn}
+                                    onClick={() => setSelectedImage(null)}
+                                >
+                                    Remove
+                                </button>
+                                <input
+                                    className={styles.upLoadBtn}
+                                    type="file"
+                                    name="myImage"
+                                    accept="image/png, image/jpeg"
+                                    onChange={(event) => {
                                            setSelectedImage(event.target.files[0]);
-                                       }}
+                                    }}
                                 />
                             </div>
-
                         </div>
                         <div className={styles.dataWrapper}>
                             <div className={styles.mainData}>
                                 <p className={styles.metaInfo}>Informacje</p>
-
                                 <div className={styles.inputWrapper}>
                                     <TextInput
                                         state={setName}
@@ -158,6 +152,7 @@ const AddMovie = () => {
                                                 className={styles.option}
                                                 value={option}
                                                 selected={index === 0}
+                                                key={index}
                                             >
                                                 {option}
                                             </option>
@@ -166,9 +161,17 @@ const AddMovie = () => {
                                 </div>
                                 <div className={styles.selectDate}>
                                     <p>Wybierz rok:</p>
-                                    <select className={styles.select} onChange={(event) => setYear(event.target.value)}>
-                                        {years.map((option) => (
-                                            <option className={styles.option}>{option}</option>
+                                    <select
+                                        className={styles.select}
+                                        onChange={(event) => setYear(event.target.value)}
+                                    >
+                                        {years.map((option, index) => (
+                                            <option
+                                                className={styles.option}
+                                                key={index}
+                                            >
+                                                {option}
+                                            </option>
                                         ))}
                                     </select>
                                 </div>
@@ -176,11 +179,19 @@ const AddMovie = () => {
                             <div className={styles.wrapColumn}>
                                 <div className={styles.description}>
                                     <p className={styles.metaInfo}>Opis filmu</p>
-                                    <textarea spellCheck="false" placeholder="Napisz coś..." onChange={(event) => setDescription(event.target.value)}></textarea>
+                                    <textarea
+                                        spellCheck="false"
+                                        placeholder="Napisz coś..."
+                                        onChange={(event) => setDescription(event.target.value)}
+                                    />
 
                                 </div>
                                 <div className={styles.wrapSubmit}>
-                                    <input className={styles.submit} type="submit" value="Dodaj film"/>
+                                    <input
+                                        className={styles.submit}
+                                        type="submit"
+                                        value="Dodaj film"
+                                    />
                                     <p>{validText}</p>
                                 </div>
                             </div>

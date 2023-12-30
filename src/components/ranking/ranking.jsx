@@ -1,7 +1,5 @@
-import img from "../../img/zielona.jpg";
-import styles from './ranking.module.css'
 
-import BackPage from "../common/backPage";
+import styles from './ranking.module.css'
 import MovieRankCard from "./movieRankCard";
 import {useEffect, useState} from "react";
 import axios from "axios";
@@ -14,7 +12,7 @@ const Ranking = () => {
       axios
           .get(`http://localhost:8080/api/movies/ranking?first=5`)
           .then((response)=> setData(response.data))
-          .catch((erro) => console.error(erro))
+          .catch((erro) => setData([]))
     }
 
     useEffect(() => {
@@ -24,7 +22,6 @@ const Ranking = () => {
 
     return (
         <div className={styles.containerFluid}>
-            {/*<BackPage backTo={"/home"} title={"Powrót do strony głównej"} />*/}
             <div className={styles.titleRanking}>
                 <p className={styles.rankingText}>Odkryj ranking</p>
             </div>
@@ -45,7 +42,6 @@ const Ranking = () => {
                 ) : (
                     <p className={styles.missingRanking}>Brak wyników</p>
                 )}
-
             </div>
         </div>
     )

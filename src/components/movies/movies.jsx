@@ -1,5 +1,4 @@
 import styles from './movies.module.css'
-import img from '../../img/loki.jpg'
 import {Link} from "react-router-dom";
 import { FaArrowRight } from "react-icons/fa";
 import {useEffect, useState} from "react";
@@ -14,8 +13,6 @@ const Movies = () => {
     const [data, setData] = useState([])
     const [isNotFound, setIsNotFound] = useState(false)
 
-        // TODO stylizacja select i jego menu i poprawienie wysokości żeby było na równi z filmami
-        // TODO dorobić własne menu?? + takie samo do ustawień
 
     const handlerMovingArrow = () => {
         setIsMoving(!isMoving)
@@ -30,26 +27,22 @@ const Movies = () => {
         axios
             .get('http://localhost:8080/api/movies')
             .then((response)=>{
-                console.log(response.data)
                 setData(response.data)
                 setIsNotFound(false)
             })
             .catch((err) => {
-                console.log(err)
                 setIsNotFound(true)
             })
     }
     const getMoviesByGenre = (genre) => {
-        console.log(genre)
         axios
             .get(`http://localhost:8080/api/movies/genres/${genre}`)
             .then((response)=>{
-                console.log(response.data)
                 setData(response.data)
                 setIsNotFound(false)
             })
             .catch((err) => {
-                console.log(err)
+
                 setIsNotFound(true)
             })
 
@@ -67,10 +60,13 @@ const Movies = () => {
           <div className={styles.header}>
               <div className={styles.choiceMovie}>
                   <p className={styles.text}>Filmy</p>
-                  <select className={styles.select} onChange={handleOptionSelect} >
+                  <select
+                      className={styles.select}
+                      onChange={handleOptionSelect}
+                  >
                       {options.map((option, index) => (
                           <option
-                              className={styles.option} 
+                              className={styles.option}
                               value={option.label}
                               key={index}
                           >
@@ -81,8 +77,12 @@ const Movies = () => {
               </div>
               {isLogged &&
                   <div>
-                      <Link to="add" className={styles.addNew} onMouseEnter={handlerMovingArrow}
-                            onMouseLeave={handlerMovingArrow}>
+                      <Link
+                          to="add"
+                          className={styles.addNew}
+                          onMouseEnter={handlerMovingArrow}
+                          onMouseLeave={handlerMovingArrow}
+                      >
                           <p>Dodaj film</p>
                           <div className={styles.arrow}>
                               <FaArrowRight className={isMoving ? styles.arrowMoveAfter : styles.arrowMoveBefore}/>

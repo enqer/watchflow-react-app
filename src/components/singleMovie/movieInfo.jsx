@@ -9,11 +9,26 @@ const MovieInfo = (props) => {
             <div className={styles.infoDescription}>
                 <p>{props.firstLine}</p>
             </div>
-            <InfoText infoName={"Nazwa:"} info={props.title} />
-            <InfoText infoName={"Reżyser:"} info={props.director} />
-            <InfoText infoName={"Data premiery:"} info={props.productionYear} />
-            <InfoText infoName={"Gatunek:"} info={props.genre} />
-            <MovieRating rating={props.rating} numOfRating={props.numOfRatings}/>
+            <InfoText
+                infoName={"Nazwa:"}
+                info={props.title}
+            />
+            <InfoText
+                infoName={"Reżyser:"}
+                info={props.director}
+            />
+            <InfoText
+                infoName={"Data premiery:"}
+                info={props.productionYear}
+            />
+            <InfoText
+                infoName={"Gatunek:"}
+                info={props.genre}
+            />
+            <MovieRating
+                rating={props.rating}
+                numOfRating={props.numOfRatings}
+            />
         </div>
     )
 }

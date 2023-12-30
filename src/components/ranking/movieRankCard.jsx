@@ -18,26 +18,35 @@ const MovieRankCard = (props) => {
                 <div className={styles.cardFront}>
                     <p>{props.rank}</p>
                 </div>
-                    {/*<div className={styles.cardBack}>*/}
-                <Link to={`/movie/${props.id}`} className={styles.cardBack}>
-
-                        <div className={styles.triangleDiv}>
-                            <p>{props.rank}</p>
+                <Link
+                    to={`/movie/${props.id}`}
+                    className={styles.cardBack}
+                >
+                    <div className={styles.triangleDiv}>
+                        <p>{props.rank}</p>
+                    </div>
+                    <div className={styles.dataWrapper}>
+                        <div className={styles.titles}>
+                            <MovieTitles
+                                title={props.title}
+                                titleEng={props.titleEng}
+                            />
                         </div>
-                        <div className={styles.dataWrapper}>
-                            <div className={styles.titles}>
-                                <MovieTitles title={props.title} titleEng={props.titleEng}/>
-                            </div>
-                            <div className={styles.vertical}>
-                                <p>Gatunek: {props.genre}</p>
-                                <p>Reżyser: {props.director}</p>
-                                <MovieRating rating={props.rating} numOfRating={props.numOfRating}/>
-                            </div>
-
+                        <div className={styles.vertical}>
+                            <p>Gatunek: {props.genre}</p>
+                            <p>Reżyser: {props.director}</p>
+                            <MovieRating
+                                rating={props.rating}
+                                numOfRating={props.numOfRating}
+                            />
                         </div>
-                        <div className={styles.imgWrapper}>
-                            <img src={props.img} alt="Zdjęcie z filmu"/>
-                        </div>
+                    </div>
+                    <div className={styles.imgWrapper}>
+                        <img
+                            src={props.img}
+                            alt="Zdjęcie z filmu"
+                        />
+                    </div>
                 </Link>
             </div>
         </div>

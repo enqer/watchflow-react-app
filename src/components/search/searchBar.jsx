@@ -6,12 +6,15 @@ const SearchBar = ({handleSearch}) => {
 
     return(
         <div className={styles.container}>
-            <input className={styles.input}
-                   type="text"
-                   placeholder="Wyszukaj"
-                   onChange={(event) => setSearchedText(event.target.value)}
+            <input
+                className={styles.input}
+                type="text"
+                placeholder="Wyszukaj"
+                onChange={(event) => setSearchedText(event.target.value)}
             />
-            <span className={styles.search} ><IoSearch onClick={() =>handleSearch(searchedText)} /></span>
+            <span className={styles.search}>
+                <IoSearch onClick={() =>handleSearch(searchedText)} />
+            </span>
         </div>
     )
 }
