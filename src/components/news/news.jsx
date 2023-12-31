@@ -9,7 +9,7 @@ const News = () => {
     const [error, setError] = useState(false)
     const getNews = () => {
         axios
-            .get(`http://localhost:8080/api/news`)
+            .get(`https://watchflow.onrender.com/api/news`)
             .then((response) => {
                 setNewsData(response.data)
                 setError(false)

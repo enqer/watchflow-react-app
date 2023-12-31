@@ -12,7 +12,7 @@ const Home = () => {
 
         const getPopularMovies = () => {
                 axios
-                    .get(`http://localhost:8080/api/movies/popular?last=${5}`)
+                    .get(`https://watchflow.onrender.com/api/movies/popular?last=${5}`)
                     .then((response) => {
                             setData(response.data)
                     })
@@ -21,7 +21,7 @@ const Home = () => {
 
         const getNews = () => {
                 axios
-                    .get(`http://localhost:8080/api/news/lastest?last=${3}`)
+                    .get(`https://watchflow.onrender.com/api/news/lastest?last=${3}`)
                     .then((response) => {
                             setNewsData(response.data)
                     })

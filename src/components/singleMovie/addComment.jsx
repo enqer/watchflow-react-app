@@ -20,7 +20,7 @@ const AddComment = (props) => {
     const handleSubmit = () => {
         if (!(commentText.trim() === '')){
             axios
-                .post('http://localhost:8080/api/movie/comment',
+                .post('https://watchflow.onrender.com/api/movie/comment',
                     data,
                     config
                 )

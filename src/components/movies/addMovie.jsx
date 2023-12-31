@@ -38,7 +38,7 @@ const AddMovie = () => {
             setValidText('Wybierz zdjęcie')
             return false
         }
-        setDescription(description.replace('"',''))
+        setDescription(description.replace(/"/g, ''))
         return true
     }
 
@@ -63,7 +63,7 @@ const AddMovie = () => {
 
     const addMovie = () => {
         axios
-            .post(`http://localhost:8080/api/movie`,
+            .post(`https://watchflow.onrender.com/api/movie`,
                 {
                     title: name,
                     image: urlImage,

@@ -16,7 +16,7 @@ const NewsPage = (props) => {
 
     const getNews = () => {
         axios
-            .get(`http://localhost:8080/api/news/${newsId.id}`)
+            .get(`https://watchflow.onrender.com/api/news/${newsId.id}`)
             .then((response) => {
                 setNewsData(response.data)
                 setError(false)
@@ -35,7 +35,7 @@ const NewsPage = (props) => {
 
     const handleDeleteMovie = () => {
         axios
-            .delete(`http://localhost:8080/api/news/${newsId.id}`,
+            .delete(`https://watchflow.onrender.com/api/news/${newsId.id}`,
                 config
             )
             .then((response) => {

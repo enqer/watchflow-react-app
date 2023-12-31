@@ -25,7 +25,7 @@ const Movies = () => {
 
     const getAllMovies = () => {
         axios
-            .get('http://localhost:8080/api/movies')
+            .get('https://watchflow.onrender.com/api/movies')
             .then((response)=>{
                 response.status === 200 && setData(response.data)
                 setIsNotFound(false)
@@ -36,7 +36,7 @@ const Movies = () => {
     }
     const getMoviesByGenre = (genre) => {
         axios
-            .get(`http://localhost:8080/api/movies/genres/${genre}`)
+            .get(`https://watchflow.onrender.com/api/movies/genres/${genre}`)
             .then((response)=>{
                 setData(response.data)
                 setIsNotFound(false)

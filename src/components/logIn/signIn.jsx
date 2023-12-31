@@ -24,7 +24,7 @@ const SignIn = (props) => {
         if (!validate()) return;
 
         axios
-            .post('http://localhost:8080/api/auth/authenticate',{
+            .post('https://watchflow.onrender.com/api/auth/authenticate',{
                 login: login,
                 password: password
             })

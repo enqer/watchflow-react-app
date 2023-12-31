@@ -11,7 +11,7 @@ const Ranking = () => {
 
     const getRankingMovies = () => {
       axios
-          .get(`http://localhost:8080/api/movies/ranking?first=5`)
+          .get(`https://watchflow.onrender.com/api/movies/ranking?first=5`)
           .then((response)=> setData(response.data))
           .catch((erro) => setData([]))
     }

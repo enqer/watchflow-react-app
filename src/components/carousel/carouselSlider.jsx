@@ -17,7 +17,7 @@ const CarouselSlider = () => {
     ]
     const getNewestMovie = () => {
         axios
-            .get(`http://localhost:8080/api/movies/lastest?last=${10}`)
+            .get(`https://watchflow.onrender.com/api/movies/lastest?last=${10}`)
             .then((response) => {
                 setData(response.data)
             })

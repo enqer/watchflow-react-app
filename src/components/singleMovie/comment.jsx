@@ -14,7 +14,7 @@ const Comment = (props) => {
 }
     const handleDeleteComment = () => {
       axios
-          .delete(`http://localhost:8080/api/movies/comments/${props.id}`,
+          .delete(`https://watchflow.onrender.com/api/movies/comments/${props.id}`,
               config)
           .then((response)=> {
               console.log('Deleted')

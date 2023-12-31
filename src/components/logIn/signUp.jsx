@@ -23,7 +23,7 @@ const SignUp = (props) => {
 
         axios({
             method: 'post',
-            url: 'http://localhost:8080/api/auth/register',
+            url: 'https://watchflow.onrender.com/api/auth/register',
             data: {
                 login: login,
                 email: email,

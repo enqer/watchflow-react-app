@@ -40,7 +40,7 @@ const Movie = () => {
 
     const getInfoMovie = () => {
         axios
-            .get(`http://localhost:8080/api/movies/${movieId.id}`)
+            .get(`https://watchflow.onrender.com/api/movies/${movieId.id}`)
             .then((response)=>{
                 setData(response.data)
             })
@@ -52,7 +52,7 @@ const Movie = () => {
 
     const getWatcherInfo = () => {
         axios
-            .get(`http://localhost:8080/api/movies/${movieId.id}/watchers/${user.userId}`)
+            .get(`https://watchflow.onrender.com/api/movies/${movieId.id}/watchers/${user.userId}`)
             .then((response) => {
                 if (response.data.isWatcher){
                     setWatched(true)
@@ -86,7 +86,7 @@ const Movie = () => {
 
     const deleteRating = () => {
        axios
-           .delete(`http://localhost:8080/api/ratings/${ratingData.id}`,
+           .delete(`https://watchflow.onrender.com/api/ratings/${ratingData.id}`,
                config
            )
            .then((response) => {
@@ -100,7 +100,7 @@ const Movie = () => {
 
     const updateRating = (rate) => {
         axios
-            .patch(`http://localhost:8080/api/rating/${ratingData.id}`,
+            .patch(`https://watchflow.onrender.com/api/rating/${ratingData.id}`,
                 {
                     rate: rate
                 },
@@ -119,7 +119,7 @@ const Movie = () => {
     }
     const selectRating = (rate) => {
         axios
-            .post(`http://localhost:8080/api/rating`,
+            .post(`https://watchflow.onrender.com/api/rating`,
                 {
                     rate: rate,
                     movieId: movieId.id,
@@ -138,7 +138,7 @@ const Movie = () => {
 
     const getRating = () => {
         axios
-            .get(`http://localhost:8080/api/ratings/movies/${movieId.id}/users/${user.userId}`)
+            .get(`https://watchflow.onrender.com/api/ratings/movies/${movieId.id}/users/${user.userId}`)
             .then((response) => {
                 setRatingData(response.data)
                 setWhichRateSelect(response.data.rate)
@@ -151,7 +151,7 @@ const Movie = () => {
 
     const deleteWatcher = () => {
         axios
-            .delete(`http://localhost:8080/api/movies/${movieId.id}/watchers/${user.userId}`,
+            .delete(`https://watchflow.onrender.com/api/movies/${movieId.id}/watchers/${user.userId}`,
                 config)
             .then((response) => {
                 console.log(response)
@@ -166,9 +166,9 @@ const Movie = () => {
 
     const addWatcher = () => {
         axios
-            .post(`http://localhost:8080/api/movies/${movieId.id}/watchers/${user.userId}`,
-                config
-            )
+            .post(`https://watchflow.onrender.com/api/movies/${movieId.id}/watchers/${user.userId}`,
+                {},
+                config)
             .then((response) => {
                 setWatched(true)
             })
@@ -197,7 +197,7 @@ const Movie = () => {
 
     const handleDeleteMovie = () => {
         axios
-            .delete(`http://localhost:8080/api/movies/${movieId.id}`,
+            .delete(`https://watchflow.onrender.com/api/movies/${movieId.id}`,
                 config
             )
             .then((response) => {
