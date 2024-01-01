@@ -126,7 +126,7 @@ const options = [
         value: "3",
     },
     {
-        label: "Dokumentalne",
+        label: "Biograficzne",
         value: "4",
     },
     {

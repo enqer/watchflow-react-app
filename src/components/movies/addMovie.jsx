@@ -54,19 +54,19 @@ const AddMovie = () => {
             })
             .then(url => {
                 setUrlImage(url)
-                addMovie()
+                addMovie(url)
             })
             .catch(error => {
                 setValidText("Dodanie filmu nie powiodło się")
             })
     }
 
-    const addMovie = () => {
+    const addMovie = (url) => {
         axios
             .post(`https://watchflow.onrender.com/api/movie`,
                 {
                     title: name,
-                    image: urlImage,
+                    image: url,
                     content: description,
                     genre: genre,
                     productionYear: year,
@@ -203,5 +203,5 @@ const AddMovie = () => {
     )
 }
 
-const options = ["Akcja", "Komedia", "Dokumentalny", "Dramat", "Komedia romantyczna","Science fiction", "Thriller", "Dla dzieci"];
+const options = ["Akcja", "Komedia", "Biograficzne", "Dramat", "Komedia romantyczna","Science fiction", "Thriller", "Dla dzieci"];
 export default AddMovie

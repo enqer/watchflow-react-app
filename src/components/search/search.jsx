@@ -10,7 +10,7 @@ const Search = () => {
 
     const getSearchedMovie = (title) => {
         axios
-            .get(`http://localhost:8080/api/movies/search/${title}`)
+            .get(`https://watchflow.onrender.com/api/movies/search/${title}`)
             .then((response)=> {
                 if (response.data.length > 0){
                     setData(response.data)

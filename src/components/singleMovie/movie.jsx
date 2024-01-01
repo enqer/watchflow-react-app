@@ -47,6 +47,7 @@ const Movie = () => {
             .catch((err) => {
                 setError(true)
                 setErrorMsg('Problem z wyświetleniem filmu')
+                switchRoute()
             })
     }
 
@@ -59,9 +60,9 @@ const Movie = () => {
                 }
             })
             .catch((error) => {
-                setError(true)
-                setWatched(false)
-                setErrorMsg('Problem z wyświetleniem dodatkowych informacji filmu')
+                // setError(true)
+                // setWatched(false)
+                // setErrorMsg('Problem z wyświetleniem dodatkowych informacji filmu')
             })
     }
 
@@ -188,6 +189,7 @@ const Movie = () => {
         else
             addWatcher()
     }
+
 
 
     const switchRoute = () => {
