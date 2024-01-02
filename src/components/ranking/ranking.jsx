@@ -8,12 +8,19 @@ import NotFoundText from "../common/notFoundText";
 const Ranking = () => {
 
     const [data, setData] = useState([])
+    const [error, setError] = useState(false)
 
     const getRankingMovies = () => {
       axios
           .get(`https://watchflow.onrender.com/api/movies/ranking?first=5`)
-          .then((response)=> setData(response.data))
-          .catch((erro) => setData([]))
+          .then((response)=> {
+              setData(response.data)
+              setError(false)
+          })
+          .catch((erro) => {
+              setData([])
+              setError(true)
+          })
     }
 
     useEffect(() => {
@@ -27,7 +34,7 @@ const Ranking = () => {
                 <p className={styles.rankingText}>Odkryj ranking</p>
             </div>
             <div className={styles.container}>
-                {data.length > 0 ? (
+                {!error ? (
                     Array.isArray(data) && (
                         data.map((movie, index) =>
                             <MovieRankCard
