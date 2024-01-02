@@ -15,7 +15,6 @@ const BackPage = (props) => {
             <Link
                 to={""}
                 onClick={() => navigate(-1)}
-                // to={history.goBack()}
                 onMouseEnter={handlerArrow}
                 onMouseLeave={handlerArrow}
             >

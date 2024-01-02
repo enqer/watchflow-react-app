@@ -18,10 +18,12 @@
 }
 
 .titleWrap{
-
+    display: flex;
+    justify-content: center;
 }
 .titleWrap p {
     font-size: 32px;
+    font-weight: bold;
     color: var(--white);
 }
 
@@ -47,10 +49,13 @@
 }
 
 .descriptionWrapper {
-    /*color: var(--white);*/
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: var(--white);
 }
 .descriptionWrapper h3 {
-    color: var(--black);
+    color: var(--white);
 }
 
 .horizontalDisplay {

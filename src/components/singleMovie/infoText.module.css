@@ -17,6 +17,6 @@
     font-size: 20px;
     /*border-bottom: 3px solid var(--darkBlue);*/
 }
-p:first-letter {
+.singleInfoWrap p {
     text-transform: capitalize;
 }

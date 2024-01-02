@@ -6,6 +6,7 @@
     border-radius: 10px;
     perspective: 1000px;
     margin: 30px;
+
 }
 
 .flipCardInner {
@@ -42,6 +43,7 @@
     padding: 20px;
     height: 100%;
     border-radius: 10px;
+
 }
 
 .cardFront p {
@@ -49,6 +51,7 @@
     font-weight: bold;
     margin: 0;
     color: var(--white);
+
 }
 
 .cardBack {
@@ -65,6 +68,7 @@
     overflow: hidden;
     justify-content: space-around;
     text-decoration: none;
+    text-transform: capitalize;
 }
 
 .imgWrapper {

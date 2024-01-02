@@ -32,7 +32,7 @@ const AddComment = (props) => {
 
     return(
         <div>
-            <h3>Dodaj komentarz:</h3>
+            <h3 className={styles.addCommenText}>Dodaj komentarz:</h3>
             <textarea
                 className={styles.textarea}
                 name="area"

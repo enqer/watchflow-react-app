@@ -163,3 +163,7 @@ input[type="checkbox"] {
     color: grey;
     font-weight: bold;
 }
+
+.commenText {
+    color: var(--black);
+}

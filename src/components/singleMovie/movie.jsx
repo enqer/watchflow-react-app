@@ -145,8 +145,7 @@ const Movie = () => {
                 setWhichRateSelect(response.data.rate)
             })
             .catch((error)=>{
-                setError(true)
-                setErrorMsg('Problem z wyświetleniem oceny filmu')
+
             })
     }
 
@@ -269,7 +268,7 @@ return (
                     </p>
                 </div>
                 <div>
-                    <h2>Komentarze:</h2>
+                    <h2 className={styles.commenText}>Komentarze:</h2>
                     {data.comments?.length > 0 ? data.comments.map((comment) =>
                         <Comment
                             id={comment.id}

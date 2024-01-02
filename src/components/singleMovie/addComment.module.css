@@ -51,3 +51,7 @@
     font-weight: bold;
 }
 
+
+.addCommenText {
+    color: var(--black);
+}
