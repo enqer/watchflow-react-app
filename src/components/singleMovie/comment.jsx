@@ -2,6 +2,7 @@ import styles from './comment.module.css'
 import { MdDelete } from "react-icons/md";
 import {decodeToken, isExpired} from "react-jwt";
 import axios from "axios";
+import {baseUrl} from "../../config/shared";
 const Comment = (props) => {
 
     const user = decodeToken(localStorage.getItem('token'))
@@ -14,7 +15,7 @@ const Comment = (props) => {
 }
     const handleDeleteComment = () => {
       axios
-          .delete(`https://watchflow.onrender.com/api/movies/comments/${props.id}`,
+          .delete(baseUrl + `api/movies/comments/${props.id}`,
               config)
           .then((response)=> {
               console.log('Deleted')

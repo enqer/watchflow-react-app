@@ -2,7 +2,6 @@ import {FaUserCircle} from "react-icons/fa";
 import { FiLogOut } from "react-icons/fi";
 import { IoMdSettings } from "react-icons/io";
 import React, {useState} from "react";
-import { isExpired, decodeToken  } from "react-jwt";
 import styles from './login.module.css'
 import {useNavigate} from "react-router";
 import { isLogged, user} from "../../config/authConfig";

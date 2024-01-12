@@ -2,6 +2,7 @@ import styles from './addComment.module.css'
 import {useState} from "react";
 import axios from "axios";
 import { config} from "../../config/authConfig";
+import {baseUrl} from "../../config/shared";
 
 const AddComment = (props) => {
     const [commentText, setCommentText] = useState('');
@@ -20,7 +21,7 @@ const AddComment = (props) => {
     const handleSubmit = () => {
         if (!(commentText.trim() === '')){
             axios
-                .post('https://watchflow.onrender.com/api/movie/comment',
+                .post(baseUrl + 'api/movie/comment',
                     data,
                     config
                 )

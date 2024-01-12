@@ -5,6 +5,7 @@ import {useEffect, useState} from "react";
 import MovieCard from "./movieCard";
 import {isExpired} from "react-jwt";
 import axios from "axios";
+import {baseUrl} from "../../config/shared";
 const Movies = () => {
 
     const isLogged = !isExpired(localStorage.getItem('token'))
@@ -25,7 +26,7 @@ const Movies = () => {
 
     const getAllMovies = () => {
         axios
-            .get('https://watchflow.onrender.com/api/movies')
+            .get(baseUrl + 'api/movies')
             .then((response)=>{
                 response.status === 200 && setData(response.data)
                 setIsNotFound(false)
@@ -36,7 +37,7 @@ const Movies = () => {
     }
     const getMoviesByGenre = (genre) => {
         axios
-            .get(`https://watchflow.onrender.com/api/movies/genres/${genre}`)
+            .get(baseUrl + `api/movies/genres/${genre}`)
             .then((response)=>{
                 setData(response.data)
                 setIsNotFound(false)

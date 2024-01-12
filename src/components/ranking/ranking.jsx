@@ -4,6 +4,7 @@ import MovieRankCard from "./movieRankCard";
 import {useEffect, useState} from "react";
 import axios from "axios";
 import NotFoundText from "../common/notFoundText";
+import {baseUrl} from "../../config/shared";
 
 const Ranking = () => {
 
@@ -12,7 +13,7 @@ const Ranking = () => {
 
     const getRankingMovies = () => {
       axios
-          .get(`https://watchflow.onrender.com/api/movies/ranking?first=5`)
+          .get(baseUrl + `api/movies/ranking?first=5`)
           .then((response)=> {
               setData(response.data)
               setError(false)

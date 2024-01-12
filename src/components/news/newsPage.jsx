@@ -6,6 +6,7 @@ import axios from "axios";
 import {config, isLogged, user} from "../../config/authConfig";
 import {MdDelete} from "react-icons/md";
 import {useNavigate} from "react-router";
+import {baseUrl} from "../../config/shared";
 
 const NewsPage = (props) => {
 
@@ -16,7 +17,7 @@ const NewsPage = (props) => {
 
     const getNews = () => {
         axios
-            .get(`https://watchflow.onrender.com/api/news/${newsId.id}`)
+            .get(baseUrl + `api/news/${newsId.id}`)
             .then((response) => {
                 setNewsData(response.data)
                 setError(false)
@@ -33,9 +34,9 @@ const NewsPage = (props) => {
         window.location.reload()
     }
 
-    const handleDeleteMovie = () => {
+    const handleDeleteNews = () => {
         axios
-            .delete(`https://watchflow.onrender.com/api/news/${newsId.id}`,
+            .delete(baseUrl + `api/news/${newsId.id}`,
                 config
             )
             .then((response) => {
@@ -76,7 +77,7 @@ const NewsPage = (props) => {
                         && (
                             <div
                                 className={styles.deleteMovie}
-                                onClick={handleDeleteMovie}
+                                onClick={handleDeleteNews}
                             >
                                 <p>Usuń news</p>
                                 <MdDelete/>

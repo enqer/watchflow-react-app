@@ -4,6 +4,7 @@ import styles from  './formLogReg.module.css'
 import axios from "axios";
 import {useNavigate} from "react-router";
 import TextInput from "../common/textInput";
+import {baseUrl} from "../../config/shared";
 
 const SignIn = (props) => {
     let navigate = useNavigate()
@@ -24,12 +25,12 @@ const SignIn = (props) => {
         if (!validate()) return;
 
         axios
-            .post('https://watchflow.onrender.com/api/auth/authenticate',{
+            .post(baseUrl + 'api/auth/authenticate',{
                 login: login,
                 password: password
             })
             .then((response) => {
-                localStorage.setItem('token', response.data.token)
+                localStorage.setItem('token-watchflow', response.data.token)
                 handleChangeRoute()
             })
             .catch((err) => {

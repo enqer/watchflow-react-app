@@ -12,6 +12,7 @@ import { config, isLogged, user } from "../../config/authConfig";
 import axios from "axios";
 import {useNavigate} from "react-router";
 import TextInput from "../common/textInput";
+import {baseUrl} from "../../config/shared";
 
 
 const AddMovie = () => {
@@ -63,7 +64,7 @@ const AddMovie = () => {
 
     const addMovie = (url) => {
         axios
-            .post(`https://watchflow.onrender.com/api/movie`,
+            .post(baseUrl + `api/movie`,
                 {
                     title: name,
                     image: url,

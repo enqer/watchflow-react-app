@@ -4,6 +4,7 @@ import styles from  './formLogReg.module.css'
 import * as valid from '../../utils/Validation'
 import axios from "axios";
 import TextInput from "../common/textInput";
+import {baseUrl} from "../../config/shared";
 
 const SignUp = (props) => {
 
@@ -23,7 +24,7 @@ const SignUp = (props) => {
 
         axios({
             method: 'post',
-            url: 'https://watchflow.onrender.com/api/auth/register',
+            url: baseUrl + 'api/auth/register',
             data: {
                 login: login,
                 email: email,

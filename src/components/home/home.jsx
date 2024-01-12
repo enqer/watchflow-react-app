@@ -4,6 +4,7 @@ import NewsCard from "../news/newsCard";
 import {useEffect, useState} from "react";
 import axios from "axios";
 import MovieCard from "../movies/movieCard";
+import {baseUrl} from "../../config/shared";
 
 const Home = () => {
         const [data, setData] = useState([])
@@ -12,7 +13,7 @@ const Home = () => {
 
         const getPopularMovies = () => {
                 axios
-                    .get(`https://watchflow.onrender.com/api/movies/popular?last=${5}`)
+                    .get(baseUrl + `api/movies/popular?last=${5}`)
                     .then((response) => {
                             setData(response.data)
                     })
@@ -21,7 +22,7 @@ const Home = () => {
 
         const getNews = () => {
                 axios
-                    .get(`https://watchflow.onrender.com/api/news/lastest?last=${3}`)
+                    .get(baseUrl + `api/news/lastest?last=${3}`)
                     .then((response) => {
                             setNewsData(response.data)
                     })

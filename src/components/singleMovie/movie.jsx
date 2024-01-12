@@ -12,6 +12,7 @@ import { config, isLogged, user } from '../../config/authConfig'
 import {MdDelete} from "react-icons/md";
 import {useNavigate} from "react-router";
 import Rating from "./rating";
+import {baseUrl} from "../../config/shared";
 
 const Movie = () => {
 
@@ -40,7 +41,7 @@ const Movie = () => {
 
     const getInfoMovie = () => {
         axios
-            .get(`https://watchflow.onrender.com/api/movies/${movieId.id}`)
+            .get(baseUrl + `api/movies/${movieId.id}`)
             .then((response)=>{
                 setData(response.data)
             })
@@ -53,7 +54,7 @@ const Movie = () => {
 
     const getWatcherInfo = () => {
         axios
-            .get(`https://watchflow.onrender.com/api/movies/${movieId.id}/watchers/${user.userId}`)
+            .get(baseUrl + `api/movies/${movieId.id}/watchers/${user.userId}`)
             .then((response) => {
                 if (response.data.isWatcher){
                     setWatched(true)
@@ -87,7 +88,7 @@ const Movie = () => {
 
     const deleteRating = () => {
        axios
-           .delete(`https://watchflow.onrender.com/api/ratings/${ratingData.id}`,
+           .delete(baseUrl + `api/ratings/${ratingData.id}`,
                config
            )
            .then((response) => {
@@ -101,7 +102,7 @@ const Movie = () => {
 
     const updateRating = (rate) => {
         axios
-            .patch(`https://watchflow.onrender.com/api/rating/${ratingData.id}`,
+            .patch(baseUrl + `api/rating/${ratingData.id}`,
                 {
                     rate: rate
                 },
@@ -120,7 +121,7 @@ const Movie = () => {
     }
     const selectRating = (rate) => {
         axios
-            .post(`https://watchflow.onrender.com/api/rating`,
+            .post(baseUrl + `api/rating`,
                 {
                     rate: rate,
                     movieId: movieId.id,
@@ -139,7 +140,7 @@ const Movie = () => {
 
     const getRating = () => {
         axios
-            .get(`https://watchflow.onrender.com/api/ratings/movies/${movieId.id}/users/${user.userId}`)
+            .get(baseUrl + `api/ratings/movies/${movieId.id}/users/${user.userId}`)
             .then((response) => {
                 setRatingData(response.data)
                 setWhichRateSelect(response.data.rate)
@@ -151,7 +152,7 @@ const Movie = () => {
 
     const deleteWatcher = () => {
         axios
-            .delete(`https://watchflow.onrender.com/api/movies/${movieId.id}/watchers/${user.userId}`,
+            .delete(baseUrl + `api/movies/${movieId.id}/watchers/${user.userId}`,
                 config)
             .then((response) => {
                 console.log(response)
@@ -166,7 +167,7 @@ const Movie = () => {
 
     const addWatcher = () => {
         axios
-            .post(`https://watchflow.onrender.com/api/movies/${movieId.id}/watchers/${user.userId}`,
+            .post(baseUrl + `api/movies/${movieId.id}/watchers/${user.userId}`,
                 {},
                 config)
             .then((response) => {
@@ -198,7 +199,7 @@ const Movie = () => {
 
     const handleDeleteMovie = () => {
         axios
-            .delete(`https://watchflow.onrender.com/api/movies/${movieId.id}`,
+            .delete(baseUrl + `api/movies/${movieId.id}`,
                 config
             )
             .then((response) => {
