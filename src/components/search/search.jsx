@@ -3,7 +3,7 @@ import {useState} from "react";
 import axios from "axios";
 import MovieCard from "../movies/movieCard";
 import styles from './search.module.css'
-import {baseUrl} from "../../config/shared";
+import {BASE_URL} from "../../config/shared";
 const Search = () => {
     const [data, setData] = useState([])
     const [isNotFound, setIsNotFound] = useState(true)
@@ -11,7 +11,7 @@ const Search = () => {
 
     const getSearchedMovie = (title) => {
         axios
-            .get(baseUrl + `api/movies/search/${title}`)
+            .get(`${BASE_URL}/api/movies/search/${title}`)
             .then((response)=> {
                 if (response.data.length > 0){
                     setData(response.data)

@@ -1,32 +1,35 @@
-// import Logo from "../common/logo";
+import styles from './formPage.module.css'
 import {IoMdClose} from "react-icons/io";
 import {useState} from "react";
 import SignIn from "./signIn";
-import './formPage.css'
+import './formPage.module.css'
 import SignUp from "./signUp";
 import Logo from "../common/logo"
 
 
 const FormPage = (props) => {
     const [isLoginForm, setIsLoginForm] = useState(true)
-
-    const handleSwitchForm = () => {
-        setIsLoginForm(!isLoginForm)
-    }
+    const handleSwitchForm = () => setIsLoginForm(!isLoginForm)
 
     return(
-        <div className="signInContainer" >
-            <div className="signInPopup">
-                <div className="signInBar">
+        <div className={styles.signInContainer} >
+            <div className={styles.signInPopup}>
+                <div className={styles.signInBar}>
                     <Logo />
-                    <IoMdClose className="close" onClick={() => props.handleCloseForm()} />
+                    <IoMdClose
+                        className={styles.close}
+                        onClick={() => props.handleCloseForm()}
+                    />
                 </div>
                 <div>
-                    {isLoginForm ? <SignIn handleSwitchForm={handleSwitchForm} /> : <SignUp  handleSwitchForm={handleSwitchForm}/>}
+                    {isLoginForm ? (
+                        <SignIn handleSwitchForm={handleSwitchForm} />
+                    ) : (
+                        <SignUp  handleSwitchForm={handleSwitchForm} />
+                    )}
                 </div>
-        </div>
+            </div>
         </div>
     )
 }
-
 export default FormPage

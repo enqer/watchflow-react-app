@@ -14,7 +14,13 @@ const MovieRankCard = (props) => {
     return (
         <div className={styles.flipCard}
              onMouseEnter={handleFlip}>
-            <div className={isFlipped ? [styles.flipCardInner, styles.flipped].join(' ') : styles.flipCardInner}>
+            <div className=
+                     {isFlipped ? (
+                         [styles.flipCardInner, styles.flipped].join(' ')
+                     ) : (
+                         styles.flipCardInner
+                     )}
+            >
                 <div className={styles.cardFront}>
                     <p>{props.rank}</p>
                 </div>

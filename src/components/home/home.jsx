@@ -4,7 +4,7 @@ import NewsCard from "../news/newsCard";
 import {useEffect, useState} from "react";
 import axios from "axios";
 import MovieCard from "../movies/movieCard";
-import {baseUrl} from "../../config/shared";
+import {BASE_URL} from "../../config/shared";
 
 const Home = () => {
         const [data, setData] = useState([])
@@ -13,7 +13,7 @@ const Home = () => {
 
         const getPopularMovies = () => {
                 axios
-                    .get(baseUrl + `api/movies/popular?last=${5}`)
+                    .get(`${BASE_URL}/api/movies/popular?last=${5}`)
                     .then((response) => {
                             setData(response.data)
                     })
@@ -22,7 +22,7 @@ const Home = () => {
 
         const getNews = () => {
                 axios
-                    .get(baseUrl + `api/news/lastest?last=${3}`)
+                    .get(`${BASE_URL}/api/news/lastest?last=${3}`)
                     .then((response) => {
                             setNewsData(response.data)
                     })

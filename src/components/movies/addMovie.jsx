@@ -12,7 +12,7 @@ import { config } from "../../config/authConfig";
 import axios from "axios";
 import {useNavigate} from "react-router";
 import TextInput from "../common/textInput";
-import {baseUrl, movieGenres} from "../../config/shared";
+import {BASE_URL, movieGenres} from "../../config/shared";
 
 
 const AddMovie = () => {
@@ -62,7 +62,7 @@ const AddMovie = () => {
 
     const addMovie = (url) => {
         axios
-            .post(baseUrl + `api/movie`,
+            .post(`${BASE_URL}/api/movie`,
                 {
                     title: name,
                     image: url,

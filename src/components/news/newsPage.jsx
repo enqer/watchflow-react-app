@@ -6,7 +6,7 @@ import axios from "axios";
 import {config, isLogged, user} from "../../config/authConfig";
 import {MdDelete} from "react-icons/md";
 import {useNavigate} from "react-router";
-import {baseUrl} from "../../config/shared";
+import {BASE_URL} from "../../config/shared";
 
 const NewsPage = (props) => {
 
@@ -17,7 +17,7 @@ const NewsPage = (props) => {
 
     const getNews = () => {
         axios
-            .get(baseUrl + `api/news/${newsId.id}`)
+            .get(`${BASE_URL}/api/news/${newsId.id}`)
             .then((response) => {
                 setNewsData(response.data)
                 setError(false)
@@ -36,7 +36,7 @@ const NewsPage = (props) => {
 
     const handleDeleteNews = () => {
         axios
-            .delete(baseUrl + `api/news/${newsId.id}`,
+            .delete(`${BASE_URL}/api/news/${newsId.id}`,
                 config
             )
             .then((response) => {
@@ -57,7 +57,8 @@ const NewsPage = (props) => {
                 </div>
                 <div className={styles.authorInfo}>
                     <p>
-                        <span className={styles.spanColor}>Autor: </span>{`${newsData.author?.firstName} ${newsData.author?.lastName}`}
+                        <span className={styles.spanColor}>
+                            Autor: </span>{`${newsData.author?.firstName} ${newsData.author?.lastName}`}
                         <span className={styles.spanColor}> / </span>{newsData.publishedAt}
                     </p>
                 </div>

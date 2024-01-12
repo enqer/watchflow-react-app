@@ -12,8 +12,11 @@ const SearchBar = ({handleSearch}) => {
                 placeholder="Wyszukaj"
                 onChange={(event) => setSearchedText(event.target.value)}
             />
-            <span className={styles.search}>
-                <IoSearch onClick={() =>handleSearch(searchedText)} />
+            <span
+                className={styles.search}
+                onClick={() =>handleSearch(searchedText)}
+            >
+                <IoSearch  />
             </span>
         </div>
     )

@@ -88,10 +88,12 @@ const Navbar = () => {
               <div onClick={() => handleShowingForm()}>
                   <Login/>
               </div>
-                {showForm &&
-                    !isLogged && (
+                {showForm
+                    && !isLogged
+                    && (
                         <FormPage handleCloseForm={handleCloseForm} />
-                )}
+                    )
+                }
             </div>
       </div>
     )

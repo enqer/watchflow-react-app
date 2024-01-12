@@ -5,10 +5,11 @@ import {useEffect, useState} from "react";
 import MovieCard from "./movieCard";
 import {isExpired} from "react-jwt";
 import axios from "axios";
-import {baseUrl} from "../../config/shared";
+import {BASE_URL} from "../../config/shared";
+import {tokenKey} from "../../config/authConfig";
 const Movies = () => {
 
-    const isLogged = !isExpired(localStorage.getItem('token'))
+    const isLogged = !isExpired(localStorage.getItem(tokenKey))
 
     const [isMoving, setIsMoving] = useState(false)
     const [data, setData] = useState([])
@@ -26,7 +27,7 @@ const Movies = () => {
 
     const getAllMovies = () => {
         axios
-            .get(baseUrl + 'api/movies')
+            .get(`${BASE_URL}/api/movies`)
             .then((response)=>{
                 response.status === 200 && setData(response.data)
                 setIsNotFound(false)
@@ -37,7 +38,7 @@ const Movies = () => {
     }
     const getMoviesByGenre = (genre) => {
         axios
-            .get(baseUrl + `api/movies/genres/${genre}`)
+            .get(`${BASE_URL}/api/movies/genres/${genre}`)
             .then((response)=>{
                 setData(response.data)
                 setIsNotFound(false)
@@ -76,7 +77,7 @@ const Movies = () => {
                       ))}
                   </select>
               </div>
-              {isLogged &&
+              {isLogged && (
                   <div>
                       <Link
                           to="add"
@@ -86,14 +87,21 @@ const Movies = () => {
                       >
                           <p>Dodaj film</p>
                           <div className={styles.arrow}>
-                              <FaArrowRight className={isMoving ? styles.arrowMoveAfter : styles.arrowMoveBefore}/>
+                              <FaArrowRight
+                                  className=
+                                      {isMoving ? (
+                                          styles.arrowMoveAfter
+                                      ) : (
+                                          styles.arrowMoveBefore
+                                      )}
+                              />
                           </div>
                       </Link>
                   </div>
-              }
+              )}
           </div>
           <div className={styles.wrapperImages}>
-              {!isNotFound ?
+              {!isNotFound ? (
                   Array.isArray(data) && (
                       data?.map(d => (
                           <MovieCard
@@ -102,8 +110,12 @@ const Movies = () => {
                               title={d.title}
                               key={d.id}
                           />
-                  ))) : (
-                      <p className={styles.notFound}>Nie znaleziono</p>
+                      ))
+                  )
+              ) : (
+                      <p className={styles.notFound}>
+                          Nie znaleziono
+                      </p>
                   )
               }
           </div>

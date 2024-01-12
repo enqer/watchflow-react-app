@@ -2,14 +2,19 @@
 import { IoStar } from "react-icons/io5";
 const MovieRating = (props) => {
 
-
     return (
             <div style={styles.wrapper}>
-                <IoStar  style={styles.star}/>
-                <p style={styles.rate}>{props.rating}</p>
+                <IoStar  style={styles.star} />
+                <p style={styles.rate}>
+                    {props.rating}
+                </p>
                 <div style={styles.rateSociety}>
-                    <p style={styles.numSociety}>{props.numOfRating}</p>
-                    <p style={styles.textSociety}>oceny społeczności</p>
+                    <p style={styles.numSociety}>
+                        {props.numOfRating}
+                    </p>
+                    <p style={styles.textSociety}>
+                        oceny społeczności
+                    </p>
                 </div>
             </div>
     )

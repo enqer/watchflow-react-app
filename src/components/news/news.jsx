@@ -3,14 +3,14 @@ import styles from './news.module.css'
 import axios from "axios";
 import {useEffect, useState} from "react";
 import NotFoundText from "../common/notFoundText";
-import {baseUrl} from "../../config/shared";
+import {BASE_URL} from "../../config/shared";
 
 const News = () => {
     const [newsData, setNewsData] = useState([])
     const [error, setError] = useState(false)
     const getNews = () => {
         axios
-            .get(baseUrl + `api/news`)
+            .get(`${BASE_URL}/api/news`)
             .then((response) => {
                 setNewsData(response.data)
                 setError(false)

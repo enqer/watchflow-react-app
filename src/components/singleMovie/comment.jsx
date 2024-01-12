@@ -1,21 +1,13 @@
 import styles from './comment.module.css'
 import { MdDelete } from "react-icons/md";
-import {decodeToken, isExpired} from "react-jwt";
 import axios from "axios";
-import {baseUrl} from "../../config/shared";
+import {BASE_URL} from "../../config/shared";
+import {config, isLogged, user} from "../../config/authConfig";
 const Comment = (props) => {
 
-    const user = decodeToken(localStorage.getItem('token'))
-    const isLogged = !isExpired(localStorage.getItem('token'))
-
-
-    const config = {
-        headers: { Authorization: `Bearer ${localStorage.getItem('token')}`
-        }
-}
     const handleDeleteComment = () => {
       axios
-          .delete(baseUrl + `api/movies/comments/${props.id}`,
+          .delete(`${BASE_URL}/api/movies/comments/${props.id}`,
               config)
           .then((response)=> {
               console.log('Deleted')

@@ -4,7 +4,7 @@ import MovieRankCard from "./movieRankCard";
 import {useEffect, useState} from "react";
 import axios from "axios";
 import NotFoundText from "../common/notFoundText";
-import {baseUrl} from "../../config/shared";
+import {BASE_URL} from "../../config/shared";
 
 const Ranking = () => {
 
@@ -13,7 +13,7 @@ const Ranking = () => {
 
     const getRankingMovies = () => {
       axios
-          .get(baseUrl + `api/movies/ranking?first=5`)
+          .get(`${BASE_URL}/api/movies/ranking?first=5`)
           .then((response)=> {
               setData(response.data)
               setError(false)
@@ -32,7 +32,9 @@ const Ranking = () => {
     return (
         <div className={styles.containerFluid}>
             <div className={styles.titleRanking}>
-                <p className={styles.rankingText}>Odkryj ranking</p>
+                <p className={styles.rankingText}>
+                    Odkryj ranking
+                </p>
             </div>
             <div className={styles.container}>
                 {!error ? (

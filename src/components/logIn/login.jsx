@@ -4,38 +4,43 @@ import { IoMdSettings } from "react-icons/io";
 import React, {useState} from "react";
 import styles from './login.module.css'
 import {useNavigate} from "react-router";
-import { isLogged, user} from "../../config/authConfig";
+import {isLogged, tokenKey, user} from "../../config/authConfig";
 
-const Login = (props) => {
+const Login = () => {
     let navigate = useNavigate()
-
     const [isHover, setIsHover] = useState(false)
 
-    const handleHover = () => {
-        setIsHover(!isHover)
-    }
-
+    const handleHover = () => setIsHover(!isHover)
     const handleChangeRoute = () => {
         navigate('/home')
         window.location.reload()
     }
-
     const handleLogout = () => {
-        localStorage.clear();
+        localStorage.removeItem(tokenKey);
         handleChangeRoute()
     }
 
-    const handleSettings = () => {
-        alert("Innych nie będzie")
-    }
+    const handleSettings = () => alert("Innych nie będzie")
 
     return (
-        <div className={isHover && isLogged ? [styles.container,styles.containerHover].join(' ') : styles.container}
+        <div
+            className=
+                {isHover
+                    && isLogged ? (
+                        [styles.container,styles.containerHover].join(' ')
+                    ) : (
+                        styles.container
+                )}
             onMouseEnter={handleHover}
-             onMouseLeave={handleHover}
+            onMouseLeave={handleHover}
         >
             <div className={styles.userDetails}>
-                <p>{isLogged ? user.login : "Zaloguj się"}</p>
+                <p>{isLogged ? (
+                    user.login
+                ) : (
+                    "Zaloguj się"
+                )}
+                </p>
                 <span><FaUserCircle/></span>
             </div>
 
@@ -60,7 +65,6 @@ const Login = (props) => {
                     </div>
                 )
             }
-
         </div>
     )
 }

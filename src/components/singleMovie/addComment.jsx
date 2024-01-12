@@ -2,7 +2,7 @@ import styles from './addComment.module.css'
 import {useState} from "react";
 import axios from "axios";
 import { config} from "../../config/authConfig";
-import {baseUrl} from "../../config/shared";
+import {BASE_URL} from "../../config/shared";
 
 const AddComment = (props) => {
     const [commentText, setCommentText] = useState('');
@@ -21,7 +21,7 @@ const AddComment = (props) => {
     const handleSubmit = () => {
         if (!(commentText.trim() === '')){
             axios
-                .post(baseUrl + 'api/movie/comment',
+                .post(`${BASE_URL}/api/movie/comment`,
                     data,
                     config
                 )

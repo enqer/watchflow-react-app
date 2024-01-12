@@ -12,7 +12,7 @@ import { config, isLogged, user } from '../../config/authConfig'
 import {MdDelete} from "react-icons/md";
 import {useNavigate} from "react-router";
 import Rating from "./rating";
-import {baseUrl} from "../../config/shared";
+import {BASE_URL, baseUrl} from "../../config/shared";
 
 const Movie = () => {
 
@@ -41,7 +41,7 @@ const Movie = () => {
 
     const getInfoMovie = () => {
         axios
-            .get(baseUrl + `api/movies/${movieId.id}`)
+            .get(`${BASE_URL}/api/movies/${movieId.id}`)
             .then((response)=>{
                 setData(response.data)
             })
@@ -54,7 +54,7 @@ const Movie = () => {
 
     const getWatcherInfo = () => {
         axios
-            .get(baseUrl + `api/movies/${movieId.id}/watchers/${user.userId}`)
+            .get(`${BASE_URL}/api/movies/${movieId.id}/watchers/${user.userId}`)
             .then((response) => {
                 if (response.data.isWatcher){
                     setWatched(true)
@@ -71,7 +71,7 @@ const Movie = () => {
         getInfoMovie()
         isLogged && getWatcherInfo()
         isLogged && getRating()
-    }, );
+    }, []);
 
     const handleSelectRating = (rate) => {
         if (!isLogged){
@@ -88,7 +88,7 @@ const Movie = () => {
 
     const deleteRating = () => {
        axios
-           .delete(baseUrl + `api/ratings/${ratingData.id}`,
+           .delete(`${BASE_URL}/api/ratings/${ratingData.id}`,
                config
            )
            .then((response) => {
@@ -102,7 +102,7 @@ const Movie = () => {
 
     const updateRating = (rate) => {
         axios
-            .patch(baseUrl + `api/rating/${ratingData.id}`,
+            .patch(`${BASE_URL}/api/rating/${ratingData.id}`,
                 {
                     rate: rate
                 },
@@ -121,7 +121,7 @@ const Movie = () => {
     }
     const selectRating = (rate) => {
         axios
-            .post(baseUrl + `api/rating`,
+            .post(`${BASE_URL}/api/rating`,
                 {
                     rate: rate,
                     movieId: movieId.id,
@@ -140,7 +140,7 @@ const Movie = () => {
 
     const getRating = () => {
         axios
-            .get(baseUrl + `api/ratings/movies/${movieId.id}/users/${user.userId}`)
+            .get(`${BASE_URL}/api/ratings/movies/${movieId.id}/users/${user.userId}`)
             .then((response) => {
                 setRatingData(response.data)
                 setWhichRateSelect(response.data.rate)
@@ -152,7 +152,7 @@ const Movie = () => {
 
     const deleteWatcher = () => {
         axios
-            .delete(baseUrl + `api/movies/${movieId.id}/watchers/${user.userId}`,
+            .delete(`${BASE_URL}/api/movies/${movieId.id}/watchers/${user.userId}`,
                 config)
             .then((response) => {
                 console.log(response)
@@ -167,7 +167,7 @@ const Movie = () => {
 
     const addWatcher = () => {
         axios
-            .post(baseUrl + `api/movies/${movieId.id}/watchers/${user.userId}`,
+            .post(`${BASE_URL}/api/movies/${movieId.id}/watchers/${user.userId}`,
                 {},
                 config)
             .then((response) => {
@@ -199,7 +199,7 @@ const Movie = () => {
 
     const handleDeleteMovie = () => {
         axios
-            .delete(baseUrl + `api/movies/${movieId.id}`,
+            .delete(`${BASE_URL}/api/movies/${movieId.id}`,
                 config
             )
             .then((response) => {
@@ -241,10 +241,33 @@ return (
                             <div className={styles.ratingValues}>
                                 <FaRegUserCircle className={styles.defaultIconNumber}/>
                                 <div
-                                    className={whichHover > 0 || whichRateSelect > 0 ? [styles.selectedRateNumber, styles.selectedRateNumberAfter].join(' ') : [styles.selectedRateNumber, styles.selectedRateNumberBefore].join(' ')}>{whichRateSelect > 0 && whichHover === 0 ? getSelectedRate(whichRateSelect) : getSelectedRate(whichHover)}</div>
-                            </div>
+                                    className=
+                                        {whichHover > 0
+                                            || whichRateSelect > 0 ? (
+                                                [styles.selectedRateNumber, styles.selectedRateNumberAfter].join(' ')
+                                            ) : (
+                                                [styles.selectedRateNumber, styles.selectedRateNumberBefore].join(' ')
+                                        )}
+                                >
+                                    {whichRateSelect > 0
+                                        && whichHover === 0 ? (
+                                            getSelectedRate(whichRateSelect)
+                                        ) : (
+                                            getSelectedRate(whichHover)
+                                        )
+                                    }
+                                </div>
+                                </div>
                             <div className={styles.ratingLabels}>
-                                <p>{whichRateSelect > 0 && whichHover === 0 ? getLabelByRate(whichRateSelect) : getLabelByRate(whichHover)}</p>
+                                <p>
+                                    {whichRateSelect > 0
+                                        && whichHover === 0 ? (
+                                            getLabelByRate(whichRateSelect)
+                                        ) : (
+                                            getLabelByRate(whichHover)
+                                        )
+                                    }
+                                </p>
                             </div>
                         </div>
                         <Rating

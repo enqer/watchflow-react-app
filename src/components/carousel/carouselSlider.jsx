@@ -4,7 +4,7 @@ import {useEffect, useState} from "react";
 import axios from "axios";
 import MovieCard from "../movies/movieCard";
 import NotFoundText from "../common/notFoundText";
-import {baseUrl} from "../../config/shared";
+import {BASE_URL} from "../../config/shared";
 const CarouselSlider = () => {
     const [data, setData] = useState([])
     const [error, setError] = useState(false)
@@ -18,7 +18,7 @@ const CarouselSlider = () => {
     ]
     const getNewestMovie = () => {
         axios
-            .get(baseUrl + `api/movies/lastest?last=${10}`)
+            .get(`${BASE_URL}/api/movies/lastest?last=${10}`)
             .then((response) => {
                 setData(response.data)
             })

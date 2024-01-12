@@ -4,11 +4,11 @@ import styles from  './formLogReg.module.css'
 import axios from "axios";
 import {useNavigate} from "react-router";
 import TextInput from "../common/textInput";
-import {baseUrl} from "../../config/shared";
+import {BASE_URL} from "../../config/shared";
+import {tokenKey} from "../../config/authConfig";
 
 const SignIn = (props) => {
     let navigate = useNavigate()
-
     const [login, setLogin]=useState('')
     const [password, setPassword]=useState('')
     const [alert, setAlert]=useState('')
@@ -25,12 +25,12 @@ const SignIn = (props) => {
         if (!validate()) return;
 
         axios
-            .post(baseUrl + 'api/auth/authenticate',{
+            .post(`${BASE_URL}/api/auth/authenticate`,{
                 login: login,
                 password: password
             })
             .then((response) => {
-                localStorage.setItem('token-watchflow', response.data.token)
+                localStorage.setItem(tokenKey, response.data.token)
                 handleChangeRoute()
             })
             .catch((err) => {
@@ -53,7 +53,10 @@ const SignIn = (props) => {
     return (
             <div className={styles.form}>
                 <p className={styles.signInTitle}>Zaloguj się</p>
-                <form autoComplete="off" onSubmit={handleSubmit}>
+                <form
+                    autoComplete="off"
+                    onSubmit={handleSubmit}
+                >
                     <div>
                         <TextInput
                             state={setLogin}
@@ -70,13 +73,19 @@ const SignIn = (props) => {
                         <p>Nie pamiętam hasła</p>
                     </div>
                     <div className={styles.switchForm}>
-                        <p onClick={() => props.handleSwitchForm()}>Utwórz nowe konto</p>
+                        <p onClick={() => props.handleSwitchForm()}>
+                            Utwórz nowe konto
+                        </p>
                     </div>
                     <div className={styles.submitWrapper}>
-                        <input className={styles.submit} type="submit" value="Zaloguj"/>
+                        <input
+                            className={styles.submit}
+                            type="submit"
+                            value="Zaloguj"
+                        />
                     </div>
                     <div className={styles.alert}>
-                        <p >{alert}</p>
+                        <p>{alert}</p>
                     </div>
                 </form>
             </div>

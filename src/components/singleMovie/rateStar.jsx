@@ -13,10 +13,11 @@ const RateStar = (props) => {
         >
             {props.whichHover >= props.rate || (
                 props.whichRateSelect >= props.rate && props.whichHover === 0) ? (
-                <IoStar/>
-            ) : (
-                <IoStarOutline/>
-            )}
+                    <IoStar/>
+                ) : (
+                    <IoStarOutline/>
+                )
+            }
         </Link>
     )
 }
