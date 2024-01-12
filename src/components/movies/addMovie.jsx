@@ -28,7 +28,6 @@ const AddMovie = () => {
     const [year, setYear] = useState(now);
     const [description, setDescription] = useState('');
     const [validText, setValidText] = useState('')
-    const [urlImage, setUrlImage] = useState('')
 
     const validate = () => {
         if (description.trim().length < 100){
@@ -54,7 +53,6 @@ const AddMovie = () => {
                 return getDownloadURL(res.ref)
             })
             .then(url => {
-                setUrlImage(url)
                 addMovie(url)
             })
             .catch(error => {
@@ -87,10 +85,15 @@ const AddMovie = () => {
     }
 
     return(
-        <div className={styles.container}>
-            <div style={{width: '100%', margin: '0 auto'}}>
-                <BackPage backTo={"/movies"} title={"Powrót"}  />
-                <header className={styles.header}><p>Dodaj nowy film</p></header>
+        <div className={styles.containerFluid}>
+            <div className={styles.container}>
+                <BackPage
+                    backTo={"/movies"}
+                    title={"Powrót"}
+                />
+                <header className={styles.header}>
+                    <p>Dodaj nowy film</p>
+                </header>
                 <div>
                     <form
                         className={styles.form}

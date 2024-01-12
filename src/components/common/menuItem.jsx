@@ -1,4 +1,4 @@
-import styles from "./navbar.module.css";
+import styles from './menuItem.module.css';
 import {Link, useLocation} from "react-router-dom";
 import React, {useState} from "react";
 
@@ -10,18 +10,14 @@ const MenuItem = (props) => {
         <Link
             to={props.path}
             className=
-                {location.pathname.includes(props.path) ? (
+                {location.pathname.includes(props.path.substring(0,props.path.length-1)) ? (
                     [styles.text, styles.clicked].join(' ')
                 ) : (
                     styles.text
                 )}
-            // onMouseEnter={() => props.handleMouseEnter(props.value)}
-            // onMouseLeave={props.handleMouseLeave}
             onMouseEnter={handleHover}
             onMouseLeave={handleHover}
-            // onClick={() => props.handleSelectedMenu(props.value)}
         >
-
                     <span className={styles.icon}>
                         {props.icon}
                     </span>

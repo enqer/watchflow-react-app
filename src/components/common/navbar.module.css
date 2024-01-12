@@ -29,25 +29,6 @@
     position: relative;
     width: 200px;
 }
-.text {
-    padding: 0 10px;
-    font-size: 16px;
-    /*color: var(--white);*/
-    color: white;
-    text-transform: uppercase;
-    display: flex;
-    text-underline-offset: 8px;
-    font-weight: bold;
-    text-decoration: none;
-}
-
-.icon {
-    margin: auto;
-    position: relative;
-    top: 3px;
-    padding: 5px;
-}
-
 
 .navbarBgcBefore {
     background-color: var(--background);
@@ -55,19 +36,4 @@
 
 .navbarBgcAfter {
     background-color: var(--black);
-}
-
-.underline {
-    border-bottom: 3px solid transparent;
-    border-top: 3px solid transparent;
-    transition: border-bottom .5s ease;
-}
-.underlineAfter {
-    border-bottom: 3px solid;
-    border-top: 3px solid transparent;
-    transition: border-bottom 1s ease;
-}
-.clicked {
-    color: var(--darkBlue);
-    border-color: var(--darkBlue);
 }
