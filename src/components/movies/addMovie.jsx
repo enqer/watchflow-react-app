@@ -8,11 +8,11 @@ import BackPage from "../common/backPage";
 import { imageDb} from "../../config/firebaseConfig";
 import { ref, uploadBytes, getDownloadURL } from 'firebase/storage'
 import { v4 } from 'uuid'
-import { config, isLogged, user } from "../../config/authConfig";
+import { config } from "../../config/authConfig";
 import axios from "axios";
 import {useNavigate} from "react-router";
 import TextInput from "../common/textInput";
-import {baseUrl} from "../../config/shared";
+import {baseUrl, movieGenres} from "../../config/shared";
 
 
 const AddMovie = () => {
@@ -24,7 +24,7 @@ const AddMovie = () => {
     const [selectedImage, setSelectedImage] = useState(null);
     const [name, setName] = useState('');
     const [director, setDirector] = useState('');
-    const [genre, setGenre] = useState(options[0]);
+    const [genre, setGenre] = useState(movieGenres[0]);
     const [year, setYear] = useState(now);
     const [description, setDescription] = useState('');
     const [validText, setValidText] = useState('')
@@ -144,11 +144,11 @@ const AddMovie = () => {
                                 <div className={styles.selectGenre}>
                                     <p>Wybierz gatunek:</p>
                                     <select
-                                        defaultValue={options[0]}
+                                        defaultValue={movieGenres[0]}
                                         className={styles.select}
                                         onChange={(event) => setGenre(event.target.value)}
                                     >
-                                        {options.map((option, index) => (
+                                        {movieGenres.map((option, index) => (
                                             <option
                                                 className={styles.option}
                                                 value={option}
@@ -204,5 +204,5 @@ const AddMovie = () => {
     )
 }
 
-const options = ["Akcja", "Komedia", "Biograficzne", "Dramat", "Komedia romantyczna","Science fiction", "Thriller", "Dla dzieci"];
+
 export default AddMovie
