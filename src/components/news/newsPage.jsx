@@ -27,7 +27,7 @@ const NewsPage = (props) => {
 
     useEffect(() => {
         getNews()
-    }, []);
+    }, );
 
     const switchRoute = () => {
         navigate('/news')

@@ -71,7 +71,7 @@ const Movie = () => {
         getInfoMovie()
         isLogged && getWatcherInfo()
         isLogged && getRating()
-    }, []);
+    }, );
 
     const handleSelectRating = (rate) => {
         if (!isLogged){
