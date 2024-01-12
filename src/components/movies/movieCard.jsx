@@ -1,5 +1,4 @@
 import styles from "./movieCard.module.css";
-import img from "../../img/loki.jpg";
 import {Link} from "react-router-dom";
 import {useState} from "react";
 

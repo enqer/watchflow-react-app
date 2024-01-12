@@ -12,7 +12,7 @@ import { config, isLogged, user } from '../../config/authConfig'
 import {MdDelete} from "react-icons/md";
 import {useNavigate} from "react-router";
 import Rating from "./rating";
-import {BASE_URL, baseUrl} from "../../config/shared";
+import {BASE_URL} from "../../config/shared";
 
 const Movie = () => {
 
@@ -39,35 +39,48 @@ const Movie = () => {
         return matchingRates.length > 0 ? matchingRates[0].value : null;
     }
 
-    const getInfoMovie = () => {
-        axios
-            .get(`${BASE_URL}/api/movies/${movieId.id}`)
-            .then((response)=>{
-                setData(response.data)
-            })
-            .catch((err) => {
-                setError(true)
-                setErrorMsg('Problem z wyświetleniem filmu')
-                switchRoute()
-            })
-    }
 
-    const getWatcherInfo = () => {
-        axios
-            .get(`${BASE_URL}/api/movies/${movieId.id}/watchers/${user.userId}`)
-            .then((response) => {
-                if (response.data.isWatcher){
-                    setWatched(true)
-                }
-            })
-            .catch((error) => {
-                // setError(true)
-                // setWatched(false)
-                // setErrorMsg('Problem z wyświetleniem dodatkowych informacji filmu')
-            })
-    }
+
 
     useEffect(() => {
+        // TODO handle errors
+        const getInfoMovie = () => {
+            axios
+                .get(`${BASE_URL}/api/movies/${movieId.id}`)
+                .then((response)=>{
+                    setData(response.data)
+                })
+                .catch((err) => {
+                    setError(true)
+                    setErrorMsg('Problem z wyświetleniem filmu')
+                    switchRoute()
+                })
+        }
+        const getWatcherInfo = () => {
+            axios
+                .get(`${BASE_URL}/api/movies/${movieId.id}/watchers/${user.userId}`)
+                .then((response) => {
+                    if (response.data.isWatcher){
+                        setWatched(true)
+                    }
+                })
+                .catch((error) => {
+                    // setError(true)
+                    // setWatched(false)
+                    // setErrorMsg('Problem z wyświetleniem dodatkowych informacji filmu')
+                })
+        }
+        const getRating = () => {
+            axios
+                .get(`${BASE_URL}/api/ratings/movies/${movieId.id}/users/${user.userId}`)
+                .then((response) => {
+                    setRatingData(response.data)
+                    setWhichRateSelect(response.data.rate)
+                })
+                .catch((error)=>{
+
+                })
+        }
         getInfoMovie()
         isLogged && getWatcherInfo()
         isLogged && getRating()
@@ -138,17 +151,6 @@ const Movie = () => {
             })
     }
 
-    const getRating = () => {
-        axios
-            .get(`${BASE_URL}/api/ratings/movies/${movieId.id}/users/${user.userId}`)
-            .then((response) => {
-                setRatingData(response.data)
-                setWhichRateSelect(response.data.rate)
-            })
-            .catch((error)=>{
-
-            })
-    }
 
     const deleteWatcher = () => {
         axios

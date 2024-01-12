@@ -1,5 +1,4 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
@@ -15,6 +14,7 @@ import Movie from "./components/singleMovie/movie";
 import {isExpired} from "react-jwt";
 import Search from "./components/search/search";
 import {createRoot} from "react-dom/client";
+import {tokenKey} from "./config/authConfig";
 
 
 const rootElement = document.getElementById("root");
@@ -29,7 +29,7 @@ root.render(
                                <Route path="home" element={<Home />}/>
                                <Route path="search" element={<Search />}/>
                                <Route path="movies" element={<Movies />}/>
-                               <Route path="movies/add" element={isExpired(localStorage.getItem('token')) ? <Navigate replace to="/home" /> : <AddMovie />}/>
+                               <Route path="movies/add" element={isExpired(localStorage.getItem(tokenKey)) ? <Navigate replace to="/home" /> : <AddMovie />}/>
                                <Route path="movie/:id" element={<Movie />}/>
                                <Route path="ranking" element={<Ranking />}/>
                                <Route path="news" element={<News />}/>
