@@ -43,7 +43,6 @@ const Movie = () => {
 
 
     useEffect(() => {
-        // TODO handle errors
         const getInfoMovie = () => {
             axios
                 .get(`${BASE_URL}/api/movies/${movieId.id}`)
@@ -65,9 +64,7 @@ const Movie = () => {
                     }
                 })
                 .catch((error) => {
-                    // setError(true)
-                    // setWatched(false)
-                    // setErrorMsg('Problem z wyświetleniem dodatkowych informacji filmu')
+
                 })
         }
         const getRating = () => {

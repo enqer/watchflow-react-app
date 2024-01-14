@@ -166,6 +166,7 @@ const AddMovie = () => {
                                 <div className={styles.selectDate}>
                                     <p>Wybierz rok:</p>
                                     <select
+                                        defaultValue={now}
                                         className={styles.select}
                                         onChange={(event) => setYear(event.target.value)}
                                     >
