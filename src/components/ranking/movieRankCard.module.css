@@ -73,7 +73,7 @@
 
 .imgWrapper {
     overflow: hidden;
-    margin: 0;
+    margin-left: 5px;
     /*border-radius: 0 10px 10px 0;*/
     border-radius: 10px;
 }
@@ -81,7 +81,7 @@
 .imgWrapper img {
     width: 150px;
     height: 200px;
-    object-fit: fill;
+    object-fit: cover;
 }
 
 .triangleDiv {
@@ -134,4 +134,10 @@
     /*align-items: flex-start;*/
     flex-direction: column;
     /*margin-left: 20px;*/
+}
+
+@media all and (max-width: 500px){
+    .flipCard {
+        width: 90%;
+    }
 }

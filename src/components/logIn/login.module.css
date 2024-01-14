@@ -41,3 +41,35 @@
     padding: 10px;
     color: white;
 }
+
+@media all and (max-width: 1000px){
+    .userDetails p{
+        font-size: 12px;
+
+    }
+    .userDetails span {
+        font-size: 24px;
+    }
+}
+@media all and (max-width: 900px){
+    .userDetails p{
+        font-size: 10px;
+        padding: 0;
+    }
+    .userDetails span {
+        font-size: 24px;
+    }
+}
+
+@media all and (max-width: 500px){
+    .userDetails p{
+        font-size: 10px;
+
+    }
+    .containerHover {
+
+        width: 150px;
+        height: 250px;
+        border-radius: 0 0 0 60%;
+    }
+}

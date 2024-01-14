@@ -37,3 +37,19 @@
 .navbarBgcAfter {
     background-color: var(--black);
 }
+
+@media all and (max-width: 800px){
+    .settings {
+        width: 150px;
+        align-items: flex-start;
+    }
+
+}
+
+@media all and (max-width: 500px){
+    .settings {
+        width: 100px;
+        align-items: flex-start;
+    }
+
+}

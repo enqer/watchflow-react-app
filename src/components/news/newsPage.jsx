@@ -67,9 +67,10 @@ const NewsPage = (props) => {
                         src={newsData.image}
                         alt=""
                     />
+                    <h3>{newsData.content?.substring(0, newsData.content.indexOf('.') + 1)}</h3>
                 </div>
                 <div className={styles.descriptionWrapper}>
-                    <h3>{newsData.content?.substring(0, newsData.content.indexOf('.') + 1)}</h3>
+                {/*<h3>{newsData.content?.substring(0, newsData.content.indexOf('.') + 1)}</h3>*/}
                     <p>{newsData.content?.substring(newsData.content.indexOf('.') + 1)}</p>
                 </div>
                 <div>

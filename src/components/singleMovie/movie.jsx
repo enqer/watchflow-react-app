@@ -294,7 +294,7 @@ return (
                     </p>
                 </div>
                 <div>
-                    <h2 className={styles.commenText}>Komentarze:</h2>
+                    <h2 className={styles.commentText}>Komentarze:</h2>
                     {data.comments?.length > 0 ? data.comments.map((comment) =>
                         <Comment
                             id={comment.id}

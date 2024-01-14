@@ -8,7 +8,7 @@
     display: flex;
     justify-content: space-around;
     flex-wrap: wrap;
-    width: 100%;
+    width: 90%;
     margin: 10px;
 }
 
@@ -16,7 +16,7 @@
     font-size: 32px;
     color: var(--white);
     font-weight: bold;
-    margin: 0 0 0 70px
+    margin: 0;
 }
 .titleRanking {
     display: flex;
@@ -32,3 +32,9 @@
     color: grey;
     font-weight: bold;
 }
+@media all and (max-width: 800px) {
+    .container {
+        justify-content: center;
+    }
+}
+

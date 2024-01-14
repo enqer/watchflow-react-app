@@ -31,3 +31,26 @@
     color: var(--darkBlue);
     border-color: var(--darkBlue);
 }
+
+@media all and (max-width: 1000px){
+    .text{
+        font-size: 12px;
+
+    }
+    .text {
+        padding: 0 5px;
+    }
+}
+@media all and (max-width: 900px){
+    .text{
+        font-size: 10px;
+
+    }
+}
+
+@media all and (max-width: 700px){
+    .text p{
+        font-size: 0px;
+
+    }
+}

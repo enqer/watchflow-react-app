@@ -33,3 +33,10 @@
     cursor: pointer;
 }
 
+
+@media all and (max-width: 500px){
+    .signInPopup {
+        width: 350px;
+    }
+
+}

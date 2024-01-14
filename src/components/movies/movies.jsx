@@ -3,13 +3,11 @@ import {Link} from "react-router-dom";
 import { FaArrowRight } from "react-icons/fa";
 import {useEffect, useState} from "react";
 import MovieCard from "./movieCard";
-import {isExpired} from "react-jwt";
 import axios from "axios";
 import {BASE_URL} from "../../config/shared";
-import {tokenKey} from "../../config/authConfig";
+import {useNavigate} from "react-router";
+import {isLogged} from "../../config/authConfig";
 const Movies = () => {
-
-    const isLogged = !isExpired(localStorage.getItem(tokenKey))
 
     const [isMoving, setIsMoving] = useState(false)
     const [data, setData] = useState([])
@@ -56,6 +54,7 @@ const Movies = () => {
         else
             getMoviesByGenre(event.target.value)
     }
+
 
   return(
       <div className={styles.container}>

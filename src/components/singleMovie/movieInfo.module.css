@@ -4,16 +4,30 @@
 }
 
 .infoDescription p {
-
     color: var(--white);
     font-size: 18px;
 }
 
 .container {
     width: 100%;
+    display: flex;
+    flex-direction: column;
 }
 
 .ratingInfo {
     color: var(--darkBlue);
 }
+@media all and (max-width: 800px){
+    .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .infoDescription {
+        width: 100%;
+    }
+    .infoDescription p{
+        text-align: center;
+    }
 
+}
