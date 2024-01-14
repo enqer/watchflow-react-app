@@ -1,7 +1,6 @@
 import React from 'react';
 import Logo from "./logo";
-import { FaFacebook, FaGithub, FaGoogle, FaLinkedin, FaInstagram} from "react-icons/fa";
-import { BsTwitterX } from "react-icons/bs";
+import {FaGithub} from "react-icons/fa";
 import styles from './footer.module.css'
 import {Link} from "react-router-dom";
 const Footer = () => {

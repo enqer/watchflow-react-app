@@ -11,9 +11,10 @@ const MovieCard = (props) => {
     }
 
     return(
-        <Link to={`/movie/${props.id}`}
-                onMouseLeave={handleHover}
-                onMouseEnter={handleHover}
+        <Link
+            to={`/movie/${props.id}`}
+            onMouseLeave={handleHover}
+            onMouseEnter={handleHover}
         >
             <div className={styles.movieCell}>
                 <img

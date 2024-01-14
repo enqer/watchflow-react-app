@@ -19,6 +19,25 @@
 }
 
 
+.rec.rec-arrow {
+    background-color: var(--darkBlue) !important;
+}
+
+.rec.rec-dot_active {
+    box-shadow: 0 0 1px 3px var(--darkBlue) !important;
+}
+
+.rec.rec-dot:hover {
+    box-shadow: 0 0 1px 3px var(--darkBlue) !important;
+}
+
+.rec.rec-arrow:hover {
+    background-color: var(--black) !important;
+}
+
+.rec.rec-arrow:disabled {
+    visibility: hidden;
+}
 
 
 
