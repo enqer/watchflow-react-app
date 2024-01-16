@@ -31,14 +31,16 @@ const styles = {
         justifyContent: 'center',
         alignItems: 'center',
         alignContent: 'center',
-        minHeight: 'calc(100vh - (110px + 70px))'
+        height: '100%'
     },
     text : {
-        textAlign: 'center'
+        textAlign: 'center',
+        fontWeight: 'bold'
     },
     link : {
         color: '#4682b4',
-        // textDecoration: 'none'
+        marginLeft: 5,
+        fontWeight: 'bold'
     },
     img : {
         width: '200px'
