@@ -2,7 +2,6 @@ import Carousel from "@itseasy21/react-elastic-carousel";
 import styles from './carouselSlider.css'
 import {useEffect, useState} from "react";
 import axios from "axios";
-import MovieCard from "../movies/movieCard";
 import NotFoundText from "../common/notFoundText";
 import {BASE_URL} from "../../config/shared";
 import BannerCard from "./bannerCard";

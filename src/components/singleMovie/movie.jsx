@@ -13,6 +13,8 @@ import {MdDelete} from "react-icons/md";
 import {useNavigate} from "react-router";
 import Rating from "./rating";
 import {BASE_URL} from "../../config/shared";
+import {toast} from "react-hot-toast";
+import Alert from "../common/alert";
 
 const Movie = () => {
 
@@ -85,7 +87,7 @@ const Movie = () => {
 
     const handleSelectRating = (rate) => {
         if (!isLogged){
-            alert("Aby ocenić film, musisz się zalogować!")
+            toast("Aby ocenić film, musisz się zalogować!")
             return
         }
         if (whichRateSelect === 0)
@@ -106,7 +108,7 @@ const Movie = () => {
            })
            .catch((error)=>{
                setError(true)
-               setErrorMsg('Problem z wyświetleniem dodatkowych informacji filmu')
+               setErrorMsg('Problem z usunięciem filmu')
            })
     }
 
@@ -119,6 +121,7 @@ const Movie = () => {
                 config
             )
             .then((response) => {
+                toast("Zaktualizowano ocene!")
                 // console.log(response.data)
                 // setRatingData(response.data)
 
@@ -159,7 +162,7 @@ const Movie = () => {
             })
             .catch((error) => {
                 setError(true)
-                setErrorMsg('Problem z usunięciem filmu')
+                setErrorMsg('Problem z usunięciem objerzenia filmu')
                 setWatched(true)
             })
     }
@@ -180,7 +183,7 @@ const Movie = () => {
     }
     const handleIsWatched = () => {
         if (!isLogged){
-            alert("Aby zapisać film do obejrzanych, musisz się zalogować!")
+            toast("Aby zapisać film do obejrzanych, musisz się zalogować!")
             return
         }
         if (watched)
@@ -211,6 +214,7 @@ const Movie = () => {
     }
 return (
         <div className={styles.containerFluid}>
+            <Alert />
             <BackPage
                 backTo={"/movies"}
                 title={data.title}
