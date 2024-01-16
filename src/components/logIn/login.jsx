@@ -5,6 +5,8 @@ import React, {useState} from "react";
 import styles from './login.module.css'
 import {useNavigate} from "react-router";
 import {isLogged, tokenKey, user} from "../../config/authConfig";
+import {toast} from "react-hot-toast";
+import Alert from "../common/alert";
 
 const Login = () => {
     let navigate = useNavigate()
@@ -20,7 +22,7 @@ const Login = () => {
         handleChangeRoute()
     }
 
-    const handleSettings = () => alert("Innych nie będzie")
+    const handleSettings = () => toast('Innych nie będzie')
 
     return (
         <div
@@ -34,6 +36,7 @@ const Login = () => {
             onMouseEnter={handleHover}
             onMouseLeave={handleHover}
         >
+            <Alert />
             <div className={styles.userDetails}>
                 <p>{isLogged ? (
                     user.login
