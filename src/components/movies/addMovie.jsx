@@ -2,7 +2,7 @@
 import styles from './addMovie.module.css'
 import {useState} from "react";
 
-import upload from '../../img/upload.png'
+import upload from '../../assets/img/upload.png'
 import BackPage from "../common/backPage";
 
 import { imageDb} from "../../config/firebaseConfig";
