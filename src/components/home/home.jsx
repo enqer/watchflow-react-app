@@ -4,7 +4,8 @@ import NewsCard from "../news/newsCard";
 import {useEffect, useState} from "react";
 import axios from "axios";
 import MovieCard from "../movies/movieCard";
-import {BASE_URL} from "../../config/shared";
+
+import {BASE_URL} from "../../config/appConfig";
 
 const Home = () => {
         const [data, setData] = useState([])

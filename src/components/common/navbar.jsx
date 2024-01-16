@@ -5,14 +5,13 @@ import { IoSearch } from "react-icons/io5";
 import { PiTelevisionBold } from "react-icons/pi";
 import { BiNews } from "react-icons/bi";
 import { FaRankingStar } from "react-icons/fa6";
-import '../../fonts/Roboto-Bold.ttf';
+import '../../assets/fonts/Roboto-Bold.ttf';
 import Logo from "./logo";
 import Login from "../logIn/login";
 import FormPage from "../logIn/formPage";
 import { isLogged } from "../../config/authConfig";
 import styles from './navbar.module.css'
 import MenuItem from "./menuItem";
-
 
 const Navbar = () => {
 
@@ -29,7 +28,6 @@ const Navbar = () => {
 
     const handleShowingForm = () => setShowForm(true)
     const handleCloseForm = () => setShowForm(false)
-
 
 
     window.addEventListener("scroll", changeNavbarColor);

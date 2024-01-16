@@ -4,7 +4,8 @@ import MovieRankCard from "./movieRankCard";
 import {useEffect, useState} from "react";
 import axios from "axios";
 import NotFoundText from "../common/notFoundText";
-import {BASE_URL} from "../../config/shared";
+
+import {BASE_URL} from "../../config/appConfig";
 
 const Ranking = () => {
 

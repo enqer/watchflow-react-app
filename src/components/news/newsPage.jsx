@@ -6,7 +6,8 @@ import axios from "axios";
 import {config, isLogged, user} from "../../config/authConfig";
 import {MdDelete} from "react-icons/md";
 import {useNavigate} from "react-router";
-import {BASE_URL} from "../../config/shared";
+
+import {BASE_URL} from "../../config/appConfig";
 
 const NewsPage = (props) => {
 

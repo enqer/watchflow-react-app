@@ -4,8 +4,8 @@ import { FaArrowRight } from "react-icons/fa";
 import {useEffect, useState} from "react";
 import MovieCard from "./movieCard";
 import axios from "axios";
-import {BASE_URL} from "../../config/shared";
 import {isLogged} from "../../config/authConfig";
+import {BASE_URL} from "../../config/appConfig";
 const Movies = () => {
 
     const [isMoving, setIsMoving] = useState(false)

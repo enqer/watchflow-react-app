@@ -12,7 +12,8 @@ import { config } from "../../config/authConfig";
 import axios from "axios";
 import {useNavigate} from "react-router";
 import TextInput from "../common/textInput";
-import {BASE_URL, movieGenres} from "../../config/shared";
+import {movieGenres} from "../../config/shared";
+import {BASE_URL} from "../../config/appConfig";
 
 
 const AddMovie = () => {

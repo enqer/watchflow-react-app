@@ -3,7 +3,8 @@ import {useState} from "react";
 import axios from "axios";
 import MovieCard from "../movies/movieCard";
 import styles from './search.module.css'
-import {BASE_URL} from "../../config/shared";
+
+import {BASE_URL} from "../../config/appConfig";
 const Search = () => {
     const [data, setData] = useState([])
     const [isNotFound, setIsNotFound] = useState(true)

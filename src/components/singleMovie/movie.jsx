@@ -9,10 +9,10 @@ import AddComment from "./addComment";
 import { config, isLogged, user } from '../../config/authConfig'
 import {MdDelete} from "react-icons/md";
 import {useNavigate} from "react-router";
-import {BASE_URL} from "../../config/shared";
 import Alert from "../common/alert";
 import RateBar from "./rateBar";
 import {toast} from "react-hot-toast";
+import {BASE_URL} from "../../config/appConfig";
 
 const Movie = () => {
 

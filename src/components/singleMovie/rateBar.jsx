@@ -5,8 +5,8 @@ import {useEffect, useState} from "react";
 import {config, isLogged, user} from "../../config/authConfig";
 import {toast} from "react-hot-toast";
 import axios from "axios";
-import {BASE_URL} from "../../config/shared";
 import Watcher from "./watcher";
+import {BASE_URL} from "../../config/appConfig";
 
 const RateBar = (props) => {
     const [whichHover, setWhichHover] = useState(0)

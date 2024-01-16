@@ -4,8 +4,8 @@ import styles from  './formLogReg.module.css'
 import axios from "axios";
 import {useNavigate} from "react-router";
 import TextInput from "../common/textInput";
-import {BASE_URL} from "../../config/shared";
 import {tokenKey} from "../../config/authConfig";
+import {BASE_URL} from "../../config/appConfig";
 
 const SignIn = (props) => {
     let navigate = useNavigate()

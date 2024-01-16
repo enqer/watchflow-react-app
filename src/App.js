@@ -3,6 +3,8 @@ import './App.css';
 import Navbar from "./components/common/navbar";
 import {Outlet} from "react-router-dom";
 import Footer from "./components/common/footer";
+import {useEffect} from "react";
+import {APP_NAME} from "./config/appConfig";
 
 function App() {
 
@@ -19,7 +21,8 @@ function App() {
             overflow: 'hidden'
         }
     }
-// TODO pozmieniać czcionki na ładniejsze benc
+
+
   return (
       <div className="container_fluid" style={styles.container}>
           <Navbar style={styles.navbar} />

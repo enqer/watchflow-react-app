@@ -3,7 +3,8 @@ import styles from './news.module.css'
 import axios from "axios";
 import {useEffect, useState} from "react";
 import NotFoundText from "../common/notFoundText";
-import {BASE_URL} from "../../config/shared";
+
+import {BASE_URL} from "../../config/appConfig";
 
 const News = () => {
     const [newsData, setNewsData] = useState([])

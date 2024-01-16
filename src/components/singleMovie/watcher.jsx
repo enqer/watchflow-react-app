@@ -3,7 +3,8 @@ import {useEffect, useState} from "react";
 import {config, isLogged, user} from "../../config/authConfig";
 import {toast} from "react-hot-toast";
 import axios from "axios";
-import {BASE_URL} from "../../config/shared";
+
+import {BASE_URL} from "../../config/appConfig";
 
 const Watcher = (props) => {
     const [watched, setWatched] = useState(false)

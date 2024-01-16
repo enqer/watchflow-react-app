@@ -1,9 +1,9 @@
 import styles from './comment.module.css'
 import { MdDelete } from "react-icons/md";
 import axios from "axios";
-import {BASE_URL} from "../../config/shared";
 import {config, isLogged, user} from "../../config/authConfig";
 import {toast} from "react-hot-toast";
+import {BASE_URL} from "../../config/appConfig";
 const Comment = (props) => {
 
     const handleDeleteComment = () => {

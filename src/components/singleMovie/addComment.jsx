@@ -2,7 +2,8 @@ import styles from './addComment.module.css'
 import {useState} from "react";
 import axios from "axios";
 import { config} from "../../config/authConfig";
-import {BASE_URL} from "../../config/shared";
+
+import {BASE_URL} from "../../config/appConfig";
 
 const AddComment = (props) => {
     const [commentText, setCommentText] = useState('');
