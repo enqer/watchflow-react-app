@@ -47,10 +47,10 @@ const RateBar = (props) => {
             )
             .then((response) => {
                 setWhichRateSelect(0)
+                toast('Usunięto ocenę')
             })
             .catch((error)=>{
-                props.setError(true)
-                props.setErrorMsg('Problem z usunięciem filmu')
+                toast('Usunięcie oceny nie powiodło się')
             })
     }
 
@@ -64,15 +64,11 @@ const RateBar = (props) => {
             )
             .then((response) => {
                 toast("Zaktualizowano ocene!")
-                // console.log(response.data)
-                // setRatingData(response.data)
-
+                setWhichRateSelect(rate)
             })
             .catch((error)=>{
-                props.setError(true)
-                props.setErrorMsg('Problem z zaktualizowaniem oceny')
+                toast('Zaktualizowanie oceny nie powiodło się')
             })
-        setWhichRateSelect(rate)
     }
     const selectRating = (rate) => {
         axios
@@ -86,10 +82,10 @@ const RateBar = (props) => {
             )
             .then((response) => {
                 setWhichRateSelect(rate)
+                toast('Dodano ocenę')
             })
             .catch((error)=>{
-                props.setError(true)
-                props.setErrorMsg('Problem z ocenianiem filmu')
+                toast('Wystąpił błąd z ocenianiem filmu, spróbuj później')
             })
     }
     const handleSelectRating = (rate) => {
@@ -113,29 +109,30 @@ const RateBar = (props) => {
                     <div
                         className=
                             {whichHover > 0
-                            || whichRateSelect > 0 ? (
-                                [styles.selectedRateNumber, styles.selectedRateNumberAfter].join(' ')
-                            ) : (
-                                [styles.selectedRateNumber, styles.selectedRateNumberBefore].join(' ')
-                            )}
+                                || whichRateSelect > 0 ? (
+                                    [styles.selectedRateNumber, styles.selectedRateNumberAfter].join(' ')
+                                ) : (
+                                    [styles.selectedRateNumber, styles.selectedRateNumberBefore].join(' ')
+                                )
+                            }
                     >
                         {whichRateSelect > 0
-                        && whichHover === 0 ? (
-                            getSelectedRate(whichRateSelect)
-                        ) : (
-                            getSelectedRate(whichHover)
-                        )
+                            && whichHover === 0 ? (
+                                getSelectedRate(whichRateSelect)
+                            ) : (
+                                getSelectedRate(whichHover)
+                            )
                         }
                     </div>
                 </div>
                 <div className={styles.ratingLabels}>
                     <p>
                         {whichRateSelect > 0
-                        && whichHover === 0 ? (
-                            getLabelByRate(whichRateSelect)
-                        ) : (
-                            getLabelByRate(whichHover)
-                        )
+                            && whichHover === 0 ? (
+                                getLabelByRate(whichRateSelect)
+                            ) : (
+                                getLabelByRate(whichHover)
+                            )
                         }
                     </p>
                 </div>
@@ -146,9 +143,7 @@ const RateBar = (props) => {
                 handlerStarHover={handlerStarHover}
                 whichRateSelect={whichRateSelect}
             />
-            <Watcher
-                movieId={props.movieId}
-            />
+            <Watcher movieId={props.movieId} />
         </div>
     )
 }

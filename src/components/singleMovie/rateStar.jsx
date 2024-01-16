@@ -11,8 +11,8 @@ const RateStar = (props) => {
             onMouseEnter={() => props.handlerStarHover(props.rate)}
             onMouseLeave={() => props.handlerStarHover(0)}
         >
-            {props.whichHover >= props.rate || (
-                props.whichRateSelect >= props.rate && props.whichHover === 0) ? (
+            {props.whichHover >= props.rate
+                || (props.whichRateSelect >= props.rate && props.whichHover === 0) ? (
                     <IoStar/>
                 ) : (
                     <IoStarOutline/>

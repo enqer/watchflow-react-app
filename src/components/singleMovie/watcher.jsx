@@ -6,7 +6,6 @@ import axios from "axios";
 import {BASE_URL} from "../../config/shared";
 
 const Watcher = (props) => {
-
     const [watched, setWatched] = useState(false)
 
     useEffect(() => {

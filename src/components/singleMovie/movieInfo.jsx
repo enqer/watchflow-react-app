@@ -3,31 +3,30 @@ import MovieRating from "../movies/movieRating";
 import InfoText from "./infoText";
 
 const MovieInfo = (props) => {
-
     return (
         <div className={styles.container}>
             <div className={styles.infoDescription}>
-                <p>{props.firstLine}</p>
+                <p>{props.movieData.content?.substring(0, 100) + "..."}</p>
             </div>
             <InfoText
                 infoName={"Nazwa:"}
-                info={props.title}
+                info={props.movieData.title}
             />
             <InfoText
                 infoName={"Reżyser:"}
-                info={props.director}
+                info={props.movieData.director}
             />
             <InfoText
                 infoName={"Data premiery:"}
-                info={props.productionYear}
+                info={props.movieData.productionYear}
             />
             <InfoText
                 infoName={"Gatunek:"}
-                info={props.genre}
+                info={props.movieData.genre}
             />
             <MovieRating
-                rating={props.rating}
-                numOfRating={props.numOfRatings}
+                rating={props.movieData.rating}
+                numOfRating={props.movieData.numOfRatings}
             />
         </div>
     )

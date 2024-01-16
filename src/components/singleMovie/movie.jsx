@@ -1,4 +1,3 @@
-
 import styles from './movie.module.css'
 import { useEffect, useState} from "react";
 import { useParams} from "react-router-dom";
@@ -13,12 +12,11 @@ import {useNavigate} from "react-router";
 import {BASE_URL} from "../../config/shared";
 import Alert from "../common/alert";
 import RateBar from "./rateBar";
+import {toast} from "react-hot-toast";
 
 const Movie = () => {
 
     let navigate = useNavigate()
-    const [error, setError] = useState(false)
-    const [errorMsg, setErrorMsg] = useState('')
     const [data,setData]= useState({})
     const movieId = useParams()
 
@@ -30,8 +28,7 @@ const Movie = () => {
                     setData(response.data)
                 })
                 .catch((err) => {
-                    setError(true)
-                    setErrorMsg('Problem z wyświetleniem filmu')
+                    toast('Problem z wyświetleniem filmu')
                     switchRoute()
                 })
         }
@@ -52,11 +49,10 @@ const Movie = () => {
                 switchRoute()
             })
             .catch((error) => {
-                setError(true)
-                setErrorMsg('Problem z usunięciem filmu')
+                toast('Problem z usunięciem filmu')
             })
     }
-return (
+    return (
         <div className={styles.containerFluid}>
             <Alert />
             <BackPage
@@ -72,22 +68,9 @@ return (
                         />
                     </div>
                     <div className={styles.infoDataWrapper}>
-                        <MovieInfo
-                            firstLine={data.content?.substring(0, 100) + "..."}
-                            title={data.title}
-                            director={data.director}
-                            productionYear={data.productionYear}
-                            genre={data.genre}
-                            rating={data.rating}
-                            numOfRatings={data.numOfRatings}
-                            content={data.content}
-                        />
+                        <MovieInfo  movieData={data} />
                     </div>
-                    <RateBar
-                        setError={setError}
-                        setErrorMsg={setErrorMsg}
-                        movieId={movieId.id}
-                    />
+                    <RateBar movieId={movieId.id} />
                 </div>
                 <div className={styles.descriptionWrapper}>
                     <p>
@@ -96,16 +79,13 @@ return (
                 </div>
                 <div>
                     <h2 className={styles.commentText}>Komentarze:</h2>
-                    {data.comments?.length > 0 ? data.comments.map((comment) =>
-                        <Comment
-                            id={comment.id}
-                            content={comment.content}
-                            publishedAt={comment.publishedAt}
-                            movieId={comment.movieId}
-                            userId={comment.userId}
-                            userLogin={comment.userLogin}
-                            key={comment.id}
-                        />
+                    {data.comments?.length > 0 ? (
+                        data.comments.map((comment) =>
+                            <Comment
+                                commentData={comment}
+                                key={comment.id}
+                            />
+                        )
                     ) : (
                         <p className={styles.missingComment}>Brak komentarzy, aby dodać komentarz musisz być zalogowany.</p>
                     )}
@@ -121,23 +101,19 @@ return (
                 <div>
                     {isLogged
                         && user.isAdmin
-                        && (
-                            <div
-                                className={styles.deleteMovie}
-                                onClick={handleDeleteMovie}
-                            >
-                                <p>Usuń film</p>
-                                <MdDelete />
-                            </div>
-                        )
+                            && (
+                                <div
+                                    className={styles.deleteMovie}
+                                    onClick={handleDeleteMovie}
+                                >
+                                    <p>Usuń film</p>
+                                    <MdDelete />
+                                </div>
+                            )
                     }
                 </div>
-                {error && (
-                    <p className={styles.error}>{errorMsg}</p>
-                )}
             </div>
         </div>
     )
 }
-
 export default Movie;
